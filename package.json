@@ -8,15 +8,14 @@
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://gitlab.com/mlgame-platform/blockly-app",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Blockly",
+    "Python",
+    "MLGame",
+    "AI"
   ],
-  "author": "GitHub",
+  "author": "You-Cheng Xiao",
   "license": "CC0-1.0",
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.54",
