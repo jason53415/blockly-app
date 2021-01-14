@@ -39,8 +39,8 @@ Code.workspace = null;
  */
 Code.pythonOptions = {
   mode: 'text',
-  pythonPath: store.get('pythonPath'), //'D:\\Anaconda3\\envs\\ML\\python.exe',
-  scriptPath: store.get('scriptPath'), //'D:\\Lab\\Machine Learning\\Course\\MLGame-master\\',
+  pythonPath: store.get('pythonPath'),
+  scriptPath: store.get('scriptPath'),
   args: ['-i', 'ml_play.py', 'Maze_Car', '1', '1', '60', 'OFF']
 };
 
@@ -120,9 +120,6 @@ Code.changeLanguage = function(lang) {
     window.sessionStorage.loadOnceBlocks = text;
   }
 
-  // var languageMenu = document.getElementById('languageMenu');
-  // var newLang = encodeURIComponent(
-  //     languageMenu.options[languageMenu.selectedIndex].value);
   var newLang = lang
   var search = window.location.search;
   if (search.length <= 1) {
@@ -371,12 +368,6 @@ Code.init = function() {
       el.style.width = bBox.width + 'px';
       el.style.width = (2 * bBox.width - el.offsetWidth) + 'px';
     }
-    // Make the 'Blocks' tab line up with the toolbox.
-    // if (Code.workspace && Code.workspace.getToolbox().width) {
-    //   document.getElementById('tab_blocks').style.minWidth =
-    //       (Code.workspace.getToolbox().width - 38) + 'px';
-    //       // Account for the 19 pixel margin and on each side.
-    // }
   };
   window.addEventListener('resize', onresize, false);
 
@@ -476,32 +467,6 @@ Code.initLanguage = function() {
   document.dir = rtl ? 'rtl' : 'ltr';
   document.head.parentElement.setAttribute('lang', Code.LANG);
 
-  // Sort languages alphabetically.
-  // var languages = [];
-  // for (var lang in Code.LANGUAGE_NAME) {
-  //   languages.push([Code.LANGUAGE_NAME[lang], lang]);
-  // }
-  // var comp = function(a, b) {
-  //   // Sort based on first argument ('English', 'Русский', '简体字', etc).
-  //   if (a[0] > b[0]) return 1;
-  //   if (a[0] < b[0]) return -1;
-  //   return 0;
-  // };
-  // languages.sort(comp);
-  // // Populate the language selection menu.
-  // var languageMenu = document.getElementById('languageMenu');
-  // languageMenu.options.length = 0;
-  // for (var i = 0; i < languages.length; i++) {
-  //   var tuple = languages[i];
-  //   var lang = tuple[tuple.length - 1];
-  //   var option = new Option(tuple[0], lang);
-  //   if (lang == Code.LANG) {
-  //     option.selected = true;
-  //   }
-  //   languageMenu.options.add(option);
-  // }
-  // languageMenu.addEventListener('change', Code.changeLanguage, true);
-
   // Populate the coding language selection menu.
   var codeMenu = document.getElementById('code_menu');
   codeMenu.options.length = 0;
@@ -526,33 +491,6 @@ Code.initLanguage = function() {
   document.getElementById('discard').textContent = MSG['discard'];
   document.getElementById('en').textContent = MSG['en'];
   document.getElementById('zh-hant').textContent = MSG['zh_hant'];
-
-  // document.getElementById('linkButton').title = MSG['linkTooltip'];
-  // document.getElementById('runButton').title = MSG['runTooltip'];
-  // document.getElementById('trashButton').title = MSG['trashTooltip'];
-  // document.getElementById('downloadButton').title = MSG['downloadTooltip'];
-  // document.getElementById('saveButton').title = MSG['uploadTooltip'];
-};
-
-/**
- * Execute the user's code.
- * Just a quick and dirty eval.  Catch infinite loops.
- */
-Code.runJS = function() {
-  Blockly.JavaScript.INFINITE_LOOP_TRAP = 'checkTimeout();\n';
-  var timeouts = 0;
-  var checkTimeout = function() {
-    if (timeouts++ > 1000000) {
-      throw MSG['timeout'];
-    }
-  };
-  var code = Blockly.JavaScript.workspaceToCode(Code.workspace);
-  Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
-  try {
-    eval(code);
-  } catch (e) {
-    alert(MSG['badCode'].replace('%1', e));
-  }
 };
 
 /**
@@ -676,17 +614,6 @@ Code.play = function() {
   Code.pythonOptions['args'][4] = e.options[e.selectedIndex].text;
   window.pythonRun(Code.pythonOptions);
   // console.log(e);
-};
-
-Code.loadXml = function(url) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      Code.loadBlocks(this.responseText);
-    }
-  };
-  xhttp.open("GET", url, true);
-  xhttp.send();
 };
 
 // Load the Code demo's language strings.
