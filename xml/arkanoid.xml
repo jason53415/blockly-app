@@ -1,0 +1,105 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="Byr4iZ7Psx3yv_1uOLCb">已經發球</variable>
+  </variables>
+  <block type="mlplay_class" id="(S0`q*z*f5{ng]`fBLpg">
+    <statement name="INIT">
+      <block type="variables_set" id="c))y.U{^yhe{fv::Gc^F">
+        <field name="VAR" id="Byr4iZ7Psx3yv_1uOLCb">已經發球</field>
+        <value name="VALUE">
+          <block type="logic_boolean" id="SC+J%!UKwU!l6juiT-sc">
+            <field name="BOOL">FALSE</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+    <statement name="UPDATE">
+      <block type="controls_if" id="Jh_4Hf|(GVq00}Ayk3GQ">
+        <value name="IF0">
+          <block type="logic_operation" id="e(W;u)!aTqmM/$O%XRT)">
+            <field name="OP">OR</field>
+            <value name="A">
+              <block type="logic_compare" id="(?SiPm!;8Qk8mQDyQ5$M">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="mlplay_get_info" id="=wx[P.p`mNh#V@aVvgj(">
+                    <field name="FIELD">scene_info['status']</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="mlplay_game_status" id=";:]U-A?QDEpqk4|^Z;.e">
+                    <field name="STATUS">GAME_PASS</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="logic_compare" id="DOa.r)vA*-?qc`Iaxhv8">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="mlplay_get_info" id="V!0xT1*L#0[RcfCxH#[h">
+                    <field name="FIELD">scene_info['status']</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="mlplay_game_status" id="TH(k}Xl|^rnzDt-T:/t%">
+                    <field name="STATUS">GAME_OVER</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="mlplay_return_action" id="8f`hsME:s`Vz6(=%b86$">
+            <field name="ACTION">RESET</field>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_if" id="p3cDa]:ou+IeSCTwl76E">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_negate" id="K}g[r7+jt5GYN,-;xT;8">
+                <value name="BOOL">
+                  <block type="variables_get" id="n=npQ1N*Mj;^TrI(ynvZ">
+                    <field name="VAR" id="Byr4iZ7Psx3yv_1uOLCb">已經發球</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="variables_set" id="EeGq`f2[WXWEk}ADn=]*">
+                <field name="VAR" id="Byr4iZ7Psx3yv_1uOLCb">已經發球</field>
+                <value name="VALUE">
+                  <block type="logic_boolean" id="wO[q~2tstBtuBGo@CG(S">
+                    <field name="BOOL">TRUE</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="mlplay_return_action" id="]yYsVM)(LHzGD!d@k@rW">
+                    <field name="ACTION">SERVE_TO_LEFT</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="mlplay_return_action" id="mypVXkM.!VVyh=hd7nX3">
+                <field name="ACTION">MOVE_LEFT</field>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="RESET">
+      <block type="variables_set" id="2a?j/{?rb6ib-QfIkf=G">
+        <field name="VAR" id="Byr4iZ7Psx3yv_1uOLCb">已經發球</field>
+        <value name="VALUE">
+          <block type="logic_boolean" id="]QCvPi)c@P_Qbb2s.WnP">
+            <field name="BOOL">FALSE</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+</xml>

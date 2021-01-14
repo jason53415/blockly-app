@@ -1,0 +1,96 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="EWpA?kB2m|(U-dhXf:S9">已經發球</variable>
+    <variable id="Hx_tmkxsaE/QweCL3EP2">玩家編號</variable>
+  </variables>
+  <block type="mlplay_class" id="RUg|=sCltV/Pf]+(7O)_">
+    <statement name="INIT">
+      <block type="variables_set" id="QeucbJiW.zl=Ratc$rvP">
+        <field name="VAR" id="EWpA?kB2m|(U-dhXf:S9">已經發球</field>
+        <value name="VALUE">
+          <block type="logic_boolean" id="8#8/W=*:/X+uUvvCZqF4">
+            <field name="BOOL">FALSE</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="U]{DsFG)$0cj~#Ut6/.k">
+            <field name="VAR" id="Hx_tmkxsaE/QweCL3EP2">玩家編號</field>
+            <value name="VALUE">
+              <block type="mlplay_init_info" id="O,%sx`THBS+ORLdi*3U?">
+                <field name="FIELD">side</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="UPDATE">
+      <block type="controls_if" id="HXtZ(I*tS1Hw^Bk7?{-3">
+        <value name="IF0">
+          <block type="logic_compare" id="`]z:fY(vCR_H0Qbr:n^]">
+            <field name="OP">NEQ</field>
+            <value name="A">
+              <block type="mlplay_get_info" id="]x}ErYGm!xnxEsgwXl!*">
+                <field name="FIELD">scene_info['status']</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="mlplay_game_status" id="@CFWo6F~Ihf0^C5~zG/3">
+                <field name="STATUS">GAME_ALIVE</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="mlplay_return_action" id="#5ulUcX#g3F-%3do+C1$">
+            <field name="ACTION">RESET</field>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_if" id="EVvV2kK+-[JLvGjT].3d">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_negate" id="7SASlID(o(q{c09;L}S;">
+                <value name="BOOL">
+                  <block type="variables_get" id="_Zc6}la?):(eyu{B,Mmf">
+                    <field name="VAR" id="EWpA?kB2m|(U-dhXf:S9">已經發球</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="variables_set" id="8tjrfIz|W#1XL?P%nd!O">
+                <field name="VAR" id="EWpA?kB2m|(U-dhXf:S9">已經發球</field>
+                <value name="VALUE">
+                  <block type="logic_boolean" id="s.-kRts:-o2L=H?`#XlY">
+                    <field name="BOOL">TRUE</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="mlplay_return_action" id="5or{@UCiOKyDg%P/QQFE">
+                    <field name="ACTION">SERVE_TO_LEFT</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="mlplay_return_action" id="b=[-UbwhyZ8=ccKgH=d7">
+                <field name="ACTION">MOVE_LEFT</field>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="RESET">
+      <block type="variables_set" id="sch|A9+PGe7.JKr.g/M~">
+        <field name="VAR" id="EWpA?kB2m|(U-dhXf:S9">已經發球</field>
+        <value name="VALUE">
+          <block type="logic_boolean" id="|fn7-QfqhjE]8G+SodjD">
+            <field name="BOOL">FALSE</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+</xml>

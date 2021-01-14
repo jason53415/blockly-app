@@ -1,0 +1,52 @@
+{
+    "INIT_INFO": [
+        ["player", "player number", "玩家編號"]
+    ],
+    "PLAYER_STATUS": [
+        ["player1", "1P", "1P"],
+        ["player2", "2P", "2P"],
+        ["player3", "3P", "3P"],
+        ["player4", "4P", "4P"]
+    ],
+    "GAME_STATUS": [
+        ["START", "start", "開始"],
+        ["RUNNING", "running", "進行中"],
+        ["END", "end", "結束"]
+    ],
+    "SCENE_INFO": [
+        ["scene_info['frame']", "# frame", "# 幀數"],
+        ["scene_info['status']", "game status", "遊戲狀態"],
+        ["scene_info['line'][0]", "position of start line", "起點線位置"],
+        ["scene_info['line'][1]", "position of end line", "終點線位置"],
+        ["scene_info['computer_cars']", "positions of computer cars", "警車的位置"],
+        ["scene_info['player_0_pos']", "1P position", "1P 的位置"],
+        ["scene_info['player_1_pos']", "2P position", "2P 的位置"],
+        ["scene_info['player_2_pos']", "3P position", "3P 的位置"],
+        ["scene_info['player_3_pos']", "4P position", "4P 的位置"],
+        ["scene_info['cars_pos']", "positions of all cars", "所有車子的位置"],
+        ["scene_info['lanes']", "positions of lanes", "車道的位置"],
+        ["scene_info['game_result']", "game result", "遊戲結果"],
+        ["scene_info['coins']", "positions of coins", "金幣的位置"]
+    ],
+    "CONSTANT": [
+        [0, "left boundary", "左邊界"],
+        [1000, "right boundary", "右邊界"],
+        [0, "top boundary", "上邊界"],
+        [700, "bottom boundary", "下邊界"],
+        [60, "car length", "車子長度"],
+        [30, "car width", "車子寬度"],
+        [30, "coin length", "金幣長度"],
+        [31, "coin width", "金幣寬度"]
+    ],
+    "ACTION": [
+        ["['SPEED']", "speed up", "加速"],
+        ["['BRAKE']", "brake", "減速"],
+        ["['MOVE_LEFT']", "move left", "向左移動"],
+        ["['MOVE_RIGHT']", "move left", "向右移動"],
+        ["['SPEED', 'MOVE_LEFT']", "speed up and move left", "加速並向左移動"],
+        ["['SPEED', 'MOVE_RIGHT']", "speed up and move right", "加速並向右移動"],
+        ["['BRAKE', 'MOVE_LEFT']", "brake and move left", "減速並向左移動"],
+        ["['BRAKE', 'MOVE_RIGHT']", "brake and move right", "減速並向右移動"],
+        ["[]", "do nothing", "不動作"]
+    ]
+}

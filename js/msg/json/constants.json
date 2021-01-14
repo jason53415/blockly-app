@@ -1,0 +1,12 @@
+{
+    "LOGIC_HUE": "100",
+    "LOOPS_HUE": "140",
+    "MATH_HUE": "190",
+    "TEXTS_HUE": "210",
+    "LISTS_HUE": "230",
+    "DICTS_HUE": "250",
+    "COLOUR_HUE": "20",
+    "VARIABLES_HUE": "300",
+    "VARIABLES_DYNAMIC_HUE": "310",
+    "PROCEDURES_HUE": "330"
+}

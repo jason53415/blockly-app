@@ -1,0 +1,35 @@
+{
+    "INIT_INFO": [
+        ["player", "player number", "玩家編號"]
+    ],
+    "PLAYER_STATUS": [
+        ["player1", "1P", "1P"],
+        ["player2", "2P", "2P"],
+        ["player3", "3P", "3P"],
+        ["player4", "4P", "4P"],
+        ["player5", "5P", "5P"],
+        ["player6", "6P", "6P"]
+    ],
+    "GAME_STATUS": [
+        ["GAME_PASS", "running", "進行中"]
+    ],
+    "SCENE_INFO": [
+        ["scene_info['frame']", "# frame", "# 幀數"],
+        ["scene_info['status']", "game status", "遊戲狀態"],
+        ["scene_info['R_sensor']", "right sensor value", "右超聲波值"],
+        ["scene_info['F_sensor']", "front sensor value", "前超聲波值"],
+        ["scene_info['L_sensor']", "left sensor value", "左超聲波值"]
+    ],
+    "CONSTANT": [
+        [0, "left boundary", "左邊界"],
+        [820, "right boundary", "右邊界"],
+        [0, "top boundary", "上邊界"],
+        [520, "bottom boundary", "下邊界"]
+    ],
+    "ACTION": [
+        ["[{'left_PWM':75,'right_PWM':75}]", "move forward", "向前移動"],
+        ["[{'left_PWM':-75,'right_PWM':-75}]", "move backwards", "向後移動"],
+        ["[{'left_PWM':0,'right_PWM':60}]", "turn left", "向左旋轉"],
+        ["[{'left_PWM':60,'right_PWM':0}]", "turn right", "向右旋轉"]
+    ]
+}
