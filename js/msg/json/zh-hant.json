@@ -395,5 +395,8 @@
 	"MLPLAY_RETURN_ACTION": "回傳行動",
 	"MLPLAY_RETURN_MAZECAR_ACTION": "回傳 左輪轉速：%1 右輪轉速：%2",
 	"MLPLAY_RETURN_ACTION_TOOLTIP": "回傳下一步的行動，或者在遊戲結束時回傳重設的命令。",
-	"MLPLAY_RETURN_ACTION_WARNING": "警告：無法在 MLPlay 的「更新」區塊外回傳行動。"
+	"MLPLAY_RETURN_ACTION_WARNING": "警告：無法在 MLPlay 的「更新」區塊外回傳行動。",
+	"FILE_SAVE": "將 %1 儲存為 %2",
+	"FILE_SAVE_TOOLTIP": "將物件儲存為檔案。",
+	"FILE_DEFAULT_NAME": "檔案名稱"
 }

@@ -52,7 +52,10 @@ Blockly.Themes.Classic.defaultBlockStyles = {
   "hat_blocks": {
     "colourPrimary": "330",
     "hat": "cap"
-  }
+  },
+  "file_blocks": {
+    "colourPrimary": "0"
+  },
 };
 
 Blockly.Themes.Classic.categoryStyles = {

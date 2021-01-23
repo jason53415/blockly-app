@@ -440,5 +440,8 @@
 	"MLPLAY_RETURN_ACTION": "return action",
 	"MLPLAY_RETURN_MAZECAR_ACTION": "return speed of left motor: %1 right motor: %2",
 	"MLPLAY_RETURN_ACTION_TOOLTIP": "Return the next action, or return the reset command after the game is over.",
-	"MLPLAY_RETURN_ACTION_WARNING": "Warning: Cannot return an action outside the \"update\" section of MLPlay block."
+	"MLPLAY_RETURN_ACTION_WARNING": "Warning: Cannot return an action outside the \"update\" section of MLPlay block.",
+	"FILE_SAVE": "save %1 as %2",
+	"FILE_SAVE_TOOLTIP": "Save objects as a file.",
+	"FILE_DEFAULT_NAME": "file name"
 }
