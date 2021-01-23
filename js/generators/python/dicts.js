@@ -4,11 +4,6 @@ goog.provide('Blockly.Python.dicts');
 
 goog.require('Blockly.Python');
 
-Blockly.Python['dicts_create_empty'] = function(block) {
-  // Create an empty dict.
-  return ['{}', Blockly.Python.ORDER_ATOMIC];
-};
-
 Blockly.Python['dicts_get_keys'] = function(block) {
   // Get dict keys.
   var list = Blockly.Python.valueToCode(block, 'DICT',
@@ -18,8 +13,10 @@ Blockly.Python['dicts_get_keys'] = function(block) {
 
 
 Blockly.Python['dicts_create_with'] = function(block) {
-  var value_keys = Blockly.Python.valueToCode(block, 'keys', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
+  if (block.itemCount_ == 0) {
+    return ['{}', Blockly.Python.ORDER_ATOMIC];
+  }
+  
   var code = new Array(block.itemCount_);
   
   for (var n = 0; n < block.itemCount_; n++) {
