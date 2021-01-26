@@ -27,5 +27,25 @@ Blockly.defineBlocksWithJsonArray([
     "nextStatement": null,
     "style": "file_blocks",
     "tooltip": "%{BKY_FILE_SAVE_TOOLTIP}"
+  },
+  {
+    "type": "file_load",
+    "message0": "%{BKY_FILE_LOAD}",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "OBJECT"
+      },
+      {
+        "type": "field_input",
+        "name": "FILENAME",
+        "text": "%{BKY_FILE_DEFAULT_NAME}",
+        "spellcheck": false
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "file_blocks",
+    "tooltip": "%{BKY_FILE_LOAD_TOOLTIP}"
   }
 ]);
