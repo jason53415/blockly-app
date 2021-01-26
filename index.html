@@ -20,7 +20,7 @@
   </head>
   <body>
     <div class="modal fade" id="run-dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" style="min-width: 500px;">
+      <div class="modal-dialog" style="min-width: 800px;">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">開始玩</h5>
@@ -31,12 +31,16 @@
           <form name="play" action="javascript:Code.play()">
             <div class="modal-body my-2">
               <div class="form-group">
-                <label for="">Python 執行檔：<span id='python_path'></span></label>
+                <label for="">Python 位置：<span id='python_path'></span></label>
                 <button type="button" id="python_path_button">選擇</button>
               </div>
               <div class="form-group">
-                <label for="">MLGame 資料夾：<span id='mlgame_path'></span></label>
+                <label for="">MLGame 位置：<span id='mlgame_path'></span></label>
                 <button type="button" id="mlgame_path_button">選擇</button>
+              </div>
+              <div class="form-group">
+                <label for="">資料存取位置：<span id='cwd_path'></span></label>
+                <button type="button" id="cwd_path_button">選擇</button>
               </div>
               <div class="form-group">
                 <label for="">參賽人數</label>
@@ -437,7 +441,6 @@
           <block type="mlplay_get_constant">
             <field name="CONSTANT"></field>
           </block>
-          
             <block type="mlplay_return_mazecar_action">
               <value name="LEFT_RPM">
                 <shadow type="math_number">
@@ -450,7 +453,12 @@
                 </shadow>
               </value>
             </block>
-          
+        </category>
+        <category name="File" colour="0">
+          <block type="file_save">
+          </block>
+          <block type="file_load">
+          </block>
         </category>
       </xml>
     </div>

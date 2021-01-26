@@ -11,7 +11,9 @@ const store = new Store();
 const path = require('path');
 const fs = require('fs');
 
-window.pythonRun = function(options) {
+window.pythonRun = function(options, file, cwd) {
+  var old_cwd = process.cwd();
+  process.chdir(cwd);
   PythonShell.run('MLGame.py', options, function (err, results) {
     if (err) {
       window.alert(err);
@@ -21,10 +23,12 @@ window.pythonRun = function(options) {
     }
     // results is an array consisting of messages collected during execution
     console.log('results: ', results);
+    fs.unlinkSync(file);
+    process.chdir(old_cwd);
   });
 };
 
-window.wirteFile = function(file, data) {
+window.writeFile = function(file, data) {
   fs.writeFileSync(file, data, (err) => {
     if (err) throw err;
     console.log('The file has been saved at ' + file);
