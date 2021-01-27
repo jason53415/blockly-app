@@ -1,6 +1,6 @@
 {
   "name": "blockly-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A blockly application that can build AI to play games.",
   "main": "main.js",
   "scripts": {
