@@ -54,8 +54,11 @@ Blockly.Themes.Classic.defaultBlockStyles = {
     "hat": "cap"
   },
   "file_blocks": {
-    "colourPrimary": "0"
+    "colourPrimary": "350"
   },
+  "model_blocks": {
+    "colourPrimary": "340"
+  }
 };
 
 Blockly.Themes.Classic.categoryStyles = {

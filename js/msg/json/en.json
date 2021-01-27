@@ -445,5 +445,15 @@
 	"FILE_SAVE_TOOLTIP": "Save an object as a file.",
 	"FILE_LOAD": "load %1 from %2",
 	"FILE_LOAD_TOOLTIP": "Load an object from a file.",
-	"FILE_DEFAULT_NAME": "file_name"
+	"FILE_DEFAULT_NAME": "file_name",
+	"MODEL_KNN": "k-nearest neighbors",
+	"MODEL_DECISION_TREE": "decision tree",
+	"MODEL_LINEAR_SVM": "linear support vector machine",
+	"MODEL_CREATE": "create",
+	"MODEL_CLASSIFICATION": "classification model",
+	"MODEL_CREATE_CLASSIFICATION_TOOLTIP": "Create different types of classification model and set its parameters.",
+	"MODEL_TRAIN": "use training data: %1 target values: %2 to train %3",
+	"MODEL_TRAIN_TOOLTIP": "Train the model to predeict target values from training data, both training data and target values should be lists of the same length.",
+	"MODEL_PREDICT": "use %1 to predict the target for %2",
+	"MODEL_PREDICT_TOOLTIP": "Use the trained model to redict the target fro the provided data. The output is a list of the length that equals to the provided data."
 }

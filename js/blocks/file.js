@@ -28,6 +28,7 @@ Blockly.defineBlocksWithJsonArray([
     "style": "file_blocks",
     "tooltip": "%{BKY_FILE_SAVE_TOOLTIP}"
   },
+  // Block for loading an object from a file.
   {
     "type": "file_load",
     "message0": "%{BKY_FILE_LOAD}",

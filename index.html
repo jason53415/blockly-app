@@ -451,10 +451,37 @@
         <category name="%{BKY_CATVARIABLES}" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
         <category name="%{BKY_CATFUNCTIONS}" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE"></category>
         <sep></sep>
+        <category name="%{BKY_CATMODEL}" colour="%{BKY_MODEL_HUE}">
+          <block type="model_create_classification"></block>
+          <block type="model_train">
+            <value name="MODEL">
+              <block type="variables_get">
+                <field name="VAR">{modelVariable}</field>
+              </block>
+            </value>
+          </block>
+          <block type="model_predict">
+            <value name="MODEL">
+              <block type="variables_get">
+                <field name="VAR">{modelVariable}</field>
+              </block>
+            </value>
+          </block>
+        </category>
         <category name="%{BKY_CATFILE}" colour="%{BKY_FILE_HUE}">
           <block type="file_save">
+            <value name="OBJECT">
+              <block type="variables_get">
+                <field name="VAR">{objVariable}</field>
+              </block>
+            </value>
           </block>
           <block type="file_load">
+            <value name="OBJECT">
+              <block type="variables_get">
+                <field name="VAR">{objVariable}</field>
+              </block>
+            </value>
           </block>
         </category>
         <sep></sep>
