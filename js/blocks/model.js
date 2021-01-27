@@ -97,3 +97,49 @@ Blockly.Blocks["model_create_classification"] = {
     }
   }
 }
+
+Blockly.Blocks["model_create_regression"] = {
+  /**
+   * Block for creating regression model.
+   * @this {Blockly.Block}
+   */
+  init: function() {
+    var MODEL =
+        [
+          [Blockly.Msg['MODEL_KNN'], 'KNeighborsRegressor'],
+          [Blockly.Msg['MODEL_DECISION_TREE'], 'DecisionTreeRegressor'],
+          [Blockly.Msg['MODEL_LINEAR_SVM'], 'LinearSVR']
+        ];
+    this.setStyle('model_blocks');
+    var modelMenu = new Blockly.FieldDropdown(MODEL, function(value) {
+      this.getSourceBlock().updateParameters_(value);
+    });
+    this.appendDummyInput()
+        .appendField(Blockly.Msg['MODEL_CREATE'])
+        .appendField(modelMenu, 'MODEL')
+        .appendField(Blockly.Msg['MODEL_REGRESSION']);
+    this.setInputsInline(true);
+    this.setOutput(true);
+    this.setTooltip(Blockly.Msg['MODEL_CREATE_REGRESSION_TOOLTIP'])
+    this.paramCount_ = 0;
+  },
+  updateParameters_: function(model) {
+    for (var x = 0; x < this.paramCount_; x++) {
+      this.removeInput('PARAM' + x);
+    }
+    switch(model) {
+      case 'KNeighborsRegressor':
+        this.appendDummyInput('PARAM0')
+            .appendField(" k:")
+            .appendField(new Blockly.FieldNumber(5, 1, 10000, 1), 'PARAM_K');
+        this.paramCount_ = 1;
+        break
+      case 'DecisionTreeRegressor':
+        this.paramCount_ = 0;
+        break
+      case 'LinearSVR':
+        this.paramCount_ = 0;
+        break
+    }
+  }
+}

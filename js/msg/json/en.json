@@ -452,6 +452,8 @@
 	"MODEL_CREATE": "create",
 	"MODEL_CLASSIFICATION": "classification model",
 	"MODEL_CREATE_CLASSIFICATION_TOOLTIP": "Create different types of classification model and set its parameters.",
+	"MODEL_REGRESSION": "regression model",
+	"MODEL_CREATE_REGRESSION_TOOLTIP": "Create different types of regression model and set its parameters.",
 	"MODEL_TRAIN": "use training data: %1 target values: %2 to train %3",
 	"MODEL_TRAIN_TOOLTIP": "Train the model to predeict target values from training data, both training data and target values should be lists of the same length.",
 	"MODEL_PREDICT": "use %1 to predict the target for %2",

@@ -25,6 +25,27 @@ Blockly.Python['model_create_classification'] = function(block) {
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python['model_create_regression'] = function(block) {
+  // Create a regression model.
+  var model = block.getFieldValue('MODEL');
+  switch(model) {
+    case 'KNeighborsRegressor':
+      Blockly.Python.definitions_['import_neighbors'] = 'from sklearn import neighbors';
+      var k = block.getFieldValue('PARAM_K');
+      var code = "neighbors.KNeighborsRegressor(" + k + ")"
+      break
+    case 'DecisionTreeRegressor':
+      Blockly.Python.definitions_['import_tree'] = 'from sklearn import tree';
+      var code = "tree.DecisionTreeRegressor()"
+      break
+    case 'LinearSVR':
+      Blockly.Python.definitions_['import_svm'] = 'from sklearn import svm';
+      var code = "svm.LinearSVR()"
+      break
+  }
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
 Blockly.Python['model_train'] = function(block) {
   // Train a model.
   var x = Blockly.Python.valueToCode(block, 'X',
