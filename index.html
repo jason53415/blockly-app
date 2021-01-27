@@ -19,7 +19,8 @@
     <script src="js/code.js"></script>
   </head>
   <body>
-    <div class="modal fade" id="run-dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Game play dialog -->
+    <div class="modal fade" id="run-mlgame-dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" style="min-width: 800px;">
         <div class="modal-content">
           <div class="modal-header">
@@ -31,7 +32,7 @@
           <form name="play" action="javascript:Code.play()">
             <div class="modal-body my-2">
               <div class="form-group">
-                <label for="">Python 位置：<span id='python_path'></span></label>
+                <label for="">Python 位置：<span id='python_play_path'></span></label>
                 <button type="button" id="python_path_button">選擇</button>
               </div>
               <div class="form-group">
@@ -39,7 +40,7 @@
                 <button type="button" id="mlgame_path_button">選擇</button>
               </div>
               <div class="form-group">
-                <label for="">資料存取位置：<span id='cwd_path'></span></label>
+                <label for="">資料存取位置：<span id='cwd_play_path'></span></label>
                 <button type="button" id="cwd_path_button">選擇</button>
               </div>
               <div class="form-group">
@@ -63,6 +64,35 @@
               </div>
               <input type="hidden" class="form-control modal-repo" name="code_name" aria-describedby="helpId"
                   placeholder="" value="repo">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
+                <button type="submit" class="btn btn-outline-primary">確定</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Python run dialog -->
+    <div class="modal fade" id="run-python-dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" style="min-width: 800px;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">執行程式</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form name="play" action="javascript:Code.execute()">
+            <div class="modal-body my-2">
+              <div class="form-group">
+                <label for="">Python 位置：<span id='python_run_path'></span></label>
+                <button type="button" id="python_path_button2">選擇</button>
+              </div>
+              <div class="form-group">
+                <label for="">資料存取位置：<span id='cwd_run_path'></span></label>
+                <button type="button" id="cwd_path_button2">選擇</button>
+              </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
@@ -105,7 +135,7 @@
           <a class="nav-link dropdown-toggle" id="tab_option" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">選項</a>
           <div class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item" href="#" id="run_mlgame">玩遊戲</a>
-            <a class="dropdown-item" href="#" id="run_python">執行 Python 檔</a>
+            <a class="dropdown-item" href="#" id="run_python">執行程式</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" id='open_xml'>開啟 XML 檔</a>
             <a class="dropdown-item" href="#" id='download_xml'>儲存 XML 檔</a>

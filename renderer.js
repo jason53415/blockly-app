@@ -11,33 +11,34 @@ const store = new Store();
 const path = require('path');
 const fs = require('fs');
 
-window.pythonRun = function(options, file, cwd) {
+window.pythonRun = function(options, script, tmp_file, cwd) {
   var old_cwd = process.cwd();
   process.chdir(cwd);
-  PythonShell.run('MLGame.py', options, function (err, results) {
+  PythonShell.run(script, options, function (err, results) {
     if (err) {
       window.alert(err);
-      var found = results.findIndex(element => element.indexOf('Error') >= 0);
-      window.alert(results.slice(found).join('\n'));
-      throw err;
+      if (results) {
+        var found = results.findIndex(element => element.indexOf('Error') >= 0);
+        window.alert(results.slice(found).join('\n'));
+      }
     }
     // results is an array consisting of messages collected during execution
     console.log('results: ', results);
-    fs.unlinkSync(file);
+    fs.unlinkSync(tmp_file);
     process.chdir(old_cwd);
   });
 };
 
 window.writeFile = function(file, data) {
   fs.writeFileSync(file, data, (err) => {
-    if (err) throw err;
+    if (err) window.alert(err);
     console.log('The file has been saved at ' + file);
   });
 };
 
 window.readFile = function(file) {
   return fs.readFileSync(file, 'utf8', (err, data) => {
-    if (err) throw err;
+    if (err) window.alert(err);
     return data;
   });
 };

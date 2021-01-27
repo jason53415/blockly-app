@@ -35,16 +35,6 @@ Code.LANGUAGE_RTL = ['ar', 'fa', 'he', 'lki'];
 Code.workspace = null;
 
 /**
- * Options to run python code.
- */
-Code.pythonOptions = {
-  mode: 'text',
-  pythonPath: store.get('pythonPath'),
-  scriptPath: store.get('scriptPath'),
-  args: ['-i', 'ml_play.py', 'Maze_Car', '1', '1', '60', 'OFF']
-};
-
-/**
  * Extracts a parameter from the URL.
  * If the parameter is absent default_value is returned.
  * @param {string} name The name of the parameter.
@@ -421,12 +411,18 @@ Code.init = function() {
 
   Code.bindClick('python_path_button',
       function() {Code.pythonPath(); Code.renderContent();});
+  Code.bindClick('python_path_button2',
+      function() {Code.pythonPath(); Code.renderContent();});
   Code.bindClick('mlgame_path_button',
       function() {Code.mlgamePath(); Code.renderContent();});
   Code.bindClick('cwd_path_button',
       function() {Code.cwdPath(); Code.renderContent();});
+  Code.bindClick('cwd_path_button2',
+      function() {Code.cwdPath(); Code.renderContent();});
   Code.bindClick('run_mlgame',
-      function() {Code.run(); Code.renderContent();});
+      function() {Code.run('#run-mlgame-dialog'); Code.renderContent();});
+  Code.bindClick('run_python',
+      function() {Code.run('#run-python-dialog'); Code.renderContent();});
   Code.bindClick('discard',
       function() {Code.discard(); Code.renderContent();});
   Code.bindClick('download_python',
@@ -480,9 +476,11 @@ Code.initLanguage = function() {
   // Inject language strings.
   document.title += ' - ' + MSG['title'];
   // document.getElementById('title').textContent = MSG['title'];
-  document.getElementById('python_path').textContent = store.get('pythonPath');
+  document.getElementById('python_play_path').textContent = store.get('pythonPath');
+  document.getElementById('python_run_path').textContent = store.get('pythonPath');
   document.getElementById('mlgame_path').textContent = store.get('scriptPath');
-  document.getElementById('cwd_path').textContent = store.get('cwdPath');
+  document.getElementById('cwd_play_path').textContent = store.get('cwdPath');
+  document.getElementById('cwd_run_path').textContent = store.get('cwdPath');
   document.getElementById('tab_blocks').textContent = MSG['blocks'];
   document.getElementById('tab_lang').textContent = MSG['lang'];
   document.getElementById('tab_option').textContent = MSG['options'];
@@ -521,7 +519,8 @@ Code.pythonPath = function() {
   } else {
     path = path[0];
   }
-  document.getElementById('python_path').textContent = path;
+  document.getElementById('python_run_path').textContent = path;
+  document.getElementById('python_play_path').textContent = path;
   Code.pythonOptions['pythonPath'] = path;
   store.set('pythonPath', path);
 };
@@ -553,7 +552,8 @@ Code.cwdPath = function() {
   } else {
     path = path[0];
   }
-  document.getElementById('cwd_path').textContent = path;
+  document.getElementById('cwd_play_path').textContent = path;
+  document.getElementById('cwd_run_path').textContent = path;
   store.set('cwdPath', path);
 };
 
@@ -613,10 +613,10 @@ Code.downloadXml = function() {
   document.body.removeChild(element);
 };
 
-Code.run = function() {
+Code.run = function(target) {
   var element = document.createElement('a');
   element.setAttribute('data-toggle', 'modal');
-  element.setAttribute('data-target', '#run-dialog');
+  element.setAttribute('data-target', target);
   element.style.display = 'none';
   document.body.appendChild(element);
   element.click();
@@ -628,10 +628,29 @@ Code.play = function() {
   var file_name = 'ml_play_' + new Date().getTime() + '.py';
   var file_path = path.join(store.get('mlgamePath'), 'games', 'Maze_Car', 'ml', file_name);
   window.writeFile(file_path, python_text);
-  Code.pythonOptions['args'][1] = file_name;
-  var e = document.getElementById('maze_number')
-  Code.pythonOptions['args'][4] = e.options[e.selectedIndex].text;
-  window.pythonRun(Code.pythonOptions, file_path, store.get('cwdPath'));
+  var e = document.getElementById('maze_number');
+  var maze_number = e.options[e.selectedIndex].text;
+  var options = {
+    mode: 'text',
+    pythonPath: store.get('pythonPath'),
+    scriptPath: store.get('scriptPath'),
+    args: ['-i', file_name, 'Maze_Car', '1', maze_number, '60', 'OFF']
+  };
+  window.pythonRun(options, "MLGame.py", file_path, store.get('cwdPath'));
+};
+
+Code.execute = function() {
+  var python_text = Blockly.Python.workspaceToCode(Code.workspace);
+  var file_name = 'ml_play_' + new Date().getTime() + '.py';
+  var file_path = path.join(store.get('cwdPath'), file_name);
+  window.writeFile(file_path, python_text);
+  var options = {
+    mode: 'text',
+    pythonPath: store.get('pythonPath'),
+    scriptPath: store.get('cwdPath'),
+    args: []
+  };
+  window.pythonRun(options, file_name, file_path, store.get('cwdPath'));
 };
 
 // Load the Code demo's language strings.
