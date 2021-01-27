@@ -24,6 +24,7 @@ var MSG = {
   catColour: "Colour",
   catVariables: "Variables",
   catFunctions: "Functions",
+  catFile: "File",
   listVariable: "list",
   textVariable: "text",
   dictVariable: "dictionary",

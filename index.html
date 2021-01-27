@@ -451,6 +451,13 @@
         <category name="%{BKY_CATVARIABLES}" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
         <category name="%{BKY_CATFUNCTIONS}" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE"></category>
         <sep></sep>
+        <category name="%{BKY_CATFILE}" colour="%{BKY_FILE_HUE}">
+          <block type="file_save">
+          </block>
+          <block type="file_load">
+          </block>
+        </category>
+        <sep></sep>
         <!-- MLGame category -->
         <category name="MLGame" colour="0">
           <block type="mlplay_class"></block>
@@ -483,12 +490,6 @@
                 </shadow>
               </value>
             </block>
-        </category>
-        <category name="File" colour="0">
-          <block type="file_save">
-          </block>
-          <block type="file_load">
-          </block>
         </category>
       </xml>
     </div>

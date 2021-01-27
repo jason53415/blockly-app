@@ -22,6 +22,7 @@ var MSG = {
   catLists: "列表",
   catDicts: "字典",
   catColour: "顏色",
+  catFile: "檔案",
   catVariables: "變數",
   catFunctions: "函式",
   listVariable: "列表",

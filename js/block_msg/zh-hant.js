@@ -593,3 +593,4 @@ Blockly.Msg["COLOUR_HUE"] = "20";
 Blockly.Msg["VARIABLES_HUE"] = "300";
 Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";
 Blockly.Msg["PROCEDURES_HUE"] = "330";
+Blockly.Msg["FILE_HUE"] = "360";
