@@ -1,21 +1,21 @@
 {
   "name": "blockly-app",
   "version": "1.0.0",
-  "description": "A blockly application than can build AI to play games.",
+  "description": "A blockly application that can build AI to play games.",
   "main": "main.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
-  "repository": "https://gitlab.com/mlgame-platform/blockly-app",
+  "repository": "https://github.com/jason53415/blockly-app",
   "keywords": [
     "Blockly",
     "Python",
     "MLGame",
     "AI"
   ],
-  "author": "You-Cheng Xiao",
+  "author": "PAIA",
   "license": "CC0-1.0",
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.54",
@@ -36,13 +36,20 @@
   },
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "icon": "media/paia-logo.ico",
+        "ignore": [
+          "/.gitignore",
+          "/.vscode",
+          "/js/i18n",
+          "/js/mlgame",
+          "/js/build.py"
+        ]
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "electron_quick_start"
-          }
+          "config": {}
         },
         {
           "name": "@electron-forge/maker-zip",
