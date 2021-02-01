@@ -235,7 +235,7 @@ Blockly.Python['text_print'] = function(block) {
   // Print statement.
   var msg = Blockly.Python.valueToCode(block, 'TEXT',
       Blockly.Python.ORDER_NONE) || '\'\'';
-  return 'print(' + msg + ')\n';
+  return 'print(' + msg + ', flush=True)\n';
 };
 
 Blockly.Python['text_prompt_ext'] = function(block) {
