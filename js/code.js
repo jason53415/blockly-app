@@ -636,6 +636,9 @@ Code.play = function() {
     scriptPath: store.get('scriptPath'),
     args: ['-i', file_name, 'Maze_Car', '1', maze_number, '60', 'OFF']
   };
+  $('#run-mlgame-dialog').modal('hide');
+  document.getElementById('content_console').textContent = '';
+  $('#console-dialog').modal('show');
   window.pythonRun(options, "MLGame.py", file_path, store.get('cwdPath'));
 };
 
@@ -650,6 +653,9 @@ Code.execute = function() {
     scriptPath: store.get('cwdPath'),
     args: []
   };
+  $('#run-python-dialog').modal('hide');
+  document.getElementById('content_console').textContent = '';
+  $('#console-dialog').modal('show');
   window.pythonRun(options, file_name, file_path, store.get('cwdPath'));
 };
 
