@@ -413,8 +413,6 @@ Code.init = function() {
       function() {Code.pythonPath(); Code.renderContent();});
   Code.bindClick('python_path_button2',
       function() {Code.pythonPath(); Code.renderContent();});
-  Code.bindClick('mlgame_path_button',
-      function() {Code.mlgamePath(); Code.renderContent();});
   Code.bindClick('cwd_path_button',
       function() {Code.cwdPath(); Code.renderContent();});
   Code.bindClick('cwd_path_button2',
@@ -478,7 +476,6 @@ Code.initLanguage = function() {
   // document.getElementById('title').textContent = MSG['title'];
   document.getElementById('python_play_path').textContent = store.get('pythonPath');
   document.getElementById('python_run_path').textContent = store.get('pythonPath');
-  document.getElementById('mlgame_path').textContent = store.get('scriptPath');
   document.getElementById('cwd_play_path').textContent = store.get('cwdPath');
   document.getElementById('cwd_run_path').textContent = store.get('cwdPath');
   document.getElementById('tab_blocks').textContent = MSG['blocks'];
@@ -521,24 +518,7 @@ Code.pythonPath = function() {
   }
   document.getElementById('python_run_path').textContent = path;
   document.getElementById('python_play_path').textContent = path;
-  Code.pythonOptions['pythonPath'] = path;
   store.set('pythonPath', path);
-};
-
-Code.mlgamePath = function() {
-  var options = {
-    title: 'MLGame Path',
-    properties: ['openDirectory']
-  }
-  var path = window.selectPath(options);
-  if (!path) {
-    return;
-  } else {
-    path = path[0];
-  }
-  document.getElementById('mlgame_path').textContent = path;
-  Code.pythonOptions['scriptPath'] = path;
-  store.set('scriptPath', path);
 };
 
 Code.cwdPath = function() {
@@ -626,14 +606,14 @@ Code.run = function(target) {
 Code.play = function() {
   var python_text = Blockly.Python.workspaceToCode(Code.workspace);
   var file_name = 'ml_play_' + new Date().getTime() + '.py';
-  var file_path = path.join(store.get('mlgamePath'), 'games', 'Maze_Car', 'ml', file_name);
+  var file_path = path.join(__dirname, 'MLGame', 'games', 'Maze_Car', 'ml', file_name);
   window.writeFile(file_path, python_text);
   var e = document.getElementById('maze_number');
   var maze_number = e.options[e.selectedIndex].text;
   var options = {
     mode: 'text',
     pythonPath: store.get('pythonPath'),
-    scriptPath: store.get('scriptPath'),
+    scriptPath: path.join(__dirname, 'MLGame'),
     args: ['-i', file_name, 'Maze_Car', '1', maze_number, '60', 'OFF']
   };
   $('#run-mlgame-dialog').modal('hide');
