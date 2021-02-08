@@ -409,10 +409,6 @@ Code.init = function() {
 
   Code.tabClick(Code.selected);
 
-  Code.bindClick('python_path_button',
-      function() {Code.pythonPath(); Code.renderContent();});
-  Code.bindClick('python_path_button2',
-      function() {Code.pythonPath(); Code.renderContent();});
   Code.bindClick('cwd_path_button',
       function() {Code.cwdPath(); Code.renderContent();});
   Code.bindClick('cwd_path_button2',
@@ -474,8 +470,6 @@ Code.initLanguage = function() {
   // Inject language strings.
   document.title += ' - ' + MSG['title'];
   // document.getElementById('title').textContent = MSG['title'];
-  document.getElementById('python_play_path').textContent = store.get('pythonPath');
-  document.getElementById('python_run_path').textContent = store.get('pythonPath');
   document.getElementById('cwd_play_path').textContent = store.get('cwdPath');
   document.getElementById('cwd_run_path').textContent = store.get('cwdPath');
   document.getElementById('tab_blocks').textContent = MSG['blocks'];
@@ -503,22 +497,6 @@ Code.discard = function() {
       window.location.hash = '';
     }
   }
-};
-
-Code.pythonPath = function() {
-  var options = {
-    title: 'Python Path',
-    properties: ['openFile']
-  }
-  var path = window.selectPath(options);
-  if (!path) {
-    return;
-  } else {
-    path = path[0];
-  }
-  document.getElementById('python_run_path').textContent = path;
-  document.getElementById('python_play_path').textContent = path;
-  store.set('pythonPath', path);
 };
 
 Code.cwdPath = function() {
@@ -612,7 +590,7 @@ Code.play = function() {
   var maze_number = e.options[e.selectedIndex].text;
   var options = {
     mode: 'text',
-    pythonPath: store.get('pythonPath'),
+    pythonPath: path.join(__dirname, 'python', 'dist', 'interpreter', 'interpreter'),
     scriptPath: path.join(__dirname, 'MLGame'),
     args: ['-i', file_name, 'Maze_Car', '1', maze_number, '60', 'OFF']
   };
@@ -629,7 +607,7 @@ Code.execute = function() {
   window.writeFile(file_path, python_text);
   var options = {
     mode: 'text',
-    pythonPath: store.get('pythonPath'),
+    pythonPath: path.join(__dirname, 'python', 'dist', 'interpreter', 'interpreter'),
     scriptPath: store.get('cwdPath'),
     args: []
   };
