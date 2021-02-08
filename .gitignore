@@ -1,3 +1,7 @@
-node_modules/
-out/
+/node_modules/
+/out/
 __pycache__/
+/python/build/
+/python/dist/
+/python/*.spec
+/venv/
