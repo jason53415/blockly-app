@@ -586,13 +586,15 @@ Code.play = function() {
   var file_name = 'ml_play_' + new Date().getTime() + '.py';
   var file_path = path.join(__dirname, 'MLGame', 'games', 'Maze_Car', 'ml', file_name);
   window.writeFile(file_path, python_text);
+  var e = document.getElementById('game_mode');
+  var game_mode = e.options[e.selectedIndex].text;
   var e = document.getElementById('maze_number');
   var maze_number = e.options[e.selectedIndex].text;
   var options = {
     mode: 'text',
     pythonPath: path.join(__dirname, 'python', 'dist', 'interpreter', 'interpreter'),
     scriptPath: path.join(__dirname, 'MLGame'),
-    args: ['-i', file_name, 'Maze_Car', '1', maze_number, '60', 'OFF']
+    args: ['-i', file_name, 'Maze_Car', '1', game_mode, maze_number, '60', 'OFF']
   };
   $('#run-mlgame-dialog').modal('hide');
   document.getElementById('content_console').textContent = '';
