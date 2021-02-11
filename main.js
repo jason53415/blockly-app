@@ -22,6 +22,9 @@ function createWindow () {
   // mainWindow.webContents.openDevTools()
 }
 
+// Make sure not launching multiple times during install on Windows.
+if (require('electron-squirrel-startup')) return app.quit();
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
