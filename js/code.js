@@ -470,8 +470,8 @@ Code.initLanguage = function() {
   // Inject language strings.
   document.title += ' - ' + MSG['title'];
   // document.getElementById('title').textContent = MSG['title'];
-  document.getElementById('cwd_play_path').textContent = store.get('cwdPath');
-  document.getElementById('cwd_run_path').textContent = store.get('cwdPath');
+  document.getElementById('cwd_play_path').textContent = store.get('cwdPath') || require('os').homedir();
+  document.getElementById('cwd_run_path').textContent = store.get('cwdPath') || require('os').homedir();
   document.getElementById('tab_blocks').textContent = MSG['blocks'];
   document.getElementById('tab_lang').textContent = MSG['lang'];
   document.getElementById('tab_option').textContent = MSG['options'];
