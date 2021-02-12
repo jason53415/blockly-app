@@ -1,0 +1,28 @@
+<block type="mlplay_class"></block>
+<block type="mlplay_init_info">
+  <field name="FIELD"></field>
+</block>
+<block type="mlplay_player_status">
+  <field name="STATUS"></field>
+</block>
+<block type="mlplay_game_status">
+  <field name="STATUS"></field>
+</block>
+<block type="mlplay_get_info">
+  <field name="FIELD"></field>
+</block>
+<block type="mlplay_get_constant">
+  <field name="CONSTANT"></field>
+</block>
+<block type="mlplay_return_mazecar_action">
+  <value name="LEFT_RPM">
+    <shadow type="math_number">
+      <field name="NUM">100</field>
+    </shadow>
+  </value>
+  <value name="RIGHT_RPM">
+    <shadow type="math_number">
+      <field name="NUM">100</field>
+    </shadow>
+  </value>
+</block>

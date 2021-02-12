@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>PAIA</title>
+    <link rel="stylesheet" href="node_modules/vex-js/dist/css/vex.css" />
+    <link rel="stylesheet" href="node_modules/vex-js/dist/css/vex-theme-os.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <script>window.jQuery = window.$ = require('jquery');</script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="node_modules/vex-js/dist/js/vex.combined.min.js"></script>
+    <script>vex.defaultOptions.className = 'vex-theme-os'</script>
+    <script src="renderer.js"></script>
+    <script src="js/blockly_compressed.js"></script>
+    <script src="js/blocks_compressed.js"></script>
+    <script src="js/python_compressed.js"></script>
+    <!-- <script src="js/game_msg/maze_car.js"></script>-->
+    <script src="js/code.js"></script>
+  </head>
+  <body>
+    <!-- Game play dialog -->
+    <div class="modal fade" id="run-mlgame-dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">開始玩</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form name="play" action="javascript:Code.play()">
+            <div class="modal-body my-2">
+              <div class="form-group">
+                <label for="">資料存取位置：<span id='cwd_play_path'></span></label>
+                <button type="button" id="cwd_path_button">選擇</button>
+              </div>
+              <div class="form-group">
+                <label for="">參賽人數</label>
+                <select class="form-control" name="user_num" id="player_number">
+                  <option>1</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="">模式</label>
+                <select class="form-control" name="game_type" id="game_mode">
+                  <option>MAZE</option>
+                  <option>MOVE_MAZE</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="">地圖</label>
+                <select class="form-control" name="map" id="maze_number">
+                  <option>1</option>
+                  <option>2</option>
+                </select>
+              </div>
+              <input type="hidden" class="form-control modal-repo" name="code_name" aria-describedby="helpId"
+                  placeholder="" value="repo">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
+                <button type="submit" class="btn btn-outline-primary">確定</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Python run dialog -->
+    <div class="modal fade" id="run-python-dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">執行程式</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form name="play" action="javascript:Code.execute()">
+            <div class="modal-body my-2">
+              <div class="form-group">
+                <label for="">資料存取位置：<span id='cwd_run_path'></span></label>
+                <button type="button" id="cwd_path_button2">選擇</button>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
+                <button type="submit" class="btn btn-outline-primary">確定</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Console dialog -->
+    <div class="modal fade" id="console-dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Console</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id='console-body'>
+            <pre id="content_console" class="prettyprint lang-sh" style="border: 0"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid" id="blockly_container">
+      <ul class="nav nav-tabs"  role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="tab_blocks" data-toggle="tab" role="tab"
+              aria-controls="content_blocks" aria-selected="true">積木</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="tab_python" data-toggle="tab" role="tab"
+              aria-controls="profile" aria-selected="false">Python</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="tab_xml" data-toggle="tab" role="tab" aria-controls="contact"
+              aria-selected="false">XML</a>
+        </li>
+        <li class="nav-item" role="presentation" id="tab_code"> 
+            <select id="code_menu"></select>
+        </li>
+        <li class="nav-item ml-auto" role="presentation" id="tab_title"> 
+            <a class="navbar-brand ml-auto" tabindex="-1" aria-disabled="true">
+              <span id='game_name'>...</span>
+            </a>
+        </li>
+        <li class="nav-item dropdown ml-auto">
+          <a class="nav-link dropdown-toggle" id="tab_lang" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">語言</a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="#" id="zh-hant">中文</a>
+            <a class="dropdown-item" href="#" id="en">英文</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="tab_option" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">選項</a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="#" id="run_mlgame">玩遊戲</a>
+            <a class="dropdown-item" href="#" id="run_python">執行程式</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" id='open_xml'>開啟 XML 檔</a>
+            <a class="dropdown-item" href="#" id='download_xml'>儲存 XML 檔</a>
+            <a class="dropdown-item" href="#" id='download_python'>儲存 Python 檔</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" id="discard">移除所有積木</a>
+            <a class="dropdown-item" href="index.html" id="discard">選擇遊戲</a>
+          </div>
+        </li>
+      </ul>
+      <div class="tab-content" id="tab_content">
+        <div id="content_blocks" class="content" role="tabpanel" aria-labelledby="home-tab"></div>
+        <pre id="content_python" class="content prettyprint lang-py"></pre>
+        <textarea id="content_xml" class="content" wrap="off"></textarea>
+      </div>
+    
+      <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+        <category name="%{BKY_CATLOGIC}" colour="%{BKY_LOGIC_HUE}">
+          <block type="controls_if"></block>
+          <block type="logic_compare"></block>
+          <block type="logic_operation"></block>
+          <block type="logic_negate"></block>
+          <block type="logic_boolean"></block>
+          <block type="logic_null"></block>
+          <block type="logic_ternary"></block>
+        </category>
+        <category name="%{BKY_CATLOOPS}" colour="%{BKY_LOOPS_HUE}">
+          <block type="controls_repeat_ext">
+            <value name="TIMES">
+              <shadow type="math_number">
+                <field name="NUM">10</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="controls_whileUntil"></block>
+          <block type="controls_for">
+            <value name="FROM">
+              <shadow type="math_number">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <value name="TO">
+              <shadow type="math_number">
+                <field name="NUM">10</field>
+              </shadow>
+            </value>
+            <value name="BY">
+              <shadow type="math_number">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="controls_forEach"></block>
+          <block type="controls_flow_statements"></block>
+        </category>
+        <sep></sep>
+        <category name="%{BKY_CATMATH}" colour="%{BKY_MATH_HUE}">
+          <block type="math_number">
+            <field name="NUM">123</field>
+          </block>
+          <block type="math_arithmetic">
+            <value name="A">
+              <shadow type="math_number">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <value name="B">
+              <shadow type="math_number">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="math_single">
+            <value name="NUM">
+              <shadow type="math_number">
+                <field name="NUM">9</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="math_trig">
+            <value name="NUM">
+              <shadow type="math_number">
+                <field name="NUM">45</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="math_constant"></block>
+          <block type="math_number_property">
+            <value name="NUMBER_TO_CHECK">
+              <shadow type="math_number">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="math_round">
+            <value name="NUM">
+              <shadow type="math_number">
+                <field name="NUM">3.1</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="math_on_list"></block>
+          <block type="math_modulo">
+            <value name="DIVIDEND">
+              <shadow type="math_number">
+                <field name="NUM">64</field>
+              </shadow>
+            </value>
+            <value name="DIVISOR">
+              <shadow type="math_number">
+                <field name="NUM">10</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="math_constrain">
+            <value name="VALUE">
+              <shadow type="math_number">
+                <field name="NUM">50</field>
+              </shadow>
+            </value>
+            <value name="LOW">
+              <shadow type="math_number">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <value name="HIGH">
+              <shadow type="math_number">
+                <field name="NUM">100</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="math_random_int">
+            <value name="FROM">
+              <shadow type="math_number">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <value name="TO">
+              <shadow type="math_number">
+                <field name="NUM">100</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="math_random_float"></block>
+          <block type="math_atan2">
+            <value name="X">
+              <shadow type="math_number">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <value name="Y">
+              <shadow type="math_number">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+          </block>
+        </category>
+        <category name="%{BKY_CATTEXT}" colour="%{BKY_TEXTS_HUE}">
+          <block type="text"></block>
+          <block type="text_join"></block>
+          <block type="text_append">
+            <value name="TEXT">
+              <shadow type="text"></shadow>
+            </value>
+          </block>
+          <block type="text_length">
+            <value name="VALUE">
+              <shadow type="text">
+                <field name="TEXT">abc</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="text_isEmpty">
+            <value name="VALUE">
+              <shadow type="text">
+                <field name="TEXT"></field>
+              </shadow>
+            </value>
+          </block>
+          <block type="text_indexOf">
+            <value name="VALUE">
+              <block type="variables_get">
+                <field name="VAR">{textVariable}</field>
+              </block>
+            </value>
+            <value name="FIND">
+              <shadow type="text">
+                <field name="TEXT">abc</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="text_charAt">
+            <value name="VALUE">
+              <block type="variables_get">
+                <field name="VAR">{textVariable}</field>
+              </block>
+            </value>
+          </block>
+          <block type="text_getSubstring">
+            <value name="STRING">
+              <block type="variables_get">
+                <field name="VAR">{textVariable}</field>
+              </block>
+            </value>
+          </block>
+          <block type="text_changeCase">
+            <value name="TEXT">
+              <shadow type="text">
+                <field name="TEXT">abc</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="text_trim">
+            <value name="TEXT">
+              <shadow type="text">
+                <field name="TEXT">abc</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="text_print">
+            <value name="TEXT">
+              <shadow type="text">
+                <field name="TEXT">abc</field>
+              </shadow>
+            </value>
+          </block>
+        </category>
+        <category name="%{BKY_CATLISTS}" colour="%{BKY_LISTS_HUE}">
+          <block type="lists_create_with">
+            <mutation items="0"></mutation>
+          </block>
+          <block type="lists_create_with"></block>
+          <block type="lists_repeat">
+            <value name="NUM">
+              <shadow type="math_number">
+                <field name="NUM">5</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="lists_length"></block>
+          <block type="lists_isEmpty"></block>
+          <block type="lists_indexOf">
+            <value name="VALUE">
+              <block type="variables_get">
+                <field name="VAR">{listVariable}</field>
+              </block>
+            </value>
+          </block>
+          <block type="lists_getIndex">
+            <value name="VALUE">
+              <block type="variables_get">
+                <field name="VAR">{listVariable}</field>
+              </block>
+            </value>
+          </block>
+          <block type="lists_setIndex">
+            <value name="LIST">
+              <block type="variables_get">
+                <field name="VAR">{listVariable}</field>
+              </block>
+            </value>
+          </block>
+          <block type="lists_getSublist">
+            <value name="LIST">
+              <block type="variables_get">
+                <field name="VAR">{listVariable}</field>
+              </block>
+            </value>
+          </block>
+          <block type="lists_split">
+            <value name="DELIM">
+              <shadow type="text">
+                <field name="TEXT">,</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="lists_sort"></block>
+        </category>
+        <category name="%{BKY_CATDICTS}" colour="%{BKY_DICTS_HUE}">
+          <block type="dicts_create_with">
+            <mutation items="0"></mutation>
+          </block>
+          <block type="dicts_create_with"></block>
+          <block type="dicts_get_keys">
+            <value name="DICT">
+              <block type="variables_get">
+                <field name="VAR">{dictVariable}</field>
+              </block>
+            </value>
+          </block>
+          <block type="dicts_get_value">
+            <value name="DICT">
+              <block type="variables_get">
+                <field name="VAR">{dictVariable}</field>
+              </block>
+            </value>
+          </block>
+          <block type="dicts_set_value">
+            <value name="DICT">
+              <block type="variables_get">
+                <field name="VAR">{dictVariable}</field>
+              </block>
+            </value>
+          </block>
+        </category>
+        <sep></sep>
+        <category name="%{BKY_CATVARIABLES}" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
+        <category name="%{BKY_CATFUNCTIONS}" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE"></category>
+        <sep></sep>
+        <category name="%{BKY_CATMODEL}" colour="%{BKY_MODEL_HUE}">
+          <block type="model_create_classification"></block>
+          <block type="model_create_regression"></block>
+          <block type="model_train">
+            <value name="MODEL">
+              <block type="variables_get">
+                <field name="VAR">{modelVariable}</field>
+              </block>
+            </value>
+          </block>
+          <block type="model_predict">
+            <value name="MODEL">
+              <block type="variables_get">
+                <field name="VAR">{modelVariable}</field>
+              </block>
+            </value>
+          </block>
+        </category>
+        <category name="%{BKY_CATFILE}" colour="%{BKY_FILE_HUE}">
+          <block type="file_save">
+            <value name="OBJECT">
+              <block type="variables_get">
+                <field name="VAR">{objVariable}</field>
+              </block>
+            </value>
+          </block>
+          <block type="file_load">
+            <value name="OBJECT">
+              <block type="variables_get">
+                <field name="VAR">{objVariable}</field>
+              </block>
+            </value>
+          </block>
+        </category>
+        <sep></sep>
+        <!-- MLGame category -->
+        <category name="MLGame" colour="0" id='MLGame_blocks'>
+        </category>
+      </xml>
+    </div>
+  </body>
+</html>

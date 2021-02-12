@@ -180,3 +180,8 @@ pre.content {
   max-height: calc(100vh - (210px));
   overflow-y: auto;
 }
+
+.card {
+  width: calc(100vw - (40px));
+  max-width: 800px;
+}

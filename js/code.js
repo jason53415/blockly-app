@@ -16,6 +16,11 @@
 var Code = {};
 
 /**
+ * Get the name of the game.
+ */
+Code.GAME = (new URLSearchParams(window.location.search)).get('game');
+
+/**
  * Lookup for names of supported languages.  Keys should be in ISO 639 format.
  */
 Code.LANGUAGE_NAME = {
@@ -342,7 +347,7 @@ Code.checkAllGeneratorFunctionsDefined = function(generator) {
  */
 Code.init = function() {
   Code.initLanguage();
-  
+
   var rtl = Code.isRtl();
   var container = document.getElementById('tab_content');
   var onresize = function(e) {
@@ -376,11 +381,13 @@ Code.init = function() {
   }
 
   // Construct the toolbox XML, replacing translated variable names.
+  var xml_path = path.join(__dirname, 'xml', 'blocks', Code.GAME.toLowerCase() + '.xml');
+  var xml_text = window.readFile(xml_path);
+  $('#MLGame_blocks').append(xml_text);
   var toolboxText = document.getElementById('toolbox').outerHTML;
   toolboxText = toolboxText.replace(/(^|[^%]){(\w+)}/g,
       function(m, p1, p2) {return p1 + MSG[p2];});
   var toolboxXml = Blockly.Xml.textToDom(toolboxText);
-
   Code.workspace = Blockly.inject('content_blocks',
       {grid:
           {spacing: 25,
@@ -398,7 +405,7 @@ Code.init = function() {
   // Add to reserved word list: Local variables in execution environment (runJS)
   // and the infinite loop detection function.
   // Blockly.JavaScript.addReservedWords('code,timeouts,checkTimeout');
-  var xml_path = path.join(__dirname, 'xml', 'maze_car.xml');
+  var xml_path = path.join(__dirname, 'xml', 'template', Code.GAME.toLowerCase() + '.xml');
   var xml_text = window.readFile(xml_path);
   Code.loadBlocks(xml_text);
 
@@ -469,7 +476,7 @@ Code.initLanguage = function() {
 
   // Inject language strings.
   document.title += ' - ' + MSG['title'];
-  // document.getElementById('title').textContent = MSG['title'];
+  document.getElementById('game_name').textContent = Code.GAME;
   document.getElementById('cwd_play_path').textContent = store.get('cwdPath') || require('os').homedir();
   document.getElementById('cwd_run_path').textContent = store.get('cwdPath') || require('os').homedir();
   document.getElementById('tab_blocks').textContent = MSG['blocks'];
@@ -584,7 +591,7 @@ Code.run = function(target) {
 Code.play = function() {
   var python_text = Blockly.Python.workspaceToCode(Code.workspace);
   var file_name = 'ml_play_' + new Date().getTime() + '.py';
-  var file_path = path.join(__dirname, 'MLGame', 'games', 'Maze_Car', 'ml', file_name);
+  var file_path = path.join(__dirname, 'MLGame', 'games', Code.GAME, 'ml', file_name);
   window.writeFile(file_path, python_text);
   var e = document.getElementById('game_mode');
   var game_mode = e.options[e.selectedIndex].text;
@@ -594,7 +601,7 @@ Code.play = function() {
     mode: 'text',
     pythonPath: path.join(__dirname, 'python', 'dist', 'interpreter', 'interpreter'),
     scriptPath: path.join(__dirname, 'MLGame'),
-    args: ['-i', file_name, 'Maze_Car', '1', game_mode, maze_number, '60', 'OFF']
+    args: ['-i', file_name, Code.GAME, '1', game_mode, maze_number, '60', 'OFF']
   };
   $('#run-mlgame-dialog').modal('hide');
   document.getElementById('content_console').textContent = '';
@@ -619,6 +626,8 @@ Code.execute = function() {
   window.pythonRun(options, file_name, file_path, store.get('cwdPath'));
 };
 
+// Load game messages.
+document.write('<script src="js/game_msg/' + Code.GAME.toLowerCase() + '.js"></script>\n');
 // Load the Code demo's language strings.
 document.write('<script src="js/ui_msg/' + Code.LANG + '.js"></script>\n');
 // Load Blockly's language strings.
