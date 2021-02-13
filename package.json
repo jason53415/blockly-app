@@ -40,7 +40,7 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "icon": "media/paia-logo.ico",
+        "icon": "media/paia-logo",
         "ignore": [
           "/.gitignore",
           "/.vscode",
