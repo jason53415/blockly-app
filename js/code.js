@@ -346,6 +346,11 @@ Code.checkAllGeneratorFunctionsDefined = function(generator) {
  * Initialize Blockly.  Called on page load.
  */
 Code.init = function() {
+  // Load dialog body for selecting game arguments.
+  var html_path = path.join(__dirname, 'html', Code.GAME.toLowerCase() + '.html');
+  var html_text = window.readFile(html_path);
+  $('#game-args').append(html_text);
+
   Code.initLanguage();
 
   var rtl = Code.isRtl();
@@ -407,6 +412,7 @@ Code.init = function() {
   // Blockly.JavaScript.addReservedWords('code,timeouts,checkTimeout');
   var xml_path = path.join(__dirname, 'xml', 'template', Code.GAME.toLowerCase() + '.xml');
   var xml_text = window.readFile(xml_path);
+  $('#MLGame_blocks').append(xml_text);
   Code.loadBlocks(xml_text);
 
   if ('BlocklyStorage' in window) {
@@ -593,16 +599,20 @@ Code.play = function() {
   var file_name = 'ml_play_' + new Date().getTime() + '.py';
   var file_path = path.join(__dirname, 'MLGame', 'games', Code.GAME, 'ml', file_name);
   window.writeFile(file_path, python_text);
-  var e = document.getElementById('game_mode');
-  var game_mode = e.options[e.selectedIndex].text;
-  var e = document.getElementById('maze_number');
-  var maze_number = e.options[e.selectedIndex].text;
+  var args_elements = document.getElementById('game-args').getElementsByClassName('game-arg');
+  var args = [];
+  for (var i = 0; i < args_elements.length; i++) {
+    var e = args_elements[i];
+    args.push(e.options[e.selectedIndex].getAttribute("value"));
+  }
+  console.log(args);
   var options = {
     mode: 'text',
     pythonPath: path.join(__dirname, 'python', 'dist', 'interpreter', 'interpreter'),
     scriptPath: path.join(__dirname, 'MLGame'),
-    args: ['-i', file_name, Code.GAME, '1', game_mode, maze_number, '60', 'OFF']
+    args: ['-i', file_name, Code.GAME].concat(args)
   };
+  console.log(options.args);
   $('#run-mlgame-dialog').modal('hide');
   document.getElementById('content_console').textContent = '';
   $('#console-dialog').modal('show');

@@ -30,34 +30,7 @@
             </button>
           </div>
           <form name="play" action="javascript:Code.play()">
-            <div class="modal-body my-2">
-              <div class="form-group">
-                <label for="">資料存取位置：<span id='cwd_play_path'></span></label>
-                <button type="button" id="cwd_path_button">選擇</button>
-              </div>
-              <div class="form-group">
-                <label for="">參賽人數</label>
-                <select class="form-control" name="user_num" id="player_number">
-                  <option>1</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="">模式</label>
-                <select class="form-control" name="game_type" id="game_mode">
-                  <option>MAZE</option>
-                  <option>MOVE_MAZE</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="">地圖</label>
-                <select class="form-control" name="map" id="maze_number">
-                  <option>1</option>
-                  <option>2</option>
-                </select>
-              </div>
-              <input type="hidden" class="form-control modal-repo" name="code_name" aria-describedby="helpId"
-                  placeholder="" value="repo">
-            </div>
+            <div class="modal-body my-2" id="game-args"></div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
                 <button type="submit" class="btn btn-outline-primary">確定</button>
