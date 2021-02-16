@@ -19,7 +19,7 @@ To build Blockly-App from source you'll need [Git](https://git-scm.com), [Python
 
 ```bash
 # Clone this repository
-git clone --recursive https://gitlab.com/mlgame-platform/blockly-app.git
+git clone --recursive https://github.com/jason53415/blockly-app.git
 # Go into the repository
 cd blockly-app
 # Install Python dependencies
