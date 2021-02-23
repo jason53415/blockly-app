@@ -7,4 +7,4 @@ if __name__ == '__main__':
     wd = os.path.dirname(script)
     sys.path.append(wd)
     sys.argv.pop(0)
-    exec(open(script).read(), globals(), locals())
+    exec(open(script, "r", encoding='utf8').read(), globals(), locals())
