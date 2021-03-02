@@ -422,20 +422,18 @@ Code.init = function() {
 
   Code.tabClick(Code.selected);
 
-  Code.bindClick('cwd_path_button',
-      function() {Code.cwdPath(); Code.renderContent();});
-  Code.bindClick('cwd_path_button2',
-      function() {Code.cwdPath(); Code.renderContent();});
   Code.bindClick('run_mlgame',
       function() {Code.run('#run-mlgame-dialog'); Code.renderContent();});
   Code.bindClick('run_python',
-      function() {Code.run('#run-python-dialog'); Code.renderContent();});
+      function() {Code.execute(); Code.renderContent();});
   Code.bindClick('discard',
       function() {Code.discard(); Code.renderContent();});
   Code.bindClick('download_python',
       function() {Code.downloadPython(); Code.renderContent();});
   Code.bindClick('download_xml',
       function() {Code.downloadXml(); Code.renderContent();});
+  Code.bindClick('open_path',
+      function() {Code.openPath(); Code.renderContent();});
   Code.bindClick('open_xml',
       function() {Code.selectFiles(); Code.renderContent();});
   Code.bindClick('en',
@@ -483,8 +481,6 @@ Code.initLanguage = function() {
   // Inject language strings.
   document.title += ' - ' + MSG['title'];
   document.getElementById('game_name').textContent = Code.GAME;
-  document.getElementById('cwd_play_path').textContent = store.get('cwdPath') || require('os').homedir();
-  document.getElementById('cwd_run_path').textContent = store.get('cwdPath') || require('os').homedir();
   document.getElementById('tab_blocks').textContent = MSG['blocks'];
   document.getElementById('tab_lang').textContent = MSG['lang'];
   document.getElementById('tab_option').textContent = MSG['options'];
@@ -510,22 +506,6 @@ Code.discard = function() {
       window.location.hash = '';
     }
   }
-};
-
-Code.cwdPath = function() {
-  var options = {
-    title: 'Data Path',
-    properties: ['openDirectory']
-  }
-  var path = window.selectPath(options);
-  if (!path) {
-    return;
-  } else {
-    path = path[0];
-  }
-  document.getElementById('cwd_play_path').textContent = path;
-  document.getElementById('cwd_run_path').textContent = path;
-  store.set('cwdPath', path);
 };
 
 Code.selectFiles = function() {
@@ -597,7 +577,8 @@ Code.run = function(target) {
 Code.play = function() {
   var python_text = Blockly.Python.workspaceToCode(Code.workspace);
   var file_name = 'ml_play_' + new Date().getTime() + '.py';
-  var file_path = path.join(__dirname, 'MLGame', 'games', Code.GAME, 'ml', file_name);
+  var ml_path = path.join(__dirname, 'MLGame', 'games', Code.GAME, 'ml');
+  var file_path = path.join(ml_path, file_name);
   window.writeFile(file_path, python_text);
   var args_elements = document.getElementById('game-args').getElementsByClassName('game-arg');
   var args = [];
@@ -605,35 +586,38 @@ Code.play = function() {
     var e = args_elements[i];
     args.push(e.options[e.selectedIndex].getAttribute("value"));
   }
-  console.log(args);
   var options = {
     mode: 'text',
     pythonPath: path.join(__dirname, 'python', 'dist', 'interpreter', 'interpreter'),
     scriptPath: path.join(__dirname, 'MLGame'),
     args: ['-i', file_name, Code.GAME].concat(args)
   };
-  console.log(options.args);
   $('#run-mlgame-dialog').modal('hide');
   document.getElementById('content_console').textContent = '--- Python program running ---\n';
   $('#console-dialog').modal('show');
-  window.pythonRun(options, "MLGame.py", file_path, store.get('cwdPath'));
+  window.pythonRun(options, "MLGame.py", file_path, ml_path);
 };
 
 Code.execute = function() {
   var python_text = Blockly.Python.workspaceToCode(Code.workspace);
   var file_name = 'ml_play_' + new Date().getTime() + '.py';
-  var file_path = path.join(store.get('cwdPath'), file_name);
+  var ml_path = path.join(__dirname, 'MLGame', 'games', Code.GAME, 'ml');
+  var file_path = path.join(ml_path, file_name);
   window.writeFile(file_path, python_text);
   var options = {
     mode: 'text',
     pythonPath: path.join(__dirname, 'python', 'dist', 'interpreter', 'interpreter'),
-    scriptPath: store.get('cwdPath'),
+    scriptPath: ml_path,
     args: []
   };
   $('#run-python-dialog').modal('hide');
   document.getElementById('content_console').textContent = '--- Python program running ---\n';
   $('#console-dialog').modal('show');
-  window.pythonRun(options, file_name, file_path, store.get('cwdPath'));
+  window.pythonRun(options, file_name, file_path, ml_path);
+};
+
+Code.openPath = function() {
+  window.openPath(path.join(__dirname, 'MLGame', 'games', Code.GAME, 'ml'))
 };
 
 // Load game messages.

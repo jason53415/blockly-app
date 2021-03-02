@@ -15,7 +15,6 @@
     <script src="js/blockly_compressed.js"></script>
     <script src="js/blocks_compressed.js"></script>
     <script src="js/python_compressed.js"></script>
-    <!-- <script src="js/game_msg/maze_car.js"></script>-->
     <script src="js/code.js"></script>
   </head>
   <body>
@@ -31,31 +30,6 @@
           </div>
           <form name="play" action="javascript:Code.play()">
             <div class="modal-body my-2" id="game-args"></div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
-                <button type="submit" class="btn btn-outline-primary">確定</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <!-- Python run dialog -->
-    <div class="modal fade" id="run-python-dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">執行程式</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form name="play" action="javascript:Code.execute()">
-            <div class="modal-body my-2">
-              <div class="form-group">
-                <label for="">資料存取位置：<span id='cwd_run_path'></span></label>
-                <button type="button" id="cwd_path_button2">選擇</button>
-              </div>
-            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
                 <button type="submit" class="btn btn-outline-primary">確定</button>
@@ -99,7 +73,7 @@
         </li>
         <li class="nav-item ml-auto" role="presentation" id="tab_title"> 
             <a class="navbar-brand ml-auto" tabindex="-1" aria-disabled="true">
-              <span id='game_name'>...</span> - <span id='file_name'>template</span>
+              <span id='game_name'>...</span> - <span id='file_name'>ml_play</span>
             </a>
         </li>
         <li class="nav-item dropdown ml-auto">
@@ -118,6 +92,7 @@
             <a class="dropdown-item" href="#" id='open_xml'>開啟 XML 檔</a>
             <a class="dropdown-item" href="#" id='download_xml'>儲存 XML 檔</a>
             <a class="dropdown-item" href="#" id='download_python'>儲存 Python 檔</a>
+            <a class="dropdown-item" href="#" id='open_path'>開啟檔案存取路徑</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" id="discard">移除所有積木</a>
             <a class="dropdown-item" href="index.html" id="discard">選擇遊戲</a>

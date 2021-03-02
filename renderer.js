@@ -4,7 +4,7 @@
 // `nodeIntegration` is turned off. Use `preload.js` to
 // selectively enable features needed in the rendering
 // process.
-const { dialog } = require('electron').remote;
+const { dialog, shell } = require('electron').remote;
 const { PythonShell } = require('python-shell');
 const Store = require('electron-store');
 const store = new Store();
@@ -14,21 +14,27 @@ const fs = require('fs');
 window.pythonRun = function(options, script, tmp_file, cwd) {
   var old_cwd = process.cwd();
   process.chdir(cwd);
-  let shell = new PythonShell(script, options);
-  shell.on('message', function (message) {
+  let python = new PythonShell(script, options);
+  python.on('message', function (message) {
     document.getElementById('content_console').textContent += message + '\n';
     var e = document.getElementById('console-body');
     e.scrollTo(0, e.scrollHeight);
   });
-  shell.on('close', function () {
+  python.on('stderr', function (stderr) {
+    console.log(stderr);
+    document.getElementById('content_console').textContent += Buffer.from(stderr, 'utf-8') + '\n';
+    var e = document.getElementById('console-body');
+    e.scrollTo(0, e.scrollHeight);
+  });
+  python.on('close', function () {
     document.getElementById('content_console').textContent += '--- Python program finished ---\n';
     var e = document.getElementById('console-body');
     e.scrollTo(0, e.scrollHeight);
     fs.unlinkSync(tmp_file);
     process.chdir(old_cwd);
   });
-  shell.on('error', function () {
-    window.alert('Error: process exited with code ' + shell.exitCode);
+  python.on('error', function () {
+    window.alert('Error: process exited with code ' + python.exitCode);
   });
 };
 
@@ -48,4 +54,8 @@ window.readFile = function(file) {
 
 window.selectPath = function(options) {
   return dialog.showOpenDialogSync(options);
+};
+
+window.openPath = function(pathname) {
+  shell.openPath(pathname);
 };
