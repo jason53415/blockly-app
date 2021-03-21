@@ -412,7 +412,6 @@ Code.init = function() {
   // Blockly.JavaScript.addReservedWords('code,timeouts,checkTimeout');
   var xml_path = path.join(__dirname, 'xml', 'template', Code.GAME.toLowerCase() + '.xml');
   var xml_text = window.readFile(xml_path);
-  $('#MLGame_blocks').append(xml_text);
   Code.loadBlocks(xml_text);
 
   if ('BlocklyStorage' in window) {
@@ -422,6 +421,8 @@ Code.init = function() {
 
   Code.tabClick(Code.selected);
 
+  Code.bindClick('show_readme',
+      function() {Code.showReadme(); Code.renderContent();});
   Code.bindClick('run_mlgame',
       function() {Code.run('#run-mlgame-dialog'); Code.renderContent();});
   Code.bindClick('run_python',
@@ -614,6 +615,20 @@ Code.execute = function() {
   document.getElementById('content_console').textContent = '--- Python program running ---\n';
   $('#console-dialog').modal('show');
   window.pythonRun(options, file_name, file_path, ml_path);
+};
+
+Code.showReadme = function() {
+  if (Code.GAME == "Maze_Car") {
+    var readme_path = path.join(__dirname, 'MLGame', 'games', Code.GAME, 'README_python.md');
+  } else {
+    var readme_path = path.join(__dirname, 'MLGame', 'games', Code.GAME, 'README.md');
+  }
+  var readme_text = window.readFile(readme_path);
+  var showdown  = require('showdown'),
+      converter = new showdown.Converter(),
+      readme    = converter.makeHtml(readme_text);
+  $('#readme-body').html(readme);
+  $('#readme-dialog').modal('show');
 };
 
 Code.openPath = function() {

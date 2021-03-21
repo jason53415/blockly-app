@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="node_modules/vex-js/dist/css/vex-theme-os.css" />
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="node_modules/github-markdown-css/github-markdown.css">
     <script>window.jQuery = window.$ = require('jquery');</script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="node_modules/vex-js/dist/js/vex.combined.min.js"></script>
@@ -23,7 +24,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">開始玩</h5>
+            <h5 class="modal-title" id="game-play-title">開始玩</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -43,7 +44,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Console</h5>
+            <h5 class="modal-title" id="console-title">Console</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -51,6 +52,20 @@
           <div class="modal-body" id='console-body'>
             <pre id="content_console" class="prettyprint lang-sh" style="border: 0"></pre>
           </div>
+        </div>
+      </div>
+    </div>
+    <!-- Readme dialog -->
+    <div class="modal fade" id="readme-dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" style="max-width: 1200px;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="readme-title">Readme</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body markdown-body" id='readme-body'></div>
         </div>
       </div>
     </div>
@@ -86,6 +101,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="tab_option" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">選項</a>
           <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="#" id="show_readme">遊戲說明</a>
             <a class="dropdown-item" href="#" id="run_mlgame">玩遊戲</a>
             <a class="dropdown-item" href="#" id="run_python">執行程式</a>
             <div class="dropdown-divider"></div>

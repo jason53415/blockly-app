@@ -32,9 +32,11 @@
     "electron-installer-dmg": "^3.0.0",
     "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^6.0.1",
+    "github-markdown-css": "^4.0.0",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.4",
     "python-shell": "^2.0.3",
+    "showdown": "^1.9.1",
     "vex-js": "^4.1.0"
   },
   "config": {
