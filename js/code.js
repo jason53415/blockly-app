@@ -618,11 +618,7 @@ Code.execute = function() {
 };
 
 Code.showReadme = function() {
-  if (Code.GAME == "Maze_Car") {
-    var readme_path = path.join(__dirname, 'MLGame', 'games', Code.GAME, 'README_python.md');
-  } else {
-    var readme_path = path.join(__dirname, 'MLGame', 'games', Code.GAME, 'README.md');
-  }
+  var readme_path = path.join(__dirname, 'MLGame', 'games', Code.GAME, 'README.md');
   var readme_text = window.readFile(readme_path);
   var showdown  = require('showdown'),
       converter = new showdown.Converter(),
