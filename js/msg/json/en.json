@@ -446,6 +446,8 @@
 	"FILE_LOAD": "load %1 from %2",
 	"FILE_LOAD_TOOLTIP": "Load an object from a file.",
 	"FILE_DEFAULT_NAME": "file_name",
+	"PLOT_PLOT": "plot X: %1 Y: %2 marker: %3 line: %4 color: %5",
+	"PLOT_PLOT_TOOLTIP": "Plot with given X, Y and style.",
 	"MODEL_KNN": "k-nearest neighbors",
 	"MODEL_DECISION_TREE": "decision tree",
 	"MODEL_LINEAR_SVM": "linear support vector machine",

@@ -25,6 +25,7 @@ var MSG = {
   catVariables: "Variables",
   catFunctions: "Functions",
   catFile: "File",
+  catPlot: "Plot",
   catModel: "Model",
   listVariable: "list",
   textVariable: "text",

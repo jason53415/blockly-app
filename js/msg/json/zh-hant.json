@@ -401,6 +401,8 @@
 	"FILE_LOAD": "從 %2 讀取 %1",
 	"FILE_LOAD_TOOLTIP": "讀取儲存至檔案的物件。",
 	"FILE_DEFAULT_NAME": "檔案名稱",
+	"PLOT_PLOT": "繪圖 X：%1 Y：%2 記號：%3 線條：%4 顏色：%5",
+	"PLOT_PLOT_TOOLTIP": "給定相對應的 X 座標及 Y 座標，便能使用選擇的風格繪圖。",
 	"MODEL_KNN": "k-最近鄰居",
 	"MODEL_DECISION_TREE": "決策樹",
 	"MODEL_LINEAR_SVM": "線性支持向量機",
