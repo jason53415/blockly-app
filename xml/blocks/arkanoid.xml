@@ -1,13 +1,5 @@
 <block type="mlplay_class"></block>
-<block type="mlplay_game_status">
-  <field name="STATUS"></field>
-</block>
-<block type="mlplay_get_info">
-  <field name="FIELD"></field>
-</block>
-<block type="mlplay_get_constant">
-  <field name="CONSTANT"></field>
-</block>
-<block type="mlplay_return_action">
-  <field name="ACTION"></field>
-</block>
+<block type="mlplay_game_status"></block>
+<block type="mlplay_get_info"></block>
+<block type="mlplay_get_constant"></block>
+<block type="mlplay_return_action"></block>
