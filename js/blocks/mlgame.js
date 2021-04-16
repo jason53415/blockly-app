@@ -311,3 +311,48 @@ Blockly.Blocks['mlplay_return_mazecar_action'] = {
   }
 };
 
+Blockly.Blocks['mlplay_is_key_pressed'] = {
+  /**
+   * Block for checking a key is pressed or not.
+   * @this {Blockly.Block}
+   */
+  init: function() {
+    this.key_types_ = [
+      ['%{BKY_MLPLAY_ARROW_KEYS}', 'arrow'],
+      ['%{BKY_MLPLAY_NUMBER_KEYS}', 'number'],
+      ['%{BKY_MLPLAY_ALPHA_KEYS}', 'alpha']
+    ];
+    this.arrow_keys_ = [
+      ["\u{2191}", 'up'],
+      ["\u{2193}", 'down'],
+      ["\u{2190}", 'left'],
+      ["\u{2192}", 'right']
+    ];
+    this.number_keys_ = Array.from({length: 10}, (_, i) => [String.fromCharCode(i+48), String.fromCharCode(i+48)]);
+    this.alpha_keys_ = Array.from({length: 26}, (_, i) => [String.fromCharCode(i+65), String.fromCharCode(i+65)]);
+    this.appendDummyInput('FIELDS')
+        .appendField(new Blockly.FieldDropdown(this.key_types_, function(value) {
+          this.getSourceBlock().updateKeys_(value);
+        }), "TYPE")
+        .appendField(new Blockly.FieldDropdown(this.arrow_keys_), "KEY")
+        .appendField(Blockly.Msg['MLPLAY_KEY_PRESSED']);
+    this.setColour(0);
+    this.setOutput(true);
+    this.setTooltip(Blockly.Msg['MLPLAY_IS_KEY_PRESSED_TOOLTIP']);
+  },
+  updateKeys_: function(type) {
+    var fields = this.getInput('FIELDS');
+    fields.removeField("KEY");
+    switch(type) {
+      case 'arrow':
+        fields.insertFieldAt(1, new Blockly.FieldDropdown(this.arrow_keys_), "KEY");
+        break;
+      case 'number':
+        fields.insertFieldAt(1, new Blockly.FieldDropdown(this.number_keys_), "KEY");
+        break;
+      case 'alpha':
+        fields.insertFieldAt(1, new Blockly.FieldDropdown(this.alpha_keys_), "KEY");
+        break;
+    }
+  }
+};

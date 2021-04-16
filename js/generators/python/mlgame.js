@@ -84,3 +84,10 @@ Blockly.Python['mlplay_return_mazecar_action'] = function(block) {
   var code = "return [{'left_PWM': " + left + ", 'right_PWM': " + right + "}]\n";
   return code;
 };
+
+Blockly.Python['mlplay_is_key_pressed'] = function(block) {
+  Blockly.Python.definitions_['import_keyboard'] = 'import keyboard';
+  var key = block.getFieldValue('KEY');
+  var code = "keyboard.is_pressed('" + key + "')";
+  return [code, Blockly.Python.ORDER_RELATIONAL];
+};

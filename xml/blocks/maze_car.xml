@@ -16,3 +16,4 @@
     </shadow>
   </value>
 </block>
+<block type="mlplay_is_key_pressed"></block>
