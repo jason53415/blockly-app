@@ -410,9 +410,22 @@ Code.init = function() {
   // Add to reserved word list: Local variables in execution environment (runJS)
   // and the infinite loop detection function.
   // Blockly.JavaScript.addReservedWords('code,timeouts,checkTimeout');
-  var xml_path = path.join(__dirname, 'xml', 'template', Code.GAME.toLowerCase() + '.xml');
-  var xml_text = window.readFile(xml_path);
-  Code.loadBlocks(xml_text);
+  Code.loadExample('1. start');
+  
+  var example_dir = path.join(__dirname, 'xml', 'examples', Code.GAME.toLowerCase());
+  fs.readdirSync(example_dir).forEach(file => {
+    if (file.endsWith('.xml')) {
+      var name = file.slice(0, -4);
+      var element = document.createElement('a');
+      element.setAttribute('class', 'dropdown-item');
+      element.setAttribute('href', '#');
+      element.setAttribute('id', name);
+      element.textContent = file
+      $('#examples').append(element);
+      Code.bindClick(name,
+          function() {Code.loadExample(name); Code.renderContent();});
+    };
+  });
 
   if ('BlocklyStorage' in window) {
     // Hook a save function onto unload.
@@ -483,6 +496,7 @@ Code.initLanguage = function() {
   document.title += ' - ' + MSG['title'];
   document.getElementById('game_name').textContent = Code.GAME;
   document.getElementById('tab_blocks').textContent = MSG['blocks'];
+  document.getElementById('tab_example').textContent = MSG['examples'];
   document.getElementById('tab_lang').textContent = MSG['lang'];
   document.getElementById('tab_option').textContent = MSG['options'];
   document.getElementById('run_mlgame').textContent = MSG['runMLGame'];
@@ -507,6 +521,19 @@ Code.discard = function() {
       window.location.hash = '';
     }
   }
+};
+
+Code.loadExample = function(name) {
+  var count = Code.workspace.getAllBlocks(false).length;
+  if (count == 0 || window.confirm(Blockly.Msg['DELETE_ALL_BLOCKS'].replace('%1', count))) {
+    Code.workspace.clear();
+    if (window.location.hash) {
+      window.location.hash = '';
+    }
+  }
+  var xml_path = path.join(__dirname, 'xml', 'examples', Code.GAME.toLowerCase(), name + '.xml');
+  var xml_text = window.readFile(xml_path);
+  Code.loadBlocks(xml_text);
 };
 
 Code.selectFiles = function() {

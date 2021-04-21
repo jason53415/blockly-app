@@ -92,6 +92,10 @@
             </a>
         </li>
         <li class="nav-item dropdown ml-auto">
+          <a class="nav-link dropdown-toggle" id="tab_example" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">範例程式</a>
+          <div class="dropdown-menu dropdown-menu-right" id="examples"></div>
+        </li>
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="tab_lang" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">語言</a>
           <div class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item" href="#" id="zh-hant">中文</a>
@@ -410,10 +414,6 @@
             </value>
           </block>
         </category>
-        <sep></sep>
-        <category name="%{BKY_CATVARIABLES}" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
-        <category name="%{BKY_CATFUNCTIONS}" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE"></category>
-        <sep></sep>
         <category name="%{BKY_CATMODEL}" colour="%{BKY_MODEL_HUE}">
           <block type="model_create_classification"></block>
           <block type="model_create_regression"></block>
@@ -432,6 +432,10 @@
             </value>
           </block>
         </category>
+        <sep></sep>
+        <category name="%{BKY_CATVARIABLES}" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
+        <category name="%{BKY_CATFUNCTIONS}" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE"></category>
+        <sep></sep>
         <category name="%{BKY_CATPLOT}" colour="%{BKY_PLOT_HUE}">
           <block type="plot_plot"></block>
         </category>
@@ -453,7 +457,7 @@
         </category>
         <sep></sep>
         <!-- MLGame category -->
-        <category name="MLGame" colour="0" id='MLGame_blocks'>
+        <category name="MLGame" colour="%{BKY_MLGAME_HUE}" id='MLGame_blocks'>
         </category>
       </xml>
     </div>

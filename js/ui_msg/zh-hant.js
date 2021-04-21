@@ -1,6 +1,7 @@
 var MSG = {
   title: "積木程式",
   blocks: "積木",
+  examples: "範例程式",
   lang: "語言",
   options: "選項",
   linkTooltip: "儲存積木組並提供連結。",

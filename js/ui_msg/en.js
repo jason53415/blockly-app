@@ -1,6 +1,7 @@
 var MSG = {
   title: "Blockly",
   blocks: "Blocks",
+  examples: "Examples",
   lang: "Language",
   options: "Options",
   linkTooltip: "Save and link to blocks.",

@@ -1,0 +1,204 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="Es,MOK^RYJ_1;u2DfG-W">前方距離</variable>
+    <variable id="69R+bVSBfx?.^Lo}~=Y=">右側距離</variable>
+    <variable id="w:VS^|3qGMapmI@M!$nk">左側距離</variable>
+    <variable id="3mu%ock7yMNJRcn`_dyf">左輪轉速</variable>
+    <variable id="}]+AasxtgeR%@4=.s}3V">右輪轉速</variable>
+  </variables>
+  <block type="mlplay_class" id="Z*lb-wWxg7v@ss05TP[c">
+    <statement name="INIT">
+      <block type="variables_set" id="=$e80s4CDNe%kR8ly%xA">
+        <field name="VAR" id="Es,MOK^RYJ_1;u2DfG-W">前方距離</field>
+        <value name="VALUE">
+          <block type="math_number" id="+hYirF]^!2H:a=PpydJt">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="1(7+5ETmJ)[Uby[05=EL">
+            <field name="VAR" id="69R+bVSBfx?.^Lo}~=Y=">右側距離</field>
+            <value name="VALUE">
+              <block type="math_number" id="+tw75}nSk`@cgna4Q}?A">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="0/1A@zU1F=,l(-%3W-07">
+                <field name="VAR" id="w:VS^|3qGMapmI@M!$nk">左側距離</field>
+                <value name="VALUE">
+                  <block type="math_number" id="tv3z+g`ud:+#c#Fs53L^">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="uRdL:[^V2Vo6eaPOv}r0">
+                    <field name="VAR" id="3mu%ock7yMNJRcn`_dyf">左輪轉速</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="*0+v2ZqOmS`0:pjFQ-m,">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="?xzk-EhE}Q(Z~%frhs#I">
+                        <field name="VAR" id="}]+AasxtgeR%@4=.s}3V">右輪轉速</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="obyuoEux6c;[tK.3Ja_Q">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="UPDATE">
+      <block type="controls_if" id="!/F;c5o|Sp5G`cX!_{D0">
+        <mutation elseif="3" else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_operation" id="BT/#.-Y.X0~S@?bt@[R_">
+            <field name="OP">OR</field>
+            <value name="A">
+              <block type="mlplay_is_key_pressed" id="6{um%u*Fqt|j?PW9{o,r">
+                <field name="TYPE">arrow</field>
+                <field name="KEY">up</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="mlplay_is_key_pressed" id="bEB6K%4gs/N?Ca1fljR^">
+                <field name="TYPE">alpha</field>
+                <field name="KEY">W</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="mlplay_return_mazecar_action" id="EsbLq/Don#i6zc+gBlJ6">
+            <value name="LEFT_RPM">
+              <shadow type="math_number" id="!hH)@~w3!a}*2#T?Rwhm">
+                <field name="NUM">50</field>
+              </shadow>
+            </value>
+            <value name="RIGHT_RPM">
+              <shadow type="math_number" id="zP/O-iD.X~@Fv)RS*vk`">
+                <field name="NUM">50</field>
+              </shadow>
+            </value>
+          </block>
+        </statement>
+        <value name="IF1">
+          <block type="logic_operation" id="$AQmG^3@Mw76iSk4qbvI">
+            <field name="OP">OR</field>
+            <value name="A">
+              <block type="mlplay_is_key_pressed" id="0$xH4CI7V6eAvVG4}GA]">
+                <field name="TYPE">arrow</field>
+                <field name="KEY">right</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="mlplay_is_key_pressed" id="=O;)BAg[Oh0j.o@OQWHU">
+                <field name="TYPE">alpha</field>
+                <field name="KEY">D</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO1">
+          <block type="mlplay_return_mazecar_action" id="A:EPkn}UIoBeKR(Lo3Zm">
+            <value name="LEFT_RPM">
+              <shadow type="math_number" id="fnH|!qotDm,GksV5z*w}">
+                <field name="NUM">50</field>
+              </shadow>
+            </value>
+            <value name="RIGHT_RPM">
+              <shadow type="math_number" id="Tp}|zV$Kv9pfg7o04dAg">
+                <field name="NUM">-50</field>
+              </shadow>
+            </value>
+          </block>
+        </statement>
+        <value name="IF2">
+          <block type="logic_operation" id="=P{!{ag`)+))=~kYV;)w">
+            <field name="OP">OR</field>
+            <value name="A">
+              <block type="mlplay_is_key_pressed" id="+IHm`%ZnXcI@;e|U`=]Z">
+                <field name="TYPE">arrow</field>
+                <field name="KEY">left</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="mlplay_is_key_pressed" id="b!/$qKGEwOd/_Ih@)PW_">
+                <field name="TYPE">alpha</field>
+                <field name="KEY">A</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO2">
+          <block type="mlplay_return_mazecar_action" id="/h!rOTof38+ew/lK.=ZG">
+            <value name="LEFT_RPM">
+              <shadow type="math_number" id="-#/HJ$b*mDYGYE`RWz:H">
+                <field name="NUM">-50</field>
+              </shadow>
+            </value>
+            <value name="RIGHT_RPM">
+              <shadow type="math_number" id="-#t/56e=cKG3y1l2oPo_">
+                <field name="NUM">50</field>
+              </shadow>
+            </value>
+          </block>
+        </statement>
+        <value name="IF3">
+          <block type="logic_operation" id="g5E~3r3s==4)Gm?tn{g)">
+            <field name="OP">OR</field>
+            <value name="A">
+              <block type="mlplay_is_key_pressed" id="]A-p7qPy]^EhCuAAfXd_">
+                <field name="TYPE">arrow</field>
+                <field name="KEY">down</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="mlplay_is_key_pressed" id="Ze.qMKuPne}#gjlzYqru">
+                <field name="TYPE">alpha</field>
+                <field name="KEY">S</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO3">
+          <block type="mlplay_return_mazecar_action" id="NrFwOYy(gB)1-*!/ddi(">
+            <value name="LEFT_RPM">
+              <shadow type="math_number" id="2,=;0:+gvb84IzNw/#)q">
+                <field name="NUM">-50</field>
+              </shadow>
+            </value>
+            <value name="RIGHT_RPM">
+              <shadow type="math_number" id="V6]%LKYbV5vX~8;C40vr">
+                <field name="NUM">-50</field>
+              </shadow>
+            </value>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="mlplay_return_mazecar_action" id="B;/xii/!_J5VvAD~}]@g">
+            <value name="LEFT_RPM">
+              <shadow type="math_number" id="k`gF9vOij#40eqpIP]{n">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+            <value name="RIGHT_RPM">
+              <shadow type="math_number" id="6Wsi!C`M@K)/!k;BWmnJ">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>
