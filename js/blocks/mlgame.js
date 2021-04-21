@@ -35,7 +35,7 @@ Blockly.Blocks['mlplay_class'] = {
           "align": "RIGHT"
         }
       ],
-      "colour": 0,
+      "style": "mlgame_blocks",
       "tooltip": "%{BKY_MLPLAY_CLASS_TOOLTIP}",
       "helpUrl": ""
     });
@@ -72,14 +72,14 @@ Blockly.Blocks['mlplay_init_info'] = {
       this.appendDummyInput()
           .appendField(Blockly.Msg['MLPLAY_INIT_INFO'])
           .appendField(new Blockly.FieldDropdown(Blockly.Msg['MLPLAY_INIT_INFO_OPTIONS']), "FIELD");
-      this.setColour(0);
+      this.setStyle('mlgame_blocks');
       this.setOutput(true);
       this.setTooltip(Blockly.Msg['MLPLAY_INIT_INFO_TOOLTIP']);
     } else {
       this.appendDummyInput()
           .appendField(Blockly.Msg['MLPLAY_INIT_INFO'])
           .appendField(new Blockly.FieldDropdown([["", ""]]), "FIELD");
-      this.setColour(0);
+      this.setStyle('mlgame_blocks');
       this.setOutput(true);
       this.setTooltip(Blockly.Msg['MLPLAY_INIT_INFO_TOOLTIP']);
       this.setEnabled(false);
@@ -124,14 +124,14 @@ Blockly.Blocks['mlplay_player_status'] = {
       this.appendDummyInput()
           .appendField(Blockly.Msg['MLPLAY_PLAYER_STATUS'])
           .appendField(new Blockly.FieldDropdown(Blockly.Msg['MLPLAY_PLAYER_STATUS_OPTIONS']), "STATUS");
-      this.setColour(0);
+      this.setStyle('mlgame_blocks');
       this.setOutput(true);
       this.setTooltip(Blockly.Msg['MLPLAY_PLAYER_STATUS_TOOLTIP']);
     } else {
       this.appendDummyInput()
           .appendField(Blockly.Msg['MLPLAY_PLAYER_STATUS'])
           .appendField(new Blockly.FieldDropdown([["", ""]]), "STATUS");
-      this.setColour(0);
+      this.setStyle('mlgame_blocks');
       this.setOutput(true);
       this.setTooltip(Blockly.Msg['MLPLAY_PLAYER_STATUS_TOOLTIP']);
       this.setEnabled(false);
@@ -148,7 +148,7 @@ Blockly.Blocks['mlplay_game_status'] = {
     this.appendDummyInput()
         .appendField(Blockly.Msg['MLPLAY_GAME_STATUS'])
         .appendField(new Blockly.FieldDropdown(Blockly.Msg['MLPLAY_GAME_STATUS_OPTIONS']), "STATUS");
-    this.setColour(0);
+    this.setStyle('mlgame_blocks');
     this.setOutput(true);
     this.setTooltip(Blockly.Msg['MLPLAY_GAME_STATUS_TOOLTIP']);
   }
@@ -163,7 +163,7 @@ Blockly.Blocks['mlplay_get_info'] = {
     this.appendDummyInput()
         .appendField(Blockly.Msg['MLPLAY_GET_INFO'])
         .appendField(new Blockly.FieldDropdown(Blockly.Msg['MLPLAY_GET_INFO_OPTIONS']), "FIELD");
-    this.setColour(0);
+    this.setStyle('mlgame_blocks');
     this.setOutput(true);
     this.setTooltip(Blockly.Msg['MLPLAY_GET_INFO_TOOLTIP']);
   },
@@ -205,7 +205,7 @@ Blockly.Blocks['mlplay_get_constant'] = {
     this.appendDummyInput()
         .appendField(Blockly.Msg['MLPLAY_GET_CONSTANT'])
         .appendField(new Blockly.FieldDropdown(Blockly.Msg['MLPLAY_GET_CONSTANT_OPTIONS']), "CONSTANT");
-    this.setColour(0);
+    this.setStyle('mlgame_blocks');
     this.setOutput(true);
     this.setTooltip(Blockly.Msg['MLPLAY_GET_CONSTANT_TOOLTIP']);
   }
@@ -220,7 +220,7 @@ Blockly.Blocks['mlplay_return_action'] = {
     this.appendDummyInput()
         .appendField(Blockly.Msg['MLPLAY_RETURN_ACTION'])
         .appendField(new Blockly.FieldDropdown(Blockly.Msg['MLPLAY_RETURN_ACTION_OPTIONS']), "ACTION");
-    this.setColour(0);
+    this.setStyle('mlgame_blocks');
     this.setOutput(false);
     this.setPreviousStatement(true);
     this.setTooltip(Blockly.Msg['MLPLAY_RETURN_ACTION_TOOLTIP']);
@@ -276,7 +276,7 @@ Blockly.Blocks['mlplay_return_mazecar_action'] = {
           "align": "RIGHT"
         }
       ],
-      "colour": 0,
+      "style": "mlgame_blocks",
       "previousStatement": null,
       "tooltip": "%{BKY_MLPLAY_RETURN_ACTION_TOOLTIP}",
       "helpUrl": ""
@@ -336,7 +336,7 @@ Blockly.Blocks['mlplay_is_key_pressed'] = {
         }), "TYPE")
         .appendField(new Blockly.FieldDropdown(this.arrow_keys_), "KEY")
         .appendField(Blockly.Msg['MLPLAY_KEY_PRESSED']);
-    this.setColour(0);
+    this.setStyle('mlgame_blocks');
     this.setOutput(true);
     this.setTooltip(Blockly.Msg['MLPLAY_IS_KEY_PRESSED_TOOLTIP']);
   },

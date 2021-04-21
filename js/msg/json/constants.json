@@ -1,15 +1,16 @@
 {
     "LOGIC_HUE": "100",
     "LOOPS_HUE": "140",
-    "MATH_HUE": "190",
-    "TEXTS_HUE": "210",
-    "LISTS_HUE": "230",
-    "DICTS_HUE": "250",
+    "MATH_HUE": "180",
+    "TEXTS_HUE": "200",
+    "LISTS_HUE": "220",
+    "DICTS_HUE": "240",
+    "MODEL_HUE": "260",
     "COLOUR_HUE": "20",
-    "VARIABLES_HUE": "300",
-    "VARIABLES_DYNAMIC_HUE": "310",
-    "PROCEDURES_HUE": "330",
-    "MODEL_HUE": "340",
-    "PLOT_HUE": "345",
-    "FILE_HUE": "350"
+    "VARIABLES_HUE": "290",
+    "VARIABLES_DYNAMIC_HUE": "300",
+    "PROCEDURES_HUE": "310",
+    "PLOT_HUE": "335",
+    "FILE_HUE": "360",
+    "MLGAME_HUE": "20"
 }

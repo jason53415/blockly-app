@@ -29,35 +29,41 @@ Blockly.Themes.Classic.defaultBlockStyles = {
     "colourPrimary": "140"
   },
   "math_blocks": {
-    "colourPrimary": "190"
+    "colourPrimary": "180"
   },
   "text_blocks": {
-    "colourPrimary": "210"
+    "colourPrimary": "200"
   },
   "list_blocks": {
-    "colourPrimary": "230"
+    "colourPrimary": "220"
   },
   "dict_blocks": {
-    "colourPrimary": "250"
-  },
-  "variable_blocks": {
-    "colourPrimary": "300"
-  },
-  "variable_dynamic_blocks": {
-    "colourPrimary": "310"
-  },
-  "procedure_blocks": {
-    "colourPrimary": "330"
-  },
-  "hat_blocks": {
-    "colourPrimary": "330",
-    "hat": "cap"
-  },
-  "file_blocks": {
-    "colourPrimary": "350"
+    "colourPrimary": "240"
   },
   "model_blocks": {
-    "colourPrimary": "340"
+    "colourPrimary": "260"
+  },
+  "variable_blocks": {
+    "colourPrimary": "290"
+  },
+  "variable_dynamic_blocks": {
+    "colourPrimary": "300"
+  },
+  "procedure_blocks": {
+    "colourPrimary": "310"
+  },
+  "plot_blocks": {
+    "colourPrimary": "335"
+  },
+  "file_blocks": {
+    "colourPrimary": "360"
+  },
+  "mlgame_blocks": {
+    "colourPrimary": "20"
+  },
+  "hat_blocks": {
+    "colourPrimary": "360",
+    "hat": "cap"
   }
 };
 

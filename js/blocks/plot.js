@@ -54,7 +54,7 @@ Blockly.defineBlocksWithJsonArray([
     "inputsInline": true,
     "previousStatement": null,
     "nextStatement": null,
-    "style": "model_blocks",
+    "style": "plot_blocks",
     "tooltip": "%{BKY_PLOT_PLOT_TOOLTIP}"
   }
 ]);
