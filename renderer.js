@@ -6,6 +6,7 @@
 // process.
 const { dialog, shell } = require('electron').remote;
 const { PythonShell } = require('python-shell');
+const buffer = require('buffer');
 const Store = require('electron-store');
 const store = new Store();
 const path = require('path');
@@ -21,13 +22,12 @@ window.pythonRun = function(options, script, tmp_file, cwd) {
     e.scrollTo(0, e.scrollHeight);
   });
   python.on('stderr', function (stderr) {
-    console.log(stderr);
-    document.getElementById('content_console').textContent += Buffer.from(stderr, 'utf-8') + '\n';
+    document.getElementById('content_console').textContent += stderr + '\n';
     var e = document.getElementById('console-body');
     e.scrollTo(0, e.scrollHeight);
   });
   python.on('close', function () {
-    document.getElementById('content_console').textContent += '--- Python program finished ---\n';
+    document.getElementById('content_console').textContent += '### Python program finished ###\n';
     var e = document.getElementById('console-body');
     e.scrollTo(0, e.scrollHeight);
     fs.unlinkSync(tmp_file);
