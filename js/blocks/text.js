@@ -345,18 +345,29 @@ Blockly.Blocks['text_changeCase'] = {
    * @this {Blockly.Block}
    */
   init: function() {
-    var OPERATORS = [
-      [Blockly.Msg['TEXT_CHANGECASE_OPERATOR_UPPERCASE'], 'UPPERCASE'],
-      [Blockly.Msg['TEXT_CHANGECASE_OPERATOR_LOWERCASE'], 'LOWERCASE'],
-      [Blockly.Msg['TEXT_CHANGECASE_OPERATOR_TITLECASE'], 'TITLECASE']
-    ];
-    this.setHelpUrl(Blockly.Msg['TEXT_CHANGECASE_HELPURL']);
-    this.setStyle('text_blocks');
-    this.appendValueInput('TEXT')
-        .setCheck('String')
-        .appendField(new Blockly.FieldDropdown(OPERATORS), 'CASE');
-    this.setOutput(true, 'String');
-    this.setTooltip(Blockly.Msg['TEXT_CHANGECASE_TOOLTIP']);
+    this.jsonInit({
+      "message0": "%{BKY_TEXT_CHANGECASE_TITLE}",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "TEXT",
+          "check": "String"
+        },
+        {
+          "type": "field_dropdown",
+          "name": "CASE",
+          "options": [
+            ['%{BKY_TEXT_CHANGECASE_OPERATOR_UPPERCASE}', 'UPPERCASE'],
+            ['%{BKY_TEXT_CHANGECASE_OPERATOR_LOWERCASE}', 'LOWERCASE'],
+            ['%{BKY_TEXT_CHANGECASE_OPERATOR_TITLECASE}', 'TITLECASE']
+          ]
+        }
+      ],
+      "output": "String",
+      "style": "text_blocks",
+      "helpUrl": "%{BKY_TEXT_CHANGECASE_HELPURL}",
+      "tooltip": "%{BKY_TEXT_CHANGECASE_TOOLTIP}",
+    });
   }
 };
 
@@ -366,18 +377,29 @@ Blockly.Blocks['text_trim'] = {
    * @this {Blockly.Block}
    */
   init: function() {
-    var OPERATORS = [
-      [Blockly.Msg['TEXT_TRIM_OPERATOR_BOTH'], 'BOTH'],
-      [Blockly.Msg['TEXT_TRIM_OPERATOR_LEFT'], 'LEFT'],
-      [Blockly.Msg['TEXT_TRIM_OPERATOR_RIGHT'], 'RIGHT']
-    ];
-    this.setHelpUrl(Blockly.Msg['TEXT_TRIM_HELPURL']);
-    this.setStyle('text_blocks');
-    this.appendValueInput('TEXT')
-        .setCheck('String')
-        .appendField(new Blockly.FieldDropdown(OPERATORS), 'MODE');
-    this.setOutput(true, 'String');
-    this.setTooltip(Blockly.Msg['TEXT_TRIM_TOOLTIP']);
+    this.jsonInit({
+      "message0": "%{BKY_TEXT_TRIM_TITLE}",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "TEXT",
+          "check": "String"
+        },
+        {
+          "type": "field_dropdown",
+          "name": "MODE",
+          "options": [
+            ['%{BKY_TEXT_TRIM_OPERATOR_BOTH}', 'BOTH'],
+            ['%{BKY_TEXT_TRIM_OPERATOR_LEFT}', 'LEFT'],
+            ['%{BKY_TEXT_TRIM_OPERATOR_RIGHT}', 'RIGHT']
+          ]
+        }
+      ],
+      "output": "String",
+      "style": "text_blocks",
+      "helpUrl": "%{BKY_TEXT_TRIM_HELPURL}",
+      "tooltip": "%{BKY_TEXT_TRIM_TOOLTIP}",
+    });
   }
 };
 

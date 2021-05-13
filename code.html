@@ -161,7 +161,13 @@
               </shadow>
             </value>
           </block>
-          <block type="controls_forEach"></block>
+          <block type="controls_forEach">
+            <value name="LIST">
+              <block type="variables_get">
+                <field name="VAR">{listVariable}</field>
+              </block>
+            </value>
+          </block>
           <block type="controls_flow_statements"></block>
         </category>
         <sep></sep>
@@ -210,7 +216,13 @@
               </shadow>
             </value>
           </block>
-          <block type="math_on_list"></block>
+          <block type="math_on_list">
+            <value name="LIST">
+              <block type="variables_get">
+                <field name="VAR">{listVariable}</field>
+              </block>
+            </value>
+          </block>
           <block type="math_modulo">
             <value name="DIVIDEND">
               <shadow type="math_number">
@@ -348,8 +360,20 @@
               </shadow>
             </value>
           </block>
-          <block type="lists_length"></block>
-          <block type="lists_isEmpty"></block>
+          <block type="lists_length">
+            <value name="VALUE">
+              <block type="variables_get">
+                <field name="VAR">{listVariable}</field>
+              </block>
+            </value>
+          </block>
+          <block type="lists_isEmpty">
+            <value name="VALUE">
+              <block type="variables_get">
+                <field name="VAR">{listVariable}</field>
+              </block>
+            </value>
+          </block>
           <block type="lists_indexOf">
             <value name="VALUE">
               <block type="variables_get">
@@ -371,6 +395,13 @@
               </block>
             </value>
           </block>
+          <block type="lists_insertIndex">
+            <value name="LIST">
+              <block type="variables_get">
+                <field name="VAR">{listVariable}</field>
+              </block>
+            </value>
+          </block>
           <block type="lists_getSublist">
             <value name="LIST">
               <block type="variables_get">
@@ -385,7 +416,13 @@
               </shadow>
             </value>
           </block>
-          <block type="lists_sort"></block>
+          <block type="lists_sort">
+            <value name="LIST">
+              <block type="variables_get">
+                <field name="VAR">{listVariable}</field>
+              </block>
+            </value>
+          </block>
         </category>
         <category name="%{BKY_CATDICTS}" colour="%{BKY_DICTS_HUE}">
           <block type="dicts_create_with">

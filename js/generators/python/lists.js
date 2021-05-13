@@ -177,7 +177,78 @@ Blockly.Python['lists_setIndex'] = function(block) {
   // Note: Until February 2013 this block did not have MODE or WHERE inputs.
   var list = Blockly.Python.valueToCode(block, 'LIST',
       Blockly.Python.ORDER_MEMBER) || '[]';
-  var mode = block.getFieldValue('MODE') || 'GET';
+  var mode = 'SET';
+  var where = block.getFieldValue('WHERE') || 'FROM_START';
+  var value = Blockly.Python.valueToCode(block, 'TO',
+      Blockly.Python.ORDER_NONE) || 'None';
+  // Cache non-trivial values to variables to prevent repeated look-ups.
+  // Closure, which accesses and modifies 'list'.
+  function cacheList() {
+    if (list.match(/^\w+$/)) {
+      return '';
+    }
+    var listVar = Blockly.Python.variableDB_.getDistinctName(
+        'tmp_list', Blockly.VARIABLE_CATEGORY_NAME);
+    var code = listVar + ' = ' + list + '\n';
+    list = listVar;
+    return code;
+  }
+
+  switch (where) {
+    case 'FIRST':
+      if (mode == 'SET') {
+        return list + '[0] = ' + value + '\n';
+      } else if (mode == 'INSERT') {
+        return list + '.insert(0, ' + value + ')\n';
+      }
+      break;
+    case 'LAST':
+        if (mode == 'SET') {
+          return list + '[-1] = ' + value + '\n';
+        } else if (mode == 'INSERT') {
+          return list + '.append(' + value + ')\n';
+        }
+      break;
+    case 'FROM_START':
+      var at = Blockly.Python.getAdjustedInt(block, 'AT');
+        if (mode == 'SET') {
+          return list + '[' + at + '] = ' + value + '\n';
+        } else if (mode == 'INSERT') {
+          return list + '.insert(' + at + ', ' + value + ')\n';
+        }
+      break;
+    case 'FROM_END':
+      var at = Blockly.Python.getAdjustedInt(block, 'AT', 1, true);
+        if (mode == 'SET') {
+          return list + '[' + at + '] = ' + value + '\n';
+        } else if (mode == 'INSERT') {
+          return list + '.insert(' + at + ', ' + value + ')\n';
+        }
+      break;
+    case 'RANDOM':
+        Blockly.Python.definitions_['import_random'] = 'import random';
+        var code = cacheList();
+        var xVar = Blockly.Python.variableDB_.getDistinctName(
+            'tmp_x', Blockly.VARIABLE_CATEGORY_NAME);
+        code += xVar + ' = int(random.random() * len(' + list + '))\n';
+        if (mode == 'SET') {
+          code += list + '[' + xVar + '] = ' + value + '\n';
+          return code;
+        } else if (mode == 'INSERT') {
+          code += list + '.insert(' + xVar + ', ' + value + ')\n';
+          return code;
+        }
+      break;
+  }
+  throw Error('Unhandled combination (lists_setIndex).');
+};
+
+Blockly.Python['lists_insertIndex'] = function(block) {
+  // Set element at index.
+  // Note: Until February 2013 this block did not have MODE or WHERE inputs.
+  var list = Blockly.Python.valueToCode(block, 'LIST',
+      Blockly.Python.ORDER_MEMBER) || '[]';
+  var mode = 'INSERT';
   var where = block.getFieldValue('WHERE') || 'FROM_START';
   var value = Blockly.Python.valueToCode(block, 'TO',
       Blockly.Python.ORDER_NONE) || 'None';

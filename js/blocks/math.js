@@ -251,7 +251,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // etc.  Some functions also work on text (min, max, mode, median).
   {
     "type": "math_on_list",
-    "message0": "%1 %2",
+    "message0": "%{BKY_MATH_ONLIST_TITLE}",
     "args0": [
       {
         "type": "field_dropdown",
