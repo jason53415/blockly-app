@@ -530,10 +530,10 @@ Code.loadExample = function(name) {
     if (window.location.hash) {
       window.location.hash = '';
     }
+    var xml_path = path.join(__dirname, 'xml', 'examples', Code.GAME.toLowerCase(), name + '.xml');
+    var xml_text = window.readFile(xml_path);
+    Code.loadBlocks(xml_text);
   }
-  var xml_path = path.join(__dirname, 'xml', 'examples', Code.GAME.toLowerCase(), name + '.xml');
-  var xml_text = window.readFile(xml_path);
-  Code.loadBlocks(xml_text);
 };
 
 Code.selectFiles = function() {
