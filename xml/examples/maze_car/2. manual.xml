@@ -3,10 +3,12 @@
     <variable id="Es,MOK^RYJ_1;u2DfG-W">前方距離</variable>
     <variable id="69R+bVSBfx?.^Lo}~=Y=">右側距離</variable>
     <variable id="w:VS^|3qGMapmI@M!$nk">左側距離</variable>
+    <variable id="lt9$|[%lk-[$:ESi@Luw">超音波值</variable>
     <variable id="3mu%ock7yMNJRcn`_dyf">左輪轉速</variable>
+    <variable id="tp.nGXSq_t]!7glSFnu7">馬達轉速</variable>
     <variable id="}]+AasxtgeR%@4=.s}3V">右輪轉速</variable>
   </variables>
-  <block type="mlplay_class" id="Z*lb-wWxg7v@ss05TP[c">
+  <block type="mlplay_class" id="Z*lb-wWxg7v@ss05TP[c" x="-187" y="-887">
     <statement name="INIT">
       <block type="variables_set" id="=$e80s4CDNe%kR8ly%xA">
         <field name="VAR" id="Es,MOK^RYJ_1;u2DfG-W">前方距離</field>
@@ -47,6 +49,26 @@
                             <field name="NUM">0</field>
                           </block>
                         </value>
+                        <next>
+                          <block type="variables_set" id="9h?CODbso3.Il|kbq2Z1">
+                            <field name="VAR" id="lt9$|[%lk-[$:ESi@Luw">超音波值</field>
+                            <value name="VALUE">
+                              <block type="lists_create_with" id="hogE$wVkK=zYedGW1Tz?">
+                                <mutation items="0"></mutation>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="KAlqTPX/[Xs;?Yz-{b!z">
+                                <field name="VAR" id="tp.nGXSq_t]!7glSFnu7">馬達轉速</field>
+                                <value name="VALUE">
+                                  <block type="lists_create_with" id="A*j6+Y4jdxZLK2uV{[ou">
+                                    <mutation items="0"></mutation>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
                       </block>
                     </next>
                   </block>
@@ -58,144 +80,469 @@
       </block>
     </statement>
     <statement name="UPDATE">
-      <block type="controls_if" id="!/F;c5o|Sp5G`cX!_{D0">
-        <mutation elseif="3" else="1"></mutation>
+      <block type="controls_if" id="%fBu!|?}6Xq1^rDO[Y,$">
+        <mutation else="1"></mutation>
         <value name="IF0">
-          <block type="logic_operation" id="BT/#.-Y.X0~S@?bt@[R_">
-            <field name="OP">OR</field>
+          <block type="logic_compare" id="/x@rsh0y11g/O8nTF{}N">
+            <field name="OP">EQ</field>
             <value name="A">
-              <block type="mlplay_is_key_pressed" id="6{um%u*Fqt|j?PW9{o,r">
-                <field name="TYPE">arrow</field>
-                <field name="KEY">up</field>
+              <block type="mlplay_get_info" id="QTBe6o{3#i5e.bv*KGcM">
+                <field name="FIELD">scene_info['status']</field>
               </block>
             </value>
             <value name="B">
-              <block type="mlplay_is_key_pressed" id="bEB6K%4gs/N?Ca1fljR^">
-                <field name="TYPE">alpha</field>
-                <field name="KEY">W</field>
+              <block type="mlplay_game_status" id="ce8tQZVb8x/d+u%NcPAu">
+                <field name="STATUS">GAME_PASS</field>
               </block>
             </value>
           </block>
         </value>
         <statement name="DO0">
-          <block type="mlplay_return_mazecar_action" id="EsbLq/Don#i6zc+gBlJ6">
-            <value name="LEFT_RPM">
-              <shadow type="math_number" id="!hH)@~w3!a}*2#T?Rwhm">
-                <field name="NUM">50</field>
-              </shadow>
-            </value>
-            <value name="RIGHT_RPM">
-              <shadow type="math_number" id="zP/O-iD.X~@Fv)RS*vk`">
-                <field name="NUM">50</field>
-              </shadow>
-            </value>
-          </block>
-        </statement>
-        <value name="IF1">
-          <block type="logic_operation" id="$AQmG^3@Mw76iSk4qbvI">
-            <field name="OP">OR</field>
-            <value name="A">
-              <block type="mlplay_is_key_pressed" id="0$xH4CI7V6eAvVG4}GA]">
-                <field name="TYPE">arrow</field>
-                <field name="KEY">right</field>
+          <block type="controls_if" id="!/F;c5o|Sp5G`cX!_{D0">
+            <mutation elseif="3" else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_operation" id="BT/#.-Y.X0~S@?bt@[R_">
+                <field name="OP">OR</field>
+                <value name="A">
+                  <block type="mlplay_is_key_pressed" id="6{um%u*Fqt|j?PW9{o,r">
+                    <field name="TYPE">arrow</field>
+                    <field name="KEY">up</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="mlplay_is_key_pressed" id="bEB6K%4gs/N?Ca1fljR^">
+                    <field name="TYPE">alpha</field>
+                    <field name="KEY">W</field>
+                  </block>
+                </value>
               </block>
             </value>
-            <value name="B">
-              <block type="mlplay_is_key_pressed" id="=O;)BAg[Oh0j.o@OQWHU">
-                <field name="TYPE">alpha</field>
-                <field name="KEY">D</field>
+            <statement name="DO0">
+              <block type="lists_insertIndex" id=";yc.eJ2$9Gjg^?L`-J@P">
+                <mutation at="false"></mutation>
+                <field name="WHERE">LAST</field>
+                <value name="TO">
+                  <block type="lists_create_with" id="/_,!Qi8?t*Y`4V8wH$5Y">
+                    <mutation items="3"></mutation>
+                    <value name="ADD0">
+                      <block type="mlplay_get_info" id="U%X;SetQ6ilV%,J8s9uQ">
+                        <field name="FIELD">scene_info['R_sensor']</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="mlplay_get_info" id="mB5m)i_=@a@VRCn;}33}">
+                        <field name="FIELD">scene_info['F_sensor']</field>
+                      </block>
+                    </value>
+                    <value name="ADD2">
+                      <block type="mlplay_get_info" id="nvPqmM^ztDeU/!SXFvf=">
+                        <field name="FIELD">scene_info['L_sensor']</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="LIST">
+                  <block type="variables_get" id="6R4/cqQqY|lApnx)3WPJ">
+                    <field name="VAR" id="lt9$|[%lk-[$:ESi@Luw">超音波值</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="lists_insertIndex" id="[)QN::)V0YUvg=l6%ytH">
+                    <mutation at="false"></mutation>
+                    <field name="WHERE">LAST</field>
+                    <value name="TO">
+                      <block type="lists_create_with" id="Z$3=26GzaIK4Wh6F_L9?">
+                        <mutation items="2"></mutation>
+                        <value name="ADD0">
+                          <block type="math_number" id="(A}bD)53rjNf=t[B9vlA">
+                            <field name="NUM">50</field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="math_number" id="lc}=8=}{0v);kdfah~9L">
+                            <field name="NUM">50</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="LIST">
+                      <block type="variables_get" id="_YB!NcSGHCAxP0.{{o.T">
+                        <field name="VAR" id="tp.nGXSq_t]!7glSFnu7">馬達轉速</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="mlplay_return_mazecar_action" id="EsbLq/Don#i6zc+gBlJ6">
+                        <value name="LEFT_RPM">
+                          <shadow type="math_number" id="!hH)@~w3!a}*2#T?Rwhm">
+                            <field name="NUM">50</field>
+                          </shadow>
+                        </value>
+                        <value name="RIGHT_RPM">
+                          <shadow type="math_number" id="zP/O-iD.X~@Fv)RS*vk`">
+                            <field name="NUM">50</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF1">
+              <block type="logic_operation" id="$AQmG^3@Mw76iSk4qbvI">
+                <field name="OP">OR</field>
+                <value name="A">
+                  <block type="mlplay_is_key_pressed" id="0$xH4CI7V6eAvVG4}GA]">
+                    <field name="TYPE">arrow</field>
+                    <field name="KEY">right</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="mlplay_is_key_pressed" id="=O;)BAg[Oh0j.o@OQWHU">
+                    <field name="TYPE">alpha</field>
+                    <field name="KEY">D</field>
+                  </block>
+                </value>
               </block>
             </value>
-          </block>
-        </value>
-        <statement name="DO1">
-          <block type="mlplay_return_mazecar_action" id="A:EPkn}UIoBeKR(Lo3Zm">
-            <value name="LEFT_RPM">
-              <shadow type="math_number" id="fnH|!qotDm,GksV5z*w}">
-                <field name="NUM">50</field>
-              </shadow>
-            </value>
-            <value name="RIGHT_RPM">
-              <shadow type="math_number" id="Tp}|zV$Kv9pfg7o04dAg">
-                <field name="NUM">-50</field>
-              </shadow>
-            </value>
-          </block>
-        </statement>
-        <value name="IF2">
-          <block type="logic_operation" id="=P{!{ag`)+))=~kYV;)w">
-            <field name="OP">OR</field>
-            <value name="A">
-              <block type="mlplay_is_key_pressed" id="+IHm`%ZnXcI@;e|U`=]Z">
-                <field name="TYPE">arrow</field>
-                <field name="KEY">left</field>
+            <statement name="DO1">
+              <block type="lists_insertIndex" id="^89DM;|oId4;1)1O,aZn">
+                <mutation at="false"></mutation>
+                <field name="WHERE">LAST</field>
+                <value name="TO">
+                  <block type="lists_create_with" id="x+=FB:U*1OOcKHM/j,U1">
+                    <mutation items="3"></mutation>
+                    <value name="ADD0">
+                      <block type="mlplay_get_info" id="NN).D[N=]%#{HjuV7$Fv">
+                        <field name="FIELD">scene_info['R_sensor']</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="mlplay_get_info" id="pHx)5@Hu%;)bsrA:s.04">
+                        <field name="FIELD">scene_info['F_sensor']</field>
+                      </block>
+                    </value>
+                    <value name="ADD2">
+                      <block type="mlplay_get_info" id="b,;So0x7U$m]0sDLZniT">
+                        <field name="FIELD">scene_info['L_sensor']</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="LIST">
+                  <block type="variables_get" id="eC5y@GcGG~JficLjz#Sd">
+                    <field name="VAR" id="lt9$|[%lk-[$:ESi@Luw">超音波值</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="lists_insertIndex" id="3eZ~|*zZtV[eRgL[h+b}">
+                    <mutation at="false"></mutation>
+                    <field name="WHERE">LAST</field>
+                    <value name="TO">
+                      <block type="lists_create_with" id="jWk2G?j6hQd4rEAgb0G.">
+                        <mutation items="2"></mutation>
+                        <value name="ADD0">
+                          <block type="math_number" id="V?XL%MX%/kY%E?}_)uUz">
+                            <field name="NUM">50</field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="math_number" id="r:}~=`,Idxrgh7pVq1JS">
+                            <field name="NUM">-50</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="LIST">
+                      <block type="variables_get" id="eIxETiZ3FpfRKKcs=lTB">
+                        <field name="VAR" id="tp.nGXSq_t]!7glSFnu7">馬達轉速</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="mlplay_return_mazecar_action" id="A:EPkn}UIoBeKR(Lo3Zm">
+                        <value name="LEFT_RPM">
+                          <shadow type="math_number" id="fnH|!qotDm,GksV5z*w}">
+                            <field name="NUM">50</field>
+                          </shadow>
+                        </value>
+                        <value name="RIGHT_RPM">
+                          <shadow type="math_number" id="Tp}|zV$Kv9pfg7o04dAg">
+                            <field name="NUM">-50</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF2">
+              <block type="logic_operation" id="=P{!{ag`)+))=~kYV;)w">
+                <field name="OP">OR</field>
+                <value name="A">
+                  <block type="mlplay_is_key_pressed" id="+IHm`%ZnXcI@;e|U`=]Z">
+                    <field name="TYPE">arrow</field>
+                    <field name="KEY">left</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="mlplay_is_key_pressed" id="b!/$qKGEwOd/_Ih@)PW_">
+                    <field name="TYPE">alpha</field>
+                    <field name="KEY">A</field>
+                  </block>
+                </value>
               </block>
             </value>
-            <value name="B">
-              <block type="mlplay_is_key_pressed" id="b!/$qKGEwOd/_Ih@)PW_">
-                <field name="TYPE">alpha</field>
-                <field name="KEY">A</field>
+            <statement name="DO2">
+              <block type="lists_insertIndex" id="/n4.4v)3H;,[@B#`9Y+6">
+                <mutation at="false"></mutation>
+                <field name="WHERE">LAST</field>
+                <value name="TO">
+                  <block type="lists_create_with" id="WHcll7xdw_Gz.B1fd~Qz">
+                    <mutation items="3"></mutation>
+                    <value name="ADD0">
+                      <block type="mlplay_get_info" id="=0{DSspYk7bbd-u4Q`/}">
+                        <field name="FIELD">scene_info['R_sensor']</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="mlplay_get_info" id=":pW=hR#KtP5n$1`BNy~Y">
+                        <field name="FIELD">scene_info['F_sensor']</field>
+                      </block>
+                    </value>
+                    <value name="ADD2">
+                      <block type="mlplay_get_info" id="I9~c{Z/$q].c6uBd14i]">
+                        <field name="FIELD">scene_info['L_sensor']</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="LIST">
+                  <block type="variables_get" id="BB/MBZ1d5dQ.6EyPA=qf">
+                    <field name="VAR" id="lt9$|[%lk-[$:ESi@Luw">超音波值</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="lists_insertIndex" id="dlOhh?-0}:`;IDZ|uW{5">
+                    <mutation at="false"></mutation>
+                    <field name="WHERE">LAST</field>
+                    <value name="TO">
+                      <block type="lists_create_with" id="`#w^3}WSU9bD7bjxW^F(">
+                        <mutation items="2"></mutation>
+                        <value name="ADD0">
+                          <block type="math_number" id="QqGN!z#Q1u.lIULxDB:v">
+                            <field name="NUM">-50</field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="math_number" id="zT=k`n~j;DAByBJh#Ax=">
+                            <field name="NUM">50</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="LIST">
+                      <block type="variables_get" id="E-soFuNe@w61L5L.O;%?">
+                        <field name="VAR" id="tp.nGXSq_t]!7glSFnu7">馬達轉速</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="mlplay_return_mazecar_action" id="/h!rOTof38+ew/lK.=ZG">
+                        <value name="LEFT_RPM">
+                          <shadow type="math_number" id="-#/HJ$b*mDYGYE`RWz:H">
+                            <field name="NUM">-50</field>
+                          </shadow>
+                        </value>
+                        <value name="RIGHT_RPM">
+                          <shadow type="math_number" id="-#t/56e=cKG3y1l2oPo_">
+                            <field name="NUM">50</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF3">
+              <block type="logic_operation" id="g5E~3r3s==4)Gm?tn{g)">
+                <field name="OP">OR</field>
+                <value name="A">
+                  <block type="mlplay_is_key_pressed" id="]A-p7qPy]^EhCuAAfXd_">
+                    <field name="TYPE">arrow</field>
+                    <field name="KEY">down</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="mlplay_is_key_pressed" id="Ze.qMKuPne}#gjlzYqru">
+                    <field name="TYPE">alpha</field>
+                    <field name="KEY">S</field>
+                  </block>
+                </value>
               </block>
             </value>
-          </block>
-        </value>
-        <statement name="DO2">
-          <block type="mlplay_return_mazecar_action" id="/h!rOTof38+ew/lK.=ZG">
-            <value name="LEFT_RPM">
-              <shadow type="math_number" id="-#/HJ$b*mDYGYE`RWz:H">
-                <field name="NUM">-50</field>
-              </shadow>
-            </value>
-            <value name="RIGHT_RPM">
-              <shadow type="math_number" id="-#t/56e=cKG3y1l2oPo_">
-                <field name="NUM">50</field>
-              </shadow>
-            </value>
-          </block>
-        </statement>
-        <value name="IF3">
-          <block type="logic_operation" id="g5E~3r3s==4)Gm?tn{g)">
-            <field name="OP">OR</field>
-            <value name="A">
-              <block type="mlplay_is_key_pressed" id="]A-p7qPy]^EhCuAAfXd_">
-                <field name="TYPE">arrow</field>
-                <field name="KEY">down</field>
+            <statement name="DO3">
+              <block type="lists_insertIndex" id="*ZXOlcITz?f@KN}p|[K%">
+                <mutation at="false"></mutation>
+                <field name="WHERE">LAST</field>
+                <value name="TO">
+                  <block type="lists_create_with" id="y5A:C+:P~f$)+)p}[kov">
+                    <mutation items="3"></mutation>
+                    <value name="ADD0">
+                      <block type="mlplay_get_info" id="4=Qb4/:?,}1nA/2T:G`*">
+                        <field name="FIELD">scene_info['R_sensor']</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="mlplay_get_info" id="bl!,6CM_7*`*T2;I3}Wl">
+                        <field name="FIELD">scene_info['F_sensor']</field>
+                      </block>
+                    </value>
+                    <value name="ADD2">
+                      <block type="mlplay_get_info" id="{i14=(1;q^nv$YUh6x.s">
+                        <field name="FIELD">scene_info['L_sensor']</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="LIST">
+                  <block type="variables_get" id="|m;ntszN])iv^1t=WGqP">
+                    <field name="VAR" id="lt9$|[%lk-[$:ESi@Luw">超音波值</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="lists_insertIndex" id="^D,D]Q(/`dW{3EY{SX%X">
+                    <mutation at="false"></mutation>
+                    <field name="WHERE">LAST</field>
+                    <value name="TO">
+                      <block type="lists_create_with" id="{[;{Hw!fwN/$E`]+5Nbj">
+                        <mutation items="2"></mutation>
+                        <value name="ADD0">
+                          <block type="math_number" id="Cc?6-W+p#./rnQTBeKE4">
+                            <field name="NUM">-50</field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="math_number" id="jMa[qs;fHJS{=ka6ky7h">
+                            <field name="NUM">-50</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="LIST">
+                      <block type="variables_get" id="3?a0zW43]kwA[VsB(5Bv">
+                        <field name="VAR" id="tp.nGXSq_t]!7glSFnu7">馬達轉速</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="mlplay_return_mazecar_action" id="NrFwOYy(gB)1-*!/ddi(">
+                        <value name="LEFT_RPM">
+                          <shadow type="math_number" id="2,=;0:+gvb84IzNw/#)q">
+                            <field name="NUM">-50</field>
+                          </shadow>
+                        </value>
+                        <value name="RIGHT_RPM">
+                          <shadow type="math_number" id="V6]%LKYbV5vX~8;C40vr">
+                            <field name="NUM">-50</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
               </block>
-            </value>
-            <value name="B">
-              <block type="mlplay_is_key_pressed" id="Ze.qMKuPne}#gjlzYqru">
-                <field name="TYPE">alpha</field>
-                <field name="KEY">S</field>
+            </statement>
+            <statement name="ELSE">
+              <block type="lists_insertIndex" id="Lx,nYoS(nmZ8`TNU2@oU">
+                <mutation at="false"></mutation>
+                <field name="WHERE">LAST</field>
+                <value name="TO">
+                  <block type="lists_create_with" id="{zzc6oT4],3_r!/$,g23">
+                    <mutation items="3"></mutation>
+                    <value name="ADD0">
+                      <block type="mlplay_get_info" id="SDSCIG^dZ@(%AG1WgUK]">
+                        <field name="FIELD">scene_info['R_sensor']</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="mlplay_get_info" id="CQU/*}RJjq_bJLYY(dXY">
+                        <field name="FIELD">scene_info['F_sensor']</field>
+                      </block>
+                    </value>
+                    <value name="ADD2">
+                      <block type="mlplay_get_info" id="erD_iu42!poL2b+Lc_{Q">
+                        <field name="FIELD">scene_info['L_sensor']</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="LIST">
+                  <block type="variables_get" id="KWWJIJ-l5d@p=tBRqQvR">
+                    <field name="VAR" id="lt9$|[%lk-[$:ESi@Luw">超音波值</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="lists_insertIndex" id="h$p;-LL?X4KgKb([rl(x">
+                    <mutation at="false"></mutation>
+                    <field name="WHERE">LAST</field>
+                    <value name="TO">
+                      <block type="lists_create_with" id="G_W[yHGUb.d5ngB6A76O">
+                        <mutation items="2"></mutation>
+                        <value name="ADD0">
+                          <block type="math_number" id="4yvn/Xpd!.y{[w|H1SXd">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="math_number" id="LT7Y6+AqO),`@-;Tj;l*">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="LIST">
+                      <block type="variables_get" id="pZCX(o8@lA?mCa7b[~hb">
+                        <field name="VAR" id="tp.nGXSq_t]!7glSFnu7">馬達轉速</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="mlplay_return_mazecar_action" id="B;/xii/!_J5VvAD~}]@g">
+                        <value name="LEFT_RPM">
+                          <shadow type="math_number" id="k`gF9vOij#40eqpIP]{n">
+                            <field name="NUM">0</field>
+                          </shadow>
+                        </value>
+                        <value name="RIGHT_RPM">
+                          <shadow type="math_number" id="6Wsi!C`M@K)/!k;BWmnJ">
+                            <field name="NUM">0</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
               </block>
-            </value>
-          </block>
-        </value>
-        <statement name="DO3">
-          <block type="mlplay_return_mazecar_action" id="NrFwOYy(gB)1-*!/ddi(">
-            <value name="LEFT_RPM">
-              <shadow type="math_number" id="2,=;0:+gvb84IzNw/#)q">
-                <field name="NUM">-50</field>
-              </shadow>
-            </value>
-            <value name="RIGHT_RPM">
-              <shadow type="math_number" id="V6]%LKYbV5vX~8;C40vr">
-                <field name="NUM">-50</field>
-              </shadow>
-            </value>
+            </statement>
           </block>
         </statement>
         <statement name="ELSE">
-          <block type="mlplay_return_mazecar_action" id="B;/xii/!_J5VvAD~}]@g">
-            <value name="LEFT_RPM">
-              <shadow type="math_number" id="k`gF9vOij#40eqpIP]{n">
-                <field name="NUM">0</field>
-              </shadow>
+          <block type="file_save" id="]v$@oBV;Ta3;K}*v_lZ0">
+            <field name="FILENAME">feature</field>
+            <value name="OBJECT">
+              <block type="variables_get" id="s.74CqR#kKZ}clubudff">
+                <field name="VAR" id="lt9$|[%lk-[$:ESi@Luw">超音波值</field>
+              </block>
             </value>
-            <value name="RIGHT_RPM">
-              <shadow type="math_number" id="6Wsi!C`M@K)/!k;BWmnJ">
-                <field name="NUM">0</field>
-              </shadow>
-            </value>
+            <next>
+              <block type="file_save" id="Xd9pMWDAvx_X{w]z@2}w">
+                <field name="FILENAME">target</field>
+                <value name="OBJECT">
+                  <block type="variables_get" id="V$Otkv/`2dlEBA$ep*#j">
+                    <field name="VAR" id="tp.nGXSq_t]!7glSFnu7">馬達轉速</field>
+                  </block>
+                </value>
+              </block>
+            </next>
           </block>
         </statement>
       </block>

@@ -1,15 +1,15 @@
 <xml xmlns="https://developers.google.com/blockly/xml">
   <variables>
     <variable id="Es,MOK^RYJ_1;u2DfG-W">前方距離</variable>
-    <variable id="w:VS^|3qGMapmI@M!$nk">左側距離</variable>
     <variable id="69R+bVSBfx?.^Lo}~=Y=">右側距離</variable>
-    <variable id="S.JMR$J0Zf=I5WCU4!7/">超音波值</variable>
+    <variable id="w:VS^|3qGMapmI@M!$nk">左側距離</variable>
     <variable id="3mu%ock7yMNJRcn`_dyf">左輪轉速</variable>
-    <variable id="?YTvq{p1N?.L(C]LK;aZ">轉速值</variable>
+    <variable id="S.JMR$J0Zf=I5WCU4!7/">超音波值</variable>
     <variable id="}]+AasxtgeR%@4=.s}3V">右輪轉速</variable>
+    <variable id="?YTvq{p1N?.L(C]LK;aZ">轉速值</variable>
     <variable id=",^^{5fW]Lw0h5w;FD,ns">模型</variable>
   </variables>
-  <block type="mlplay_class" id="Z*lb-wWxg7v@ss05TP[c" x="537" y="188">
+  <block type="mlplay_class" id="Z*lb-wWxg7v@ss05TP[c" x="187" y="-137">
     <statement name="INIT">
       <block type="variables_set" id="=$e80s4CDNe%kR8ly%xA">
         <field name="VAR" id="Es,MOK^RYJ_1;u2DfG-W">前方距離</field>
@@ -68,7 +68,7 @@
                                 </value>
                                 <next>
                                   <block type="file_load" id="YPTd3qIM#E:UzD!=k]]O">
-                                    <field name="FILENAME">model</field>
+                                    <field name="FILENAME">模型</field>
                                     <value name="OBJECT">
                                       <block type="variables_get" id="z-o]?$igt{n1)didj(}=">
                                         <field name="VAR" id=",^^{5fW]Lw0h5w;FD,ns">模型</field>
@@ -124,13 +124,13 @@
                           <block type="lists_create_with" id="UuldhzPOCIjd2M}nd[@)">
                             <mutation items="3"></mutation>
                             <value name="ADD0">
-                              <block type="variables_get" id="FE;kH%:=tl[r,Ef4`cQ4">
-                                <field name="VAR" id="Es,MOK^RYJ_1;u2DfG-W">前方距離</field>
+                              <block type="variables_get" id="3kAiLT#B{l~eK^gT=kOu">
+                                <field name="VAR" id="w:VS^|3qGMapmI@M!$nk">左側距離</field>
                               </block>
                             </value>
                             <value name="ADD1">
-                              <block type="variables_get" id="3kAiLT#B{l~eK^gT=kOu">
-                                <field name="VAR" id="w:VS^|3qGMapmI@M!$nk">左側距離</field>
+                              <block type="variables_get" id="FE;kH%:=tl[r,Ef4`cQ4">
+                                <field name="VAR" id="Es,MOK^RYJ_1;u2DfG-W">前方距離</field>
                               </block>
                             </value>
                             <value name="ADD2">

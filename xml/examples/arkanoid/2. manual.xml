@@ -1,8 +1,10 @@
 <xml xmlns="https://developers.google.com/blockly/xml">
   <variables>
     <variable id="Byr4iZ7Psx3yv_1uOLCb">已經發球</variable>
+    <variable id="867=V|6m;]OmrU*P%CBl">行動</variable>
+    <variable id="dIR%e|L*|RH,=Y_31]H`">球坐標</variable>
   </variables>
-  <block type="mlplay_class" id="(S0`q*z*f5{ng]`fBLpg">
+  <block type="mlplay_class" id="(S0`q*z*f5{ng]`fBLpg" x="-63" y="-62">
     <statement name="INIT">
       <block type="variables_set" id="c))y.U{^yhe{fv::Gc^F">
         <field name="VAR" id="Byr4iZ7Psx3yv_1uOLCb">已經發球</field>
@@ -11,6 +13,26 @@
             <field name="BOOL">FALSE</field>
           </block>
         </value>
+        <next>
+          <block type="variables_set" id="/@fTwAW~2~r~8FB1#EIg">
+            <field name="VAR" id="867=V|6m;]OmrU*P%CBl">行動</field>
+            <value name="VALUE">
+              <block type="lists_create_with" id="B_)YYpP:*|5f;7XT~1:V">
+                <mutation items="0"></mutation>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="eYav7:CUsNOnc*bu18M|">
+                <field name="VAR" id="dIR%e|L*|RH,=Y_31]H`">球坐標</field>
+                <value name="VALUE">
+                  <block type="lists_create_with" id="}p8/5$J@Of$:..ry4$Mp">
+                    <mutation items="0"></mutation>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
       </block>
     </statement>
     <statement name="UPDATE">
@@ -51,8 +73,28 @@
           </block>
         </value>
         <statement name="DO0">
-          <block type="mlplay_return_action" id="8f`hsME:s`Vz6(=%b86$">
-            <field name="ACTION">RESET</field>
+          <block type="file_save" id="*xKP)_1k~WSHF)t)+!~b">
+            <field name="FILENAME">target</field>
+            <value name="OBJECT">
+              <block type="variables_get" id="O.C7G].NRI7+rWFeyKZH">
+                <field name="VAR" id="867=V|6m;]OmrU*P%CBl">行動</field>
+              </block>
+            </value>
+            <next>
+              <block type="file_save" id="3nz!D|b1SzTc+!{2-CSw">
+                <field name="FILENAME">feature</field>
+                <value name="OBJECT">
+                  <block type="variables_get" id="/A/K54Q$7_eI,]K=X6cI">
+                    <field name="VAR" id="dIR%e|L*|RH,=Y_31]H`">球坐標</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="mlplay_return_action" id="8f`hsME:s`Vz6(=%b86$">
+                    <field name="ACTION">RESET</field>
+                  </block>
+                </next>
+              </block>
+            </next>
           </block>
         </statement>
         <next>
@@ -132,8 +174,50 @@
                       </block>
                     </value>
                     <next>
-                      <block type="mlplay_return_action" id="Y2Q(IYbw?Hf?.wj%5t2/">
-                        <field name="ACTION">MOVE_LEFT</field>
+                      <block type="lists_insertIndex" id="vv@o*+IJf~Q|J~0=Bco#">
+                        <mutation at="false"></mutation>
+                        <field name="WHERE">LAST</field>
+                        <value name="TO">
+                          <block type="lists_create_with" id="`Ar2lh4:p:oKhfmz^N{+">
+                            <mutation items="2"></mutation>
+                            <value name="ADD0">
+                              <block type="mlplay_get_info" id=";b1C=b!Z.Z$ShOc|(xQl">
+                                <field name="FIELD">scene_info['ball'][0]</field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="mlplay_get_info" id="-TsD_F2k%c3P?Vao5LM?">
+                                <field name="FIELD">scene_info['ball'][1]</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="LIST">
+                          <block type="variables_get" id="=$e[=39]WGQ^%Fk+F3zu">
+                            <field name="VAR" id="dIR%e|L*|RH,=Y_31]H`">球坐標</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="lists_insertIndex" id="#oQzAhQX9I)h;TY5+D[L">
+                            <mutation at="false"></mutation>
+                            <field name="WHERE">LAST</field>
+                            <value name="TO">
+                              <block type="math_number" id="RpNs%bNgvMvIAd([?RJ4">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                            <value name="LIST">
+                              <block type="variables_get" id="@$`P4Wj;q2h*#[%HDWmY">
+                                <field name="VAR" id="867=V|6m;]OmrU*P%CBl">行動</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="mlplay_return_action" id="Y2Q(IYbw?Hf?.wj%5t2/">
+                                <field name="ACTION">MOVE_LEFT</field>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
                       </block>
                     </next>
                   </block>
@@ -153,8 +237,50 @@
                       </block>
                     </value>
                     <next>
-                      <block type="mlplay_return_action" id="RX-hS!NfYQ}AL4VLJrW:">
-                        <field name="ACTION">MOVE_RIGHT</field>
+                      <block type="lists_insertIndex" id="wsgNN5Lw_^jGlwCz.!.u">
+                        <mutation at="false"></mutation>
+                        <field name="WHERE">LAST</field>
+                        <value name="TO">
+                          <block type="lists_create_with" id="aYaeir3I7GSPy#oEN)]:">
+                            <mutation items="2"></mutation>
+                            <value name="ADD0">
+                              <block type="mlplay_get_info" id="H(?spf5nO)70%~mtqb{8">
+                                <field name="FIELD">scene_info['ball'][0]</field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="mlplay_get_info" id="9hccS6x1Lb[Db9,y|Q=E">
+                                <field name="FIELD">scene_info['ball'][1]</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="LIST">
+                          <block type="variables_get" id="OId|kuN{QxNBIdjnT5:2">
+                            <field name="VAR" id="dIR%e|L*|RH,=Y_31]H`">球坐標</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="lists_insertIndex" id="KO#!O^oL81Qg%4Ij_B7E">
+                            <mutation at="false"></mutation>
+                            <field name="WHERE">LAST</field>
+                            <value name="TO">
+                              <block type="math_number" id="xscu?h:`I;qTxWUhX)de">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="LIST">
+                              <block type="variables_get" id="7c5e3~q9(VJ:Q;Ti2PP=">
+                                <field name="VAR" id="867=V|6m;]OmrU*P%CBl">行動</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="mlplay_return_action" id="RX-hS!NfYQ}AL4VLJrW:">
+                                <field name="ACTION">MOVE_RIGHT</field>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
                       </block>
                     </next>
                   </block>

@@ -2,8 +2,10 @@
   <variables>
     <variable id="EWpA?kB2m|(U-dhXf:S9">已經發球</variable>
     <variable id="Hx_tmkxsaE/QweCL3EP2">玩家編號</variable>
+    <variable id="Il8)8BSfK%]Sv+@+}ikc">行動</variable>
+    <variable id="C*6-/~C]q[oHf#Kaf-G8">球坐標</variable>
   </variables>
-  <block type="mlplay_class" id="RUg|=sCltV/Pf]+(7O)_">
+  <block type="mlplay_class" id="RUg|=sCltV/Pf]+(7O)_" x="100" y="162">
     <statement name="INIT">
       <block type="variables_set" id="QeucbJiW.zl=Ratc$rvP">
         <field name="VAR" id="EWpA?kB2m|(U-dhXf:S9">已經發球</field>
@@ -20,6 +22,26 @@
                 <field name="FIELD">side</field>
               </block>
             </value>
+            <next>
+              <block type="variables_set" id=",5C+~(S2ls|YyzLQ|mzp">
+                <field name="VAR" id="Il8)8BSfK%]Sv+@+}ikc">行動</field>
+                <value name="VALUE">
+                  <block type="lists_create_with" id="hXhU5x,W8wbQR1AbtQB8">
+                    <mutation items="0"></mutation>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="qg8#),e`w2*iHmu:5WrL">
+                    <field name="VAR" id="C*6-/~C]q[oHf#Kaf-G8">球坐標</field>
+                    <value name="VALUE">
+                      <block type="lists_create_with" id="4K:$6._Pg{^jeZzh?eZu">
+                        <mutation items="0"></mutation>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
           </block>
         </next>
       </block>
@@ -60,8 +82,28 @@
               </block>
             </value>
             <statement name="DO0">
-              <block type="mlplay_return_action" id="#5ulUcX#g3F-%3do+C1$">
-                <field name="ACTION">RESET</field>
+              <block type="file_save" id="Pi_m-jQ`m}l5l+b^EWwB">
+                <field name="FILENAME">feature</field>
+                <value name="OBJECT">
+                  <block type="variables_get" id="%^wGi^10smJl?##?Y?QB">
+                    <field name="VAR" id="C*6-/~C]q[oHf#Kaf-G8">球坐標</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="file_save" id="hh5`H*m}82bZ+1M}*3k^">
+                    <field name="FILENAME">target</field>
+                    <value name="OBJECT">
+                      <block type="variables_get" id="0;LBu.?!Vh361qX@VJH:">
+                        <field name="VAR" id="Il8)8BSfK%]Sv+@+}ikc">行動</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="mlplay_return_action" id="#5ulUcX#g3F-%3do+C1$">
+                        <field name="ACTION">RESET</field>
+                      </block>
+                    </next>
+                  </block>
+                </next>
               </block>
             </statement>
             <next>
@@ -101,8 +143,50 @@
                       </block>
                     </value>
                     <statement name="DO0">
-                      <block type="mlplay_return_action" id="b=[-UbwhyZ8=ccKgH=d7">
-                        <field name="ACTION">MOVE_LEFT</field>
+                      <block type="lists_insertIndex" id="Ctb0{yKEYFF89L?1;Jh7">
+                        <mutation at="false"></mutation>
+                        <field name="WHERE">LAST</field>
+                        <value name="TO">
+                          <block type="lists_create_with" id="Lt6ecrH}.p]_U3-qyH$Z">
+                            <mutation items="2"></mutation>
+                            <value name="ADD0">
+                              <block type="mlplay_get_info" id="qTOJY;I%zmHAc2|*E/iJ">
+                                <field name="FIELD">scene_info['ball_speed'][0]</field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="mlplay_get_info" id="Y%mfV5:*@`TMXXZ!#M:o">
+                                <field name="FIELD">scene_info['ball_speed'][1]</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="LIST">
+                          <block type="variables_get" id="yRx@6v8h/u^i1:tS_Y%L">
+                            <field name="VAR" id="C*6-/~C]q[oHf#Kaf-G8">球坐標</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="lists_insertIndex" id="$H3y11h-1kP@TKsJyayD">
+                            <mutation at="false"></mutation>
+                            <field name="WHERE">LAST</field>
+                            <value name="TO">
+                              <block type="math_number" id="x{IeR$Z`yY3J,Mg+0j;:">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                            <value name="LIST">
+                              <block type="variables_get" id="bvXCffpg4`CHCiIBBZkJ">
+                                <field name="VAR" id="Il8)8BSfK%]Sv+@+}ikc">行動</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="mlplay_return_action" id="b=[-UbwhyZ8=ccKgH=d7">
+                                <field name="ACTION">MOVE_LEFT</field>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
                       </block>
                     </statement>
                     <value name="IF1">
@@ -112,8 +196,50 @@
                       </block>
                     </value>
                     <statement name="DO1">
-                      <block type="mlplay_return_action" id=":u=5wH#8hb=FdPtw+g(-">
-                        <field name="ACTION">MOVE_RIGHT</field>
+                      <block type="lists_insertIndex" id="r#qMa1W~Zx7uvnuk*SDp">
+                        <mutation at="false"></mutation>
+                        <field name="WHERE">LAST</field>
+                        <value name="TO">
+                          <block type="lists_create_with" id="G1=mq1=?d1)LFaEtw%1+">
+                            <mutation items="2"></mutation>
+                            <value name="ADD0">
+                              <block type="mlplay_get_info" id="aYv@FXeo?m]SBc_E9WiD">
+                                <field name="FIELD">scene_info['ball_speed'][0]</field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="mlplay_get_info" id="7VOR3d!0pJc.n0d)EU4|">
+                                <field name="FIELD">scene_info['ball_speed'][1]</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="LIST">
+                          <block type="variables_get" id="HWR$K!GH#9uzx~|l!n0m">
+                            <field name="VAR" id="C*6-/~C]q[oHf#Kaf-G8">球坐標</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="lists_insertIndex" id="W:n[6yPcr)9jupXAIL}|">
+                            <mutation at="false"></mutation>
+                            <field name="WHERE">LAST</field>
+                            <value name="TO">
+                              <block type="math_number" id="{!tA$fsy(7[)~Ep}Rm/K">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="LIST">
+                              <block type="variables_get" id=";,.]kdIZ.bzr`y33+;B4">
+                                <field name="VAR" id="Il8)8BSfK%]Sv+@+}ikc">行動</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="mlplay_return_action" id=":u=5wH#8hb=FdPtw+g(-">
+                                <field name="ACTION">MOVE_RIGHT</field>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
                       </block>
                     </statement>
                   </block>

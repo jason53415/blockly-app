@@ -1,22 +1,22 @@
 <xml xmlns="https://developers.google.com/blockly/xml">
   <variables>
-    <variable id="bZF*G~d.@0t%P5b4kn6Y">超音波值訓練資料</variable>
-    <variable id="*G.u3bGoAmejpXzu1}a*">轉速值訓練資料</variable>
+    <variable id="bZF*G~d.@0t%P5b4kn6Y">球坐標</variable>
+    <variable id="*G.u3bGoAmejpXzu1}a*">行動</variable>
     <variable id="ke3~%KA+=lNKhxN)^L1n">模型</variable>
   </variables>
-  <block type="file_load" id="U]n%ou~dt7|LSDvmQQN)" x="462" y="188">
-    <field name="FILENAME">超音波值訓練資料</field>
+  <block type="file_load" id="U]n%ou~dt7|LSDvmQQN)" x="113" y="113">
+    <field name="FILENAME">feature</field>
     <value name="OBJECT">
       <block type="variables_get" id="VA[b[)Qa-XguxSwmYo!8">
-        <field name="VAR" id="bZF*G~d.@0t%P5b4kn6Y">超音波值訓練資料</field>
+        <field name="VAR" id="bZF*G~d.@0t%P5b4kn6Y">球坐標</field>
       </block>
     </value>
     <next>
       <block type="file_load" id="=P.V2jz^{Lm39cfvdEM2">
-        <field name="FILENAME">轉速值訓練資料</field>
+        <field name="FILENAME">target</field>
         <value name="OBJECT">
           <block type="variables_get" id="i]PaQ{kpB!p^IT`;ekjZ">
-            <field name="VAR" id="*G.u3bGoAmejpXzu1}a*">轉速值訓練資料</field>
+            <field name="VAR" id="*G.u3bGoAmejpXzu1}a*">行動</field>
           </block>
         </value>
         <next>
@@ -24,21 +24,21 @@
             <field name="VAR" id="ke3~%KA+=lNKhxN)^L1n">模型</field>
             <value name="VALUE">
               <block type="model_create_regression" id="LmMmYjCd)?Je}R^tAmXu">
-                <field name="MODEL">KNeighborsRegressor</field>
-                <field name="PARAM_K">5</field>
-                <field name="PARAM_WEIGHTS">uniform</field>
+                <field name="MODEL">DecisionTreeRegressor</field>
+                <field name="PARAM_MAX_DEPTH">5</field>
+                <field name="PARAM_MIN_SAMPLES_SPLIT">2</field>
               </block>
             </value>
             <next>
               <block type="model_train" id="a7,$$,?-y6hL2Ug5$i%W">
                 <value name="X">
                   <block type="variables_get" id="3*Z4RswB4zD*b;e[L`N[">
-                    <field name="VAR" id="bZF*G~d.@0t%P5b4kn6Y">超音波值訓練資料</field>
+                    <field name="VAR" id="bZF*G~d.@0t%P5b4kn6Y">球坐標</field>
                   </block>
                 </value>
                 <value name="Y">
                   <block type="variables_get" id="ySOr;UtpTJLHM5U;qv)S">
-                    <field name="VAR" id="*G.u3bGoAmejpXzu1}a*">轉速值訓練資料</field>
+                    <field name="VAR" id="*G.u3bGoAmejpXzu1}a*">行動</field>
                   </block>
                 </value>
                 <value name="MODEL">
