@@ -621,7 +621,7 @@ Code.play = function() {
     args: ['-i', file_name, Code.GAME].concat(args)
   };
   $('#run-mlgame-dialog').modal('hide');
-  document.getElementById('content_console').textContent = '### Python program running ###\n';
+  document.getElementById('content_console').textContent = '> Python program running\n';
   $('#console-dialog').modal('show');
   window.pythonRun(options, "MLGame.py", file_path, ml_path);
 };
@@ -639,7 +639,7 @@ Code.execute = function() {
     args: []
   };
   $('#run-python-dialog').modal('hide');
-  document.getElementById('content_console').textContent = '### Python program running ###\n';
+  document.getElementById('content_console').textContent = '> Python program running\n';
   $('#console-dialog').modal('show');
   window.pythonRun(options, file_name, file_path, ml_path);
 };

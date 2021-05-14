@@ -27,7 +27,7 @@ window.pythonRun = function(options, script, tmp_file, cwd) {
     e.scrollTo(0, e.scrollHeight);
   });
   python.on('close', function () {
-    document.getElementById('content_console').textContent += '### Python program finished ###\n';
+    document.getElementById('content_console').textContent += '> Python program finished\n';
     var e = document.getElementById('console-body');
     e.scrollTo(0, e.scrollHeight);
     fs.unlinkSync(tmp_file);
