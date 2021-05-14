@@ -456,5 +456,10 @@
 	"MODEL_ACTIVATION_LOGISTIC": "邏輯函數",
 	"MODEL_ACTIVATION_TANH": "tanh 函數",
 	"MODEL_ACTIVATION_RELU": "ReLU 函數",
-	"MODEL_BATCH_SIZE": "批次大小"
+	"MODEL_BATCH_SIZE": "批次大小",
+	"MODEL_EVALUATE_CLASSIFICATION": "使用正確結果：%1 預測結果：%2 衡量分類結果的準確率",
+	"MODEL_EVALUATE_REGRESSION": "使用正確結果：%1 預測結果：%2 衡量迴歸結果的 %3",
+	"MODEL_EVALUATE_MAE": "平均絕對誤差",
+	"MODEL_EVALUATE_MSE": "平均平方誤差",
+	"MODEL_EVALUATE_TOOLTIP": "計算預測結果相對於正確結果的準確性。"
 }

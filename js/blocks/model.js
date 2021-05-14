@@ -49,6 +49,52 @@ Blockly.defineBlocksWithJsonArray([
     "output": null,
     "style": "model_blocks",
     "tooltip": "%{BKY_MODEL_PREDICT_TOOLTIP}"
+  },
+  // Evaluate the predicted classification results.
+  {
+    "type": "model_evaluate_classification",
+    "message0": "%{BKY_MODEL_EVALUATE_CLASSIFICATION}",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "TRUE"
+      },
+      {
+        "type": "input_value",
+        "name": "PRED"
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "style": "model_blocks",
+    "tooltip": "%{BKY_MODEL_TOOLTIP}"
+  },
+  // Evaluate the predicted regression results.
+  {
+    "type": "model_evaluate_regression",
+    "message0": "%{BKY_MODEL_EVALUATE_REGRESSION}",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "TRUE"
+      },
+      {
+        "type": "input_value",
+        "name": "PRED"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "FUNC",
+        "options": [
+          ["%{BKY_MODEL_EVALUATE_MAE}", "MAE"],
+          ["%{BKY_MODEL_EVALUATE_MSE}", "MSE"]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "style": "model_blocks",
+    "tooltip": "%{BKY_MODEL_TOOLTIP}"
   }
 ]);
 

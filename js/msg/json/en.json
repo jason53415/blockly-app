@@ -500,5 +500,10 @@
 	"MODEL_ACTIVATION_LOGISTIC": "logistic",
 	"MODEL_ACTIVATION_TANH": "tanh",
 	"MODEL_ACTIVATION_RELU": "ReLU",
-	"MODEL_BATCH_SIZE": "batch size"
+	"MODEL_BATCH_SIZE": "batch size",
+	"MODEL_EVALUATE_CLASSIFICATION": "use true results：%1 predicted results：%2 to evaluate accuracy of classification results",
+	"MODEL_EVALUATE_REGRESSION": "use true results：%1 predicted results：%2 to evaluate %3 of regression results",
+	"MODEL_EVALUATE_MAE": "mean absolute error",
+	"MODEL_EVALUATE_MSE": "mean squared error",
+	"MODEL_EVALUATE_TOOLTIP": "Evaluate the predicted results according to the true results."
 }
