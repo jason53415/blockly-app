@@ -1,6 +1,6 @@
 {
   "name": "blockly-app",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "A blockly application that can build AI to play games.",
   "main": "main.js",
   "scripts": {
@@ -63,7 +63,8 @@
         {
           "name": "@electron-forge/maker-zip",
           "platforms": [
-            "darwin"
+            "darwin",
+            "win32"
           ]
         },
         {
