@@ -5,7 +5,11 @@
     <variable id="*G.u3bGoAmejpXzu1}a*">模型</variable>
   </variables>
   <block type="file_load" id="U]n%ou~dt7|LSDvmQQN)" x="287" y="137">
-    <field name="FILENAME">feature</field>
+    <value name="FILENAME">
+      <block type="text" id="@nw80hg8{^3H|;{p#W|$">
+        <field name="TEXT">feature</field>
+      </block>
+    </value>
     <value name="OBJECT">
       <block type="variables_get" id="VA[b[)Qa-XguxSwmYo!8">
         <field name="VAR" id="bZF*G~d.@0t%P5b4kn6Y">我的車位置</field>
@@ -13,7 +17,11 @@
     </value>
     <next>
       <block type="file_load" id="=P.V2jz^{Lm39cfvdEM2">
-        <field name="FILENAME">target</field>
+        <value name="FILENAME">
+          <block type="text" id="RAU2t9;3qYsqxqQlHZ5Y">
+            <field name="TEXT">target</field>
+          </block>
+        </value>
         <value name="OBJECT">
           <block type="variables_get" id="i]PaQ{kpB!p^IT`;ekjZ">
             <field name="VAR" id="/)PNFtleyRXP{x%bfXAi">行動</field>
@@ -48,10 +56,14 @@
                 </value>
                 <next>
                   <block type="file_save" id="Z[M#NNI@Ew8y^VrB]_Y!">
-                    <field name="FILENAME">模型</field>
                     <value name="OBJECT">
                       <block type="variables_get" id="6F6$~RQ_^npf~;@O_Eo)">
                         <field name="VAR" id="*G.u3bGoAmejpXzu1}a*">模型</field>
+                      </block>
+                    </value>
+                    <value name="FILENAME">
+                      <block type="text" id="EE,R-L!E;,t`Yoz*`a(V">
+                        <field name="TEXT">模型</field>
                       </block>
                     </value>
                   </block>

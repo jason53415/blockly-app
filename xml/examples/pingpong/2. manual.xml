@@ -83,18 +83,26 @@
             </value>
             <statement name="DO0">
               <block type="file_save" id="Pi_m-jQ`m}l5l+b^EWwB">
-                <field name="FILENAME">feature</field>
                 <value name="OBJECT">
                   <block type="variables_get" id="%^wGi^10smJl?##?Y?QB">
                     <field name="VAR" id="C*6-/~C]q[oHf#Kaf-G8">球坐標</field>
                   </block>
                 </value>
+                <value name="FILENAME">
+                  <block type="text" id="/0yh8e;Ik%le|itBVZu]">
+                    <field name="TEXT">feature</field>
+                  </block>
+                </value>
                 <next>
                   <block type="file_save" id="hh5`H*m}82bZ+1M}*3k^">
-                    <field name="FILENAME">target</field>
                     <value name="OBJECT">
                       <block type="variables_get" id="0;LBu.?!Vh361qX@VJH:">
                         <field name="VAR" id="Il8)8BSfK%]Sv+@+}ikc">行動</field>
+                      </block>
+                    </value>
+                    <value name="FILENAME">
+                      <block type="text" id="Zir,B)P0mr`aIo1BqRw|">
+                        <field name="TEXT">target</field>
                       </block>
                     </value>
                     <next>

@@ -15,7 +15,11 @@
         </value>
         <next>
           <block type="file_load" id="w#5P`51-BN_k7J^ejrFV">
-            <field name="FILENAME">模型</field>
+            <value name="FILENAME">
+              <block type="text" id="NR2,v?SB|+UUK)|z;_Y2">
+                <field name="TEXT">模型</field>
+              </block>
+            </value>
             <value name="OBJECT">
               <block type="variables_get" id="/B5fsa$Vy/vP`yRs]5gL">
                 <field name="VAR" id="=50T,U7=/!k46o$5DiWM">model</field>

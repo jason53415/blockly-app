@@ -364,18 +364,26 @@
         </value>
         <statement name="DO1">
           <block type="file_save" id="`a?#}|YZ-}N5AK9nFCfm">
-            <field name="FILENAME">feature</field>
             <value name="OBJECT">
               <block type="variables_get" id="mq+ePdvTHwAH9fgBJT7H">
                 <field name="VAR" id="{^8ZIziEfWls5ZA1W,w|">我的位置</field>
               </block>
             </value>
+            <value name="FILENAME">
+              <block type="text" id="12UPGmmY`k}6#y/Aza7l">
+                <field name="TEXT">feature</field>
+              </block>
+            </value>
             <next>
               <block type="file_save" id="h;6$;fp,$:=d1u!=B_:b">
-                <field name="FILENAME">target</field>
                 <value name="OBJECT">
                   <block type="variables_get" id="[x}9kj[H)DdSCd3MDJb/">
                     <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">行動</field>
+                  </block>
+                </value>
+                <value name="FILENAME">
+                  <block type="text" id="=#R+e@+E^ChPubb[S_Zp">
+                    <field name="TEXT">target</field>
                   </block>
                 </value>
               </block>

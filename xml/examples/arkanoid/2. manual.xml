@@ -4,7 +4,7 @@
     <variable id="867=V|6m;]OmrU*P%CBl">行動</variable>
     <variable id="dIR%e|L*|RH,=Y_31]H`">球坐標</variable>
   </variables>
-  <block type="mlplay_class" id="(S0`q*z*f5{ng]`fBLpg" x="-63" y="-62">
+  <block type="mlplay_class" id="(S0`q*z*f5{ng]`fBLpg" x="238" y="13">
     <statement name="INIT">
       <block type="variables_set" id="c))y.U{^yhe{fv::Gc^F">
         <field name="VAR" id="Byr4iZ7Psx3yv_1uOLCb">已經發球</field>
@@ -74,18 +74,26 @@
         </value>
         <statement name="DO0">
           <block type="file_save" id="*xKP)_1k~WSHF)t)+!~b">
-            <field name="FILENAME">target</field>
             <value name="OBJECT">
               <block type="variables_get" id="O.C7G].NRI7+rWFeyKZH">
                 <field name="VAR" id="867=V|6m;]OmrU*P%CBl">行動</field>
               </block>
             </value>
+            <value name="FILENAME">
+              <block type="text" id="%a#XSx4?g:]R|fZ`6o=E">
+                <field name="TEXT">target</field>
+              </block>
+            </value>
             <next>
               <block type="file_save" id="3nz!D|b1SzTc+!{2-CSw">
-                <field name="FILENAME">feature</field>
                 <value name="OBJECT">
                   <block type="variables_get" id="/A/K54Q$7_eI,]K=X6cI">
                     <field name="VAR" id="dIR%e|L*|RH,=Y_31]H`">球坐標</field>
+                  </block>
+                </value>
+                <value name="FILENAME">
+                  <block type="text" id="XsFj;}t`#[W57;[}R~f9">
+                    <field name="TEXT">feature</field>
                   </block>
                 </value>
                 <next>

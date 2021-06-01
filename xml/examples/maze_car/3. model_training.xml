@@ -4,8 +4,12 @@
     <variable id="*G.u3bGoAmejpXzu1}a*">馬達轉速</variable>
     <variable id="ke3~%KA+=lNKhxN)^L1n">模型</variable>
   </variables>
-  <block type="file_load" id="U]n%ou~dt7|LSDvmQQN)" x="-137" y="187">
-    <field name="FILENAME">feature</field>
+  <block type="file_load" id="U]n%ou~dt7|LSDvmQQN)" x="138" y="212">
+    <value name="FILENAME">
+      <block type="text" id="[:.jTA/-hF2/,],0`czF">
+        <field name="TEXT">feature</field>
+      </block>
+    </value>
     <value name="OBJECT">
       <block type="variables_get" id="VA[b[)Qa-XguxSwmYo!8">
         <field name="VAR" id="bZF*G~d.@0t%P5b4kn6Y">超音波值</field>
@@ -13,7 +17,11 @@
     </value>
     <next>
       <block type="file_load" id="=P.V2jz^{Lm39cfvdEM2">
-        <field name="FILENAME">target</field>
+        <value name="FILENAME">
+          <block type="text" id="nxNhT)Qs0KdDeh5=-E|{">
+            <field name="TEXT">target</field>
+          </block>
+        </value>
         <value name="OBJECT">
           <block type="variables_get" id="i]PaQ{kpB!p^IT`;ekjZ">
             <field name="VAR" id="*G.u3bGoAmejpXzu1}a*">馬達轉速</field>
@@ -48,10 +56,14 @@
                 </value>
                 <next>
                   <block type="file_save" id="Z[M#NNI@Ew8y^VrB]_Y!">
-                    <field name="FILENAME">模型</field>
                     <value name="OBJECT">
                       <block type="variables_get" id="6F6$~RQ_^npf~;@O_Eo)">
                         <field name="VAR" id="ke3~%KA+=lNKhxN)^L1n">模型</field>
+                      </block>
+                    </value>
+                    <value name="FILENAME">
+                      <block type="text" id="te{Ek^bJgl~glNn80UeN">
+                        <field name="TEXT">模型</field>
                       </block>
                     </value>
                   </block>
