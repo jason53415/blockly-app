@@ -354,5 +354,8 @@ Blockly.Blocks['mlplay_is_key_pressed'] = {
         fields.insertFieldAt(1, new Blockly.FieldDropdown(this.alpha_keys_), "KEY");
         break;
     }
+  },
+  getDeveloperVariables: function() {
+    return ['_KEYBOARD_ON_PRESSED'];
   }
 };

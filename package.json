@@ -7,7 +7,7 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "make-py": "cd ./python && pyinstaller -y --hidden-import=pathlib --hidden-import=matplotlib.pyplot --hidden-import=keyboard --hidden-import=queue --hidden-import=pygame --hidden-import=multiprocessing --hidden-import=pickle --hidden-import=Box2D --hidden-import=sklearn.neighbors --hidden-import=sklearn.tree --hidden-import=sklearn.svm --hidden-import=sklearn.ensemble --hidden-import=sklearn.neural_network --hidden-import=sklearn.metrics --hidden-import=sklearn.utils._weight_vector --hidden-import=scipy.special.cython_special interpreter.py"
+    "make-py": "cd ./python && pyinstaller -y --hidden-import=pathlib --hidden-import=matplotlib.pyplot --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32 --hidden-import=pynput.keyboard._darwin --hidden-import=pynput.mouse._darwin --hidden-import=queue --hidden-import=pygame --hidden-import=multiprocessing --hidden-import=pickle --hidden-import=Box2D --hidden-import=sklearn.neighbors --hidden-import=sklearn.tree --hidden-import=sklearn.svm --hidden-import=sklearn.ensemble --hidden-import=sklearn.neural_network --hidden-import=sklearn.metrics --hidden-import=sklearn.utils._weight_vector --hidden-import=scipy.special.cython_special interpreter.py"
   },
   "repository": "https://github.com/jason53415/blockly-app",
   "keywords": [
