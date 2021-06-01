@@ -10,7 +10,8 @@ Blockly.Msg["MLPLAY_PLAYER_STATUS_OPTIONS"] = [
   ["%{BKY_MAZE_CAR_PLAYER_STATUS_6}", "player6"]
 ];
 Blockly.Msg["MLPLAY_GAME_STATUS_OPTIONS"] = [
-  ["%{BKY_MAZE_CAR_GAME_STATUS_1}", "GAME_PASS"]
+  ["%{BKY_MAZE_CAR_GAME_STATUS_1}", "GAME_PASS"],
+  ["%{BKY_MAZE_CAR_GAME_STATUS_2}", "GAME OVER"]
 ];
 Blockly.Msg["MLPLAY_GET_INFO_OPTIONS"] = [
   ["%{BKY_MAZE_CAR_SCENE_INFO_1}", "scene_info['frame']"],

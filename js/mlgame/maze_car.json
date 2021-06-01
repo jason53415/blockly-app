@@ -11,7 +11,8 @@
         ["player6", "6P", "6P"]
     ],
     "GAME_STATUS": [
-        ["GAME_PASS", "running", "進行中"]
+        ["GAME_PASS", "running", "進行中"],
+        ["GAME OVER", "over", "已結束"]
     ],
     "SCENE_INFO": [
         ["scene_info['frame']", "# frame", "# 幀數"],
