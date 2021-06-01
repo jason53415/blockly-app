@@ -56,6 +56,15 @@ Blockly.Python['lists_isEmpty'] = function(block) {
   return [code, Blockly.Python.ORDER_LOGICAL_NOT];
 };
 
+Blockly.Python['lists_extend'] = function(block) {
+  // List extending.
+  var varName = Blockly.Python.variableDB_.getName(block.getFieldValue('VAR'),
+      Blockly.VARIABLE_CATEGORY_NAME);
+  var list = Blockly.Python.valueToCode(block, 'LIST',
+      Blockly.Python.ORDER_NONE) || '[]';
+  return varName + '.extend(' + list + ')\n';
+};
+
 Blockly.Python['lists_indexOf'] = function(block) {
   // Find an item in the list.
   var item = Blockly.Python.valueToCode(block, 'FIND',

@@ -113,6 +113,28 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "style": "list_blocks",
     "tooltip": "%{BKY_LISTS_LENGTH_TOOLTIP}",
     "helpUrl": "%{BKY_LISTS_LENGTH_HELPURL}"
+  },
+  // Block for extending a list with another list
+  {
+    "type": "lists_extend",
+    "message0": "%{BKY_LISTS_EXTEND_TITLE}",
+    "args0": [
+      {
+        "type": "field_variable",
+        "name": "VAR",
+        "variable": "%{BKY_LISTS_EXTEND_VARIABLE}"
+      },
+      {
+        "type": "input_value",
+        "name": "LIST",
+        "check": "Array"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "list_blocks",
+    "tooltip": "%{BKY_LISTS_EXTEND_TOOLTIP}"
   }
 ]);  // END JSON EXTRACT (Do not delete this comment.)
 
