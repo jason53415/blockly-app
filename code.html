@@ -492,12 +492,22 @@
                 <field name="VAR">{objVariable}</field>
               </block>
             </value>
+            <value name="FILENAME">
+              <shadow type="text">
+                <field name="TEXT">{filename}</field>
+              </shadow>
+            </value>
           </block>
           <block type="file_load">
             <value name="OBJECT">
               <block type="variables_get">
                 <field name="VAR">{objVariable}</field>
               </block>
+            </value>
+            <value name="FILENAME">
+              <shadow type="text">
+                <field name="TEXT">{filename}</field>
+              </shadow>
             </value>
           </block>
         </category>

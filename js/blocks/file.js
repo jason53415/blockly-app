@@ -17,12 +17,12 @@ Blockly.defineBlocksWithJsonArray([
         "name": "OBJECT"
       },
       {
-        "type": "field_input",
+        "type": "input_value",
         "name": "FILENAME",
-        "text": "%{BKY_FILE_DEFAULT_NAME}",
-        "spellcheck": false
+        "check": "String"
       }
     ],
+    "inputsInline": true,
     "previousStatement": null,
     "nextStatement": null,
     "style": "file_blocks",
@@ -38,12 +38,12 @@ Blockly.defineBlocksWithJsonArray([
         "name": "OBJECT"
       },
       {
-        "type": "field_input",
+        "type": "input_value",
         "name": "FILENAME",
-        "text": "%{BKY_FILE_DEFAULT_NAME}",
-        "spellcheck": false
+        "check": "String"
       }
     ],
+    "inputsInline": true,
     "previousStatement": null,
     "nextStatement": null,
     "style": "file_blocks",

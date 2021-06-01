@@ -33,6 +33,7 @@ var MSG = {
   dictVariable: "dictionary",
   modelVariable: "model",
   objVariable: "object",
+  filename: "filename",
   httpRequestError: "There was a problem with the request.",
   linkAlert: "Share your blocks with this link:\n\n%1",
   hashError: "Sorry, '%1' doesn't correspond with any saved program.",

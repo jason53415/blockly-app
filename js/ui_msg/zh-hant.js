@@ -33,6 +33,7 @@ var MSG = {
   dictVariable: "字典",
   modelVariable: "模型",
   objVariable: "物件",
+  filename: "檔案名稱",
   httpRequestError: "命令出現錯誤。",
   linkAlert: "透過此連結分享您的積木組：\n\n%1",
   hashError: "對不起，「%1」並未對應任何已保存的程式。",
