@@ -52,7 +52,7 @@ Blockly.Blocks['mlplay_class'] = {
         blockNum++;
       }
     }
-    if (blockNum > 1) {
+    if (blockNum > 1 && !this.isInFlyout) {
       this.setWarningText(Blockly.Msg['MLPLAY_CLASS_WARNING']);
       this.setEnabled(false);
     } else {
