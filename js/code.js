@@ -470,6 +470,8 @@ Code.init = function() {
 
   onresize();
   Blockly.svgResize(Code.workspace);
+  onresize();
+  Blockly.svgResize(Code.workspace);
 
   // Lazy-load the syntax-highlighting.
   window.setTimeout(Code.importPrettify, 1);
