@@ -13,6 +13,7 @@ var MSG = {
   runMLGame: "Play game",
   runPython: "Run Python file",
   openXml: "Open XML file",
+  openPython: "Open Python file",
   downloadXml: "Save XML file",
   en: "English",
   zh_hant: "Chinese",

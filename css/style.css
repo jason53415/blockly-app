@@ -182,3 +182,10 @@ pre.content {
   width: calc(100vw - (40px));
   max-width: 800px;
 }
+
+.CodeMirror {
+  font-family: Consolas, "Courier New", monospace;
+  border: 1px solid #ccc;
+  height: 100%;
+  width: 100%;
+}

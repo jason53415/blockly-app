@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>PAIA</title>
+    <link rel="stylesheet" href="node_modules/vex-js/dist/css/vex.css" />
+    <link rel="stylesheet" href="node_modules/vex-js/dist/css/vex-theme-os.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="node_modules/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="node_modules/codemirror/addon/fold/foldgutter.css">
+    <link rel="stylesheet" href="node_modules/codemirror/addon/hint/show-hint.css">
+    <link rel="stylesheet" href="node_modules/codemirror/addon/lint/lint.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="node_modules/github-markdown-css/github-markdown.css">
+    <script src="node_modules/codemirror/lib/codemirror.js"></script>
+    <script src="node_modules/codemirror/mode/python/python.js"></script>
+    <script src="node_modules/codemirror/addon/selection/active-line.js"></script>
+    <script src="node_modules/codemirror/addon/hint/show-hint.js"></script>
+    <script src="node_modules/codemirror/addon/fold/foldcode.js"></script>
+    <script src="node_modules/codemirror/addon/fold/foldgutter.js"></script>
+    <script src="node_modules/codemirror/addon/fold/brace-fold.js"></script>
+    <script src="node_modules/codemirror/addon/fold/indent-fold.js"></script>
+    <script src="node_modules/codemirror/addon/fold/comment-fold.js"></script>
+    <script src="node_modules/codemirror/addon/edit/closebrackets.js"></script>
+    <script src="node_modules/codemirror/addon/edit/matchbrackets.js"></script>
+    <script>window.jQuery = window.$ = require('jquery');</script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="node_modules/vex-js/dist/js/vex.combined.min.js"></script>
+    <script>vex.defaultOptions.className = 'vex-theme-os'</script>
+    <script src="renderer.js"></script>
+    <script src="js/code_python.js"></script>
+  </head>
+  <body>
+    <!-- Game play dialog -->
+    <div class="modal fade" id="run-mlgame-dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="game-play-title">開始玩</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form name="play" action="javascript:Code.play()">
+            <div class="modal-body my-2" id="game-args"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
+                <button type="submit" class="btn btn-outline-primary">確定</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Console dialog -->
+    <div class="modal fade" id="console-dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="console-title">Console</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id='console-body'>
+            <pre id="content_console" class="prettyprint lang-sh" style="border: 0"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Readme dialog -->
+    <div class="modal fade" id="readme-dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" style="max-width: 1200px;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="readme-title">Readme</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body markdown-body" id='readme-body'></div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid" id="blockly_container">
+      <ul class="nav nav-tabs"  role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="tab_python" data-toggle="tab" role="tab"
+              aria-controls="profile" aria-selected="false">Python</a>
+        </li>
+        <li class="nav-item ml-auto" role="presentation" id="tab_title"> 
+            <a class="navbar-brand ml-auto" tabindex="-1" aria-disabled="true">
+              <span id='game_name'>...</span> - <span id='file_name'>ml_play</span>
+            </a>
+        </li>
+        <li class="nav-item dropdown ml-auto">
+          <a class="nav-link dropdown-toggle" id="tab_example" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">範例程式</a>
+          <div class="dropdown-menu dropdown-menu-right" id="examples"></div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="tab_lang" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">語言</a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="#" id="zh-hant">中文</a>
+            <a class="dropdown-item" href="#" id="en">英文</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="tab_option" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">選項</a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="#" id="show_readme">遊戲說明</a>
+            <a class="dropdown-item" href="#" id="run_mlgame">玩遊戲</a>
+            <a class="dropdown-item" href="#" id="run_python">執行程式</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" id='open_python'>開啟 XML 檔</a>
+            <a class="dropdown-item" href="#" id='download_python'>儲存 Python 檔</a>
+            <a class="dropdown-item" href="#" id='open_path'>開啟檔案存取路徑</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="index.html" id="discard">選擇遊戲</a>
+          </div>
+        </li>
+      </ul>
+      <div class="tab-content" id="tab_content">
+        <textarea id="content_python" class="content"></textarea>
+      </div>
+    </div>
+  </body>
+</html>
