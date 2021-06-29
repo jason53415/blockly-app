@@ -116,7 +116,7 @@ Blockly.Python['model_predict'] = function(block) {
   Blockly.Python.ORDER_NONE) || 'None';
   var x = Blockly.Python.valueToCode(block, 'X',
   Blockly.Python.ORDER_NONE) || '[]';
-  var code = model + '.predict(' + x + ')\n';
+  var code = model + '.predict(' + x + ')';
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
@@ -127,7 +127,7 @@ Blockly.Python['model_evaluate_classification'] = function(block) {
   Blockly.Python.ORDER_NONE) || '[]';
   var y_pred = Blockly.Python.valueToCode(block, 'PRED',
   Blockly.Python.ORDER_NONE) || '[]';
-  var code = 'metrics.accuracy_score(' + y_true + ', ' + y_pred + ')\n';
+  var code = 'metrics.accuracy_score(' + y_true + ', ' + y_pred + ')';
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
@@ -141,10 +141,10 @@ Blockly.Python['model_evaluate_regression'] = function(block) {
   var func = block.getFieldValue('FUNC');
   switch(func) {
     case 'MAE':
-      var code = 'metrics.mean_absolute_error(' + y_true + ', ' + y_pred + ')\n';
+      var code = 'metrics.mean_absolute_error(' + y_true + ', ' + y_pred + ')';
       break
     case 'MSE':
-      var code = 'metrics.mean_squared_error(' + y_true + ', ' + y_pred + ')\n';
+      var code = 'metrics.mean_squared_error(' + y_true + ', ' + y_pred + ')';
       break
   }
   return [code, Blockly.Python.ORDER_ATOMIC];
