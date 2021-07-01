@@ -17,7 +17,8 @@ window.pythonRun = function(options, script, tmp_file, cwd) {
   process.chdir(cwd);
   let python = new PythonShell(script, options);
   python.on('message', function (message) {
-    document.getElementById('content_console').textContent += message + '\n';
+    var full_message = document.getElementById('content_console').textContent + message + '\n';
+    document.getElementById('content_console').textContent = full_message.slice(-5000);
     var e = document.getElementById('console-body');
     e.scrollTo(0, e.scrollHeight);
   });
