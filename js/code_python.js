@@ -270,6 +270,8 @@ Code.play = function() {
   var ml_path = path.join(__dirname, 'MLGame', 'games', Code.GAME, 'ml');
   var file_path = path.join(ml_path, file_name);
   window.writeFile(file_path, python_text);
+  var fps_element = document.getElementById('game_fps');
+  var fps = fps_element.options[fps_element.selectedIndex].getAttribute("value");
   var args_elements = document.getElementById('game-args').getElementsByClassName('game-arg');
   var args = [];
   for (var i = 0; i < args_elements.length; i++) {
@@ -280,7 +282,7 @@ Code.play = function() {
     mode: 'text',
     pythonPath: path.join(__dirname, 'python', 'dist', 'interpreter', 'interpreter'),
     scriptPath: path.join(__dirname, 'MLGame'),
-    args: ['-i', file_name, Code.GAME].concat(args)
+    args: ['-i', file_name, '-f', fps, Code.GAME].concat(args)
   };
   $('#run-mlgame-dialog').modal('hide');
   document.getElementById('content_console').textContent = '> Python program running\n';
