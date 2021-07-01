@@ -18,7 +18,9 @@ Blockly.Msg["MLPLAY_GET_INFO_OPTIONS"] = [
   ["%{BKY_MAZE_CAR_SCENE_INFO_2}", "scene_info['status']"],
   ["%{BKY_MAZE_CAR_SCENE_INFO_3}", "scene_info['R_sensor']"],
   ["%{BKY_MAZE_CAR_SCENE_INFO_4}", "scene_info['F_sensor']"],
-  ["%{BKY_MAZE_CAR_SCENE_INFO_5}", "scene_info['L_sensor']"]
+  ["%{BKY_MAZE_CAR_SCENE_INFO_5}", "scene_info['L_sensor']"],
+  ["%{BKY_MAZE_CAR_SCENE_INFO_6}", "scene_info['R_T_sensor']"],
+  ["%{BKY_MAZE_CAR_SCENE_INFO_7}", "scene_info['L_T_sensor']"]
 ];
 Blockly.Msg["MLPLAY_GET_CONSTANT_OPTIONS"] = [
   ["%{BKY_MAZE_CAR_CONSTANT_1}", "1/0"],

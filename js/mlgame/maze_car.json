@@ -19,7 +19,9 @@
         ["scene_info['status']", "game status", "遊戲狀態"],
         ["scene_info['R_sensor']", "right sensor value", "右超聲波值"],
         ["scene_info['F_sensor']", "front sensor value", "前超聲波值"],
-        ["scene_info['L_sensor']", "left sensor value", "左超聲波值"]
+        ["scene_info['L_sensor']", "left sensor value", "左超聲波值"],
+        ["scene_info['R_T_sensor']", "right front sensor value", "右前超聲波值"],
+        ["scene_info['L_T_sensor']", "left front sensor value", "左前超聲波值"]
     ],
     "CONSTANT": [
         [0, "left boundary", "左邊界"],
