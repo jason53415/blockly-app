@@ -8,10 +8,10 @@ Pre-built installers of latest release can be downloaded from the links below.
 
 #### Windows 64-bit
 
-[![](https://img.shields.io/badge/EXE%20Installer-v1.1.10-red)](https://github.com/jason53415/blockly-app/releases/download/v1.1.10/blockly-app-1.1.10.Setup.exe) [![](https://img.shields.io/badge/ZIP%20Portable-v1.1.10-red)](https://github.com/jason53415/blockly-app/releases/download/v1.1.10/blockly-app-win32-x64-1.1.10.zip)
+[![](https://img.shields.io/badge/EXE%20Installer-v1.2.0-red)](https://github.com/jason53415/blockly-app/releases/download/v1.2.0/blockly-app-1.2.0.Setup.exe) [![](https://img.shields.io/badge/ZIP%20Portable-v1.2.0-red)](https://github.com/jason53415/blockly-app/releases/download/v1.2.0/blockly-app-win32-x64-1.2.0.zip)
 #### macOS 64-bit
 
-[![](https://img.shields.io/badge/DMG%20Installer-v1.1.10-blue)](https://github.com/jason53415/blockly-app/releases/download/v1.1.10/blockly-app-1.1.10.dmg) [![](https://img.shields.io/badge/ZIP%20Portable-v1.1.10-blue)](https://github.com/jason53415/blockly-app/releases/download/v1.1.10/blockly-app-darwin-x64-1.1.10.zip) 
+[![](https://img.shields.io/badge/DMG%20Installer-v1.2.0-blue)](https://github.com/jason53415/blockly-app/releases/download/v1.2.0/blockly-app-1.2.0.dmg) [![](https://img.shields.io/badge/ZIP%20Portable-v1.2.0-blue)](https://github.com/jason53415/blockly-app/releases/download/v1.2.0/blockly-app-darwin-x64-1.2.0.zip) 
 
 ## Building
 
