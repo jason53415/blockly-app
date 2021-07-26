@@ -15,17 +15,13 @@ Blockly.Msg["MLPLAY_GAME_STATUS_OPTIONS"] = [
 Blockly.Msg["MLPLAY_GET_INFO_OPTIONS"] = [
   ["%{BKY_RACINGCAR_SCENE_INFO_1}", "scene_info['frame']"],
   ["%{BKY_RACINGCAR_SCENE_INFO_2}", "scene_info['status']"],
-  ["%{BKY_RACINGCAR_SCENE_INFO_3}", "scene_info['line'][0]"],
-  ["%{BKY_RACINGCAR_SCENE_INFO_4}", "scene_info['line'][1]"],
-  ["%{BKY_RACINGCAR_SCENE_INFO_5}", "scene_info['computer_cars']"],
-  ["%{BKY_RACINGCAR_SCENE_INFO_6}", "scene_info['player_0_pos']"],
-  ["%{BKY_RACINGCAR_SCENE_INFO_7}", "scene_info['player_1_pos']"],
-  ["%{BKY_RACINGCAR_SCENE_INFO_8}", "scene_info['player_2_pos']"],
-  ["%{BKY_RACINGCAR_SCENE_INFO_9}", "scene_info['player_3_pos']"],
-  ["%{BKY_RACINGCAR_SCENE_INFO_10}", "scene_info['cars_pos']"],
-  ["%{BKY_RACINGCAR_SCENE_INFO_11}", "scene_info['lanes']"],
-  ["%{BKY_RACINGCAR_SCENE_INFO_12}", "scene_info['game_result']"],
-  ["%{BKY_RACINGCAR_SCENE_INFO_13}", "scene_info['coins']"]
+  ["%{BKY_RACINGCAR_SCENE_INFO_3}", "scene_info['x']"],
+  ["%{BKY_RACINGCAR_SCENE_INFO_4}", "scene_info['y']"],
+  ["%{BKY_RACINGCAR_SCENE_INFO_5}", "scene_info['distance']"],
+  ["%{BKY_RACINGCAR_SCENE_INFO_6}", "scene_info['velocity']"],
+  ["%{BKY_RACINGCAR_SCENE_INFO_7}", "scene_info['cars_pos']"],
+  ["%{BKY_RACINGCAR_SCENE_INFO_8}", "scene_info['coin']"],
+  ["%{BKY_RACINGCAR_SCENE_INFO_9}", "scene_info['coin_num']"]
 ];
 Blockly.Msg["MLPLAY_GET_CONSTANT_OPTIONS"] = [
   ["%{BKY_RACINGCAR_CONSTANT_1}", "1/0"],

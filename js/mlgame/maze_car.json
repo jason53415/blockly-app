@@ -17,6 +17,10 @@
     "SCENE_INFO": [
         ["scene_info['frame']", "# frame", "# 幀數"],
         ["scene_info['status']", "game status", "遊戲狀態"],
+        ["scene_info['x']", "x position of the car", "車子的 x 座標"],
+        ["scene_info['y']", "y position of the car", "車子的 y 座標"],
+        ["scene_info['angle']", "angle of the car", "車子的角度"],
+        ["scene_info['end']", "end position", "終點位置"],
         ["scene_info['R_sensor']", "right sensor value", "右超聲波值"],
         ["scene_info['F_sensor']", "front sensor value", "前超聲波值"],
         ["scene_info['L_sensor']", "left sensor value", "左超聲波值"],

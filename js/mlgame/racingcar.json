@@ -16,17 +16,13 @@
     "SCENE_INFO": [
         ["scene_info['frame']", "# frame", "# 幀數"],
         ["scene_info['status']", "game status", "遊戲狀態"],
-        ["scene_info['line'][0]", "position of start line", "起點線位置"],
-        ["scene_info['line'][1]", "position of end line", "終點線位置"],
-        ["scene_info['computer_cars']", "positions of computer cars", "警車的位置"],
-        ["scene_info['player_0_pos']", "1P position", "1P 的位置"],
-        ["scene_info['player_1_pos']", "2P position", "2P 的位置"],
-        ["scene_info['player_2_pos']", "3P position", "3P 的位置"],
-        ["scene_info['player_3_pos']", "4P position", "4P 的位置"],
+        ["scene_info['x']", "x position of player", "玩家的 x 座標"],
+        ["scene_info['y']", "y position of player", "玩家的 y 座標"],
+        ["scene_info['distance']", "advanced distance of player", "玩家前進的距離"],
+        ["scene_info['velocity']", "velocity", "玩家的速度"],
         ["scene_info['cars_pos']", "positions of all cars", "所有車子的位置"],
-        ["scene_info['lanes']", "positions of lanes", "車道的位置"],
-        ["scene_info['game_result']", "game result", "遊戲結果"],
-        ["scene_info['coins']", "positions of coins", "金幣的位置"]
+        ["scene_info['coin']", "positions of coins", "金幣的位置"],
+        ["scene_info['coin_num']", "number of coins obtained", "獲得的金幣數量"]
     ],
     "CONSTANT": [
         [0, "left boundary", "左邊界"],

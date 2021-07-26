@@ -2,9 +2,10 @@
   <variables>
     <variable id="XL$*h)tY?h^-S+9XiU[a">玩家編號</variable>
     <variable id="Y4#pjd?0_ye+2+r!%*JH">其他車輛位置</variable>
-    <variable id="Flw.vlQKGBTyh^mvy9,J">車輛位置</variable>
+    <variable id="Flw.vlQKGBTyh^mvy9,J">車輛 x 座標</variable>
+    <variable id="zx%|im8Z`l%l6V94hWN,">車輛 y 座標</variable>
   </variables>
-  <block type="mlplay_class" id=".q?9PX,j0gIuBm?GGdZ6">
+  <block type="mlplay_class" id=".q?9PX,j0gIuBm?GGdZ6" x="488" y="263">
     <statement name="INIT">
       <block type="variables_set" id="Xh54;3F9:+xUcBHbBXSh">
         <field name="VAR" id="XL$*h)tY?h^-S+9XiU[a">玩家編號</field>
@@ -43,108 +44,23 @@
           </block>
         </value>
         <statement name="DO0">
-          <block type="controls_if" id="#.Zns*2x*UzfBkFt%PmL">
-            <mutation elseif="3"></mutation>
-            <value name="IF0">
-              <block type="logic_compare" id="Yis|S]!MMm`xTeOum+Yj">
-                <field name="OP">EQ</field>
-                <value name="A">
-                  <block type="variables_get" id="n~m_5V4;9$-A~-cZA)[E">
-                    <field name="VAR" id="XL$*h)tY?h^-S+9XiU[a">玩家編號</field>
-                  </block>
-                </value>
-                <value name="B">
-                  <block type="mlplay_player_status" id="czuc6[B(pZxl3ZE_-Xu0">
-                    <field name="STATUS">player1</field>
-                  </block>
-                </value>
+          <block type="variables_set" id="Z]FDut$Z.uO7}#JSVKS?">
+            <field name="VAR" id="Flw.vlQKGBTyh^mvy9,J">車輛 x 座標</field>
+            <value name="VALUE">
+              <block type="mlplay_get_info" id="=)=3^lycSQrdi8@QTMYo">
+                <field name="FIELD">scene_info['x']</field>
               </block>
             </value>
-            <statement name="DO0">
-              <block type="variables_set" id="Z]FDut$Z.uO7}#JSVKS?">
-                <field name="VAR" id="Flw.vlQKGBTyh^mvy9,J">車輛位置</field>
+            <next>
+              <block type="variables_set" id="U%KAx5nHnIbBY9qN_my}">
+                <field name="VAR" id="zx%|im8Z`l%l6V94hWN,">車輛 y 座標</field>
                 <value name="VALUE">
-                  <block type="mlplay_get_info" id="=)=3^lycSQrdi8@QTMYo">
-                    <field name="FIELD">scene_info['player_0_pos']</field>
+                  <block type="mlplay_get_info" id="hA!V*X~sX5|:Nh~$x]@h">
+                    <field name="FIELD">scene_info['y']</field>
                   </block>
                 </value>
               </block>
-            </statement>
-            <value name="IF1">
-              <block type="logic_compare" id="Kl3|~==,/wB~[k::v{1a">
-                <field name="OP">EQ</field>
-                <value name="A">
-                  <block type="variables_get" id="M|OEqLR%XHSLSND~9oYO">
-                    <field name="VAR" id="XL$*h)tY?h^-S+9XiU[a">玩家編號</field>
-                  </block>
-                </value>
-                <value name="B">
-                  <block type="mlplay_player_status" id="bS*wM_u6K1AGaE=QY_S0">
-                    <field name="STATUS">player2</field>
-                  </block>
-                </value>
-              </block>
-            </value>
-            <statement name="DO1">
-              <block type="variables_set" id="GJD!`5lwb}i_sC4h3BQ:">
-                <field name="VAR" id="XL$*h)tY?h^-S+9XiU[a">玩家編號</field>
-                <value name="VALUE">
-                  <block type="mlplay_get_info" id="qx5kXkc*xHVw%g$bsrTl">
-                    <field name="FIELD">scene_info['player_1_pos']</field>
-                  </block>
-                </value>
-              </block>
-            </statement>
-            <value name="IF2">
-              <block type="logic_compare" id="O2@(-yft%}x^SSQZFG6:">
-                <field name="OP">EQ</field>
-                <value name="A">
-                  <block type="variables_get" id=":FTy8Af1Oap?n#;FhvTs">
-                    <field name="VAR" id="XL$*h)tY?h^-S+9XiU[a">玩家編號</field>
-                  </block>
-                </value>
-                <value name="B">
-                  <block type="mlplay_player_status" id="-[H)6PeD%:;t7/L;a5sk">
-                    <field name="STATUS">player3</field>
-                  </block>
-                </value>
-              </block>
-            </value>
-            <statement name="DO2">
-              <block type="variables_set" id="MH)gA(pa=JS^85wm4gmD">
-                <field name="VAR" id="XL$*h)tY?h^-S+9XiU[a">玩家編號</field>
-                <value name="VALUE">
-                  <block type="mlplay_get_info" id="4ad=NSSa0c2zUtQo6wlT">
-                    <field name="FIELD">scene_info['player_2_pos']</field>
-                  </block>
-                </value>
-              </block>
-            </statement>
-            <value name="IF3">
-              <block type="logic_compare" id="2pCv~UX#,*qN}Ia35d#!">
-                <field name="OP">EQ</field>
-                <value name="A">
-                  <block type="variables_get" id=",k%ieGxeCyBejk692{f9">
-                    <field name="VAR" id="XL$*h)tY?h^-S+9XiU[a">玩家編號</field>
-                  </block>
-                </value>
-                <value name="B">
-                  <block type="mlplay_player_status" id="FdLviOs7Ofl+lFcMe^7_">
-                    <field name="STATUS">player4</field>
-                  </block>
-                </value>
-              </block>
-            </value>
-            <statement name="DO3">
-              <block type="variables_set" id="LU[e^(@)cN7^z@Al=lwj">
-                <field name="VAR" id="XL$*h)tY?h^-S+9XiU[a">玩家編號</field>
-                <value name="VALUE">
-                  <block type="mlplay_get_info" id="^N]@P]l($U5uWHMJg?t.">
-                    <field name="FIELD">scene_info['player_3_pos']</field>
-                  </block>
-                </value>
-              </block>
-            </statement>
+            </next>
           </block>
         </statement>
         <next>

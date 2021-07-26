@@ -18,7 +18,7 @@ class MLPlay:
         Generate the command according to the received scene information
         """
         if scene_info["status"] == "RUNNING":
-            self.car_pos = scene_info["player_" + str(self.player_no) + "_pos"]
+            self.car_pos = (scene_info["x"], scene_info["y"])
 
         self.other_cars_position = scene_info["cars_pos"]
         if scene_info.__contains__("coin"):
