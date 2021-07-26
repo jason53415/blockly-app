@@ -403,8 +403,10 @@ Code.init = function() {
        rtl: rtl,
        toolbox: toolboxXml,
        zoom:
-           {controls: true,
-            wheel: true}
+          {controls: true,
+           wheel: true},
+       move:
+          {wheel: true}
       });
 
   // Add to reserved word list: Local variables in execution environment (runJS)
