@@ -981,9 +981,6 @@ Blockly.Blocks['procedures_ifreturn'] = {
    * @this {Blockly.Block}
    */
   init: function() {
-    this.appendValueInput('CONDITION')
-        .setCheck('Boolean')
-        .appendField(Blockly.Msg['CONTROLS_IF_MSG_IF']);
     this.appendValueInput('VALUE')
         .appendField(Blockly.Msg['PROCEDURES_DEFRETURN_RETURN']);
     this.setInputsInline(true);

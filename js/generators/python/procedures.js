@@ -112,16 +112,11 @@ Blockly.Python['procedures_callnoreturn'] = function(block) {
 };
 
 Blockly.Python['procedures_ifreturn'] = function(block) {
-  // Conditionally return value from a procedure.
-  var condition = Blockly.Python.valueToCode(block, 'CONDITION',
-      Blockly.Python.ORDER_NONE) || 'False';
-  var code = 'if ' + condition + ':\n';
+  var code = '';
   if (Blockly.Python.STATEMENT_SUFFIX) {
     // Inject any statement suffix here since the regular one at the end
     // will not get executed if the return is triggered.
-    code += Blockly.Python.prefixLines(
-        Blockly.Python.injectId(Blockly.Python.STATEMENT_SUFFIX, block),
-        Blockly.Python.INDENT);
+    code += Blockly.Python.injectId(Blockly.Python.STATEMENT_SUFFIX, block);
   }
   if (block.hasReturnValue_) {
     var value = Blockly.Python.valueToCode(block, 'VALUE',
