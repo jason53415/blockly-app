@@ -138,6 +138,23 @@ Code.init = function() {
   var html_path = path.join(__dirname, 'html', Code.GAME.toLowerCase() + '.html');
   var html_text = window.readFile(html_path);
   $('#game-args').append(html_text);
+  $(".modal-header").on("mousedown", function(mousedownEvt) {
+    var $draggable = $(this);
+    var x = mousedownEvt.pageX - $draggable.offset().left,
+        y = mousedownEvt.pageY - $draggable.offset().top;
+    $("body").on("mousemove.draggable", function(mousemoveEvt) {
+        $draggable.closest(".modal-dialog").offset({
+            "left": mousemoveEvt.pageX - x,
+            "top": mousemoveEvt.pageY - y
+        });
+    });
+    $("body").one("mouseup", function() {
+        $("body").off("mousemove.draggable");
+    });
+    $draggable.closest(".modal").one("bs.modal.hide", function() {
+        $("body").off("mousemove.draggable");
+    });
+  });
 
   Code.initLanguage();
 

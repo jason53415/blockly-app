@@ -178,6 +178,10 @@ pre.content {
   overflow-y: auto;
 }
 
+.modal-header {
+  cursor: move;
+}
+
 .card {
   width: calc(100vw - (40px));
   max-width: 800px;
