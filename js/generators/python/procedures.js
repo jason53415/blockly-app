@@ -121,9 +121,9 @@ Blockly.Python['procedures_ifreturn'] = function(block) {
   if (block.hasReturnValue_) {
     var value = Blockly.Python.valueToCode(block, 'VALUE',
         Blockly.Python.ORDER_NONE) || 'None';
-    code += Blockly.Python.INDENT + 'return ' + value + '\n';
+    code += 'return ' + value + '\n';
   } else {
-    code += Blockly.Python.INDENT + 'return\n';
+    code += 'return\n';
   }
   return code;
 };
