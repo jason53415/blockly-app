@@ -8,14 +8,14 @@ Pre-built installers of latest release can be downloaded from the links below.
 
 #### Windows 64-bit
 
-[![](https://img.shields.io/badge/EXE%20Installer-v1.2.1-red)](https://github.com/jason53415/blockly-app/releases/download/v1.2.1/blockly-app-1.2.1.Setup.exe) [![](https://img.shields.io/badge/ZIP%20Portable-v1.2.1-red)](https://github.com/jason53415/blockly-app/releases/download/v1.2.1/blockly-app-win32-x64-1.2.1.zip)
+[![](https://img.shields.io/badge/EXE%20Installer-v1.2.2-red)](https://github.com/jason53415/blockly-app/releases/download/v1.2.2/blockly-app-1.2.2.Setup.exe) [![](https://img.shields.io/badge/ZIP%20Portable-v1.2.2-red)](https://github.com/jason53415/blockly-app/releases/download/v1.2.2/blockly-app-win32-x64-1.2.2.zip)
 #### macOS 64-bit
 
-[![](https://img.shields.io/badge/DMG%20Installer-v1.2.1-blue)](https://github.com/jason53415/blockly-app/releases/download/v1.2.1/blockly-app-1.2.1.dmg) [![](https://img.shields.io/badge/ZIP%20Portable-v1.2.1-blue)](https://github.com/jason53415/blockly-app/releases/download/v1.2.1/blockly-app-darwin-x64-1.2.1.zip)
+[![](https://img.shields.io/badge/DMG%20Installer-v1.2.2-blue)](https://github.com/jason53415/blockly-app/releases/download/v1.2.2/blockly-app-1.2.2.dmg) [![](https://img.shields.io/badge/ZIP%20Portable-v1.2.2-blue)](https://github.com/jason53415/blockly-app/releases/download/v1.2.2/blockly-app-darwin-x64-1.2.2.zip)
 
 #### Linux 64-bit
 
-[![](https://img.shields.io/badge/DEB%20Installer-v1.2.1-brightgreen)](https://github.com/jason53415/blockly-app/releases/download/v1.2.1/blockly-app-1.2.1.deb) [![](https://img.shields.io/badge/RPM%20Installer-v1.2.1-brightgreen)](https://github.com/jason53415/blockly-app/releases/download/v1.2.1/blockly-app-1.2.1.rpm) 
+[![](https://img.shields.io/badge/DEB%20Installer-v1.2.2-brightgreen)](https://github.com/jason53415/blockly-app/releases/download/v1.2.2/blockly-app-1.2.2.deb) [![](https://img.shields.io/badge/RPM%20Installer-v1.2.2-brightgreen)](https://github.com/jason53415/blockly-app/releases/download/v1.2.2/blockly-app-1.2.2.rpm) 
 
 ## Building
 
