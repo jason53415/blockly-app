@@ -26,13 +26,7 @@
   </div>
   <div class="form-group">
     <label for="">車子總數量</label>
-    <select class="form-control game-arg" name="game_type">
-      <option value="1">1</option>
-      <option value="5">5</option>
-      <option value="10">10</option>
-      <option selected value="20">20</option>
-      <option value="30">30</option>
-    </select>
+    <input type="number" class="form-control game-arg", id="car_num", min="0", max="50", step="1", value="20", data-bind="value:replyNumber">
   </div>
   <div class="form-group">
     <label for="">聲音</label>

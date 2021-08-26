@@ -635,7 +635,11 @@ Code.play = function() {
   var args = [];
   for (var i = 0; i < args_elements.length; i++) {
     var e = args_elements[i];
+    if (e.tagName == "SELECT") {
     args.push(e.options[e.selectedIndex].getAttribute("value"));
+    } else {
+      args.push(e.getAttribute("value"));
+    }
   }
   var options = {
     mode: 'text',
