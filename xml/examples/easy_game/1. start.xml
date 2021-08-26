@@ -1,0 +1,116 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="Y`aT@/+i*iQ60RG8gt9k">隨機數</variable>
+  </variables>
+  <block type="mlplay_class" id="wFWCh5gNy3iD70p5:1!." x="138" y="263">
+    <statement name="UPDATE">
+      <block type="variables_set" id="mK#?XglI|Po;OG!fqCt-">
+        <field name="VAR" id="Y`aT@/+i*iQ60RG8gt9k">隨機數</field>
+        <value name="VALUE">
+          <block type="math_random_int" id="r8WR1tVhMTof`x|Z96I!">
+            <value name="FROM">
+              <shadow type="math_number" id="LaFVrAS904^3$CkiI-||">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <value name="TO">
+              <shadow type="math_number" id="hSUFloGb+#~@6~EL`c2@">
+                <field name="NUM">5</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if" id="[||lG9ff:wUF9un:|V(V">
+            <mutation elseif="3" else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="vuhvZk#j|ZHI@E36V2wX">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="L@%|=*x4=sEvIPtg72!^">
+                    <field name="VAR" id="Y`aT@/+i*iQ60RG8gt9k">隨機數</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id=")8?9*c:yxL]4NrK$115F">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="mlplay_return_action" id="wxdC!rih+jcwNq{:M@Uv">
+                <field name="ACTION">['UP']</field>
+              </block>
+            </statement>
+            <value name="IF1">
+              <block type="logic_compare" id="7}rOK{V()**TBYOg{8,+">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="FI#Yx~ArZl$swY[+7nhh">
+                    <field name="VAR" id="Y`aT@/+i*iQ60RG8gt9k">隨機數</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="f9!{ZU[*DS7#RgB.Z()n">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO1">
+              <block type="mlplay_return_action" id="G~6MoTP:.xkKb5?k,C|J">
+                <field name="ACTION">['DOWN']</field>
+              </block>
+            </statement>
+            <value name="IF2">
+              <block type="logic_compare" id="~$O=|z*AdJP,xJ7)_%a?">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="i0vHc5J%^bHkHE1tam6n">
+                    <field name="VAR" id="Y`aT@/+i*iQ60RG8gt9k">隨機數</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="BvQ0=|b~pzBMd^w/SR(t">
+                    <field name="NUM">3</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO2">
+              <block type="mlplay_return_action" id="1;}t8=,Az[}~F)/-x1=O">
+                <field name="ACTION">['LEFT']</field>
+              </block>
+            </statement>
+            <value name="IF3">
+              <block type="logic_compare" id="f^Qc5DP@`:3u!/E{+Y9(">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get" id="sb#lSB0tLbj:2y8*|BCa">
+                    <field name="VAR" id="Y`aT@/+i*iQ60RG8gt9k">隨機數</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="1Z8;,mZjnkCnmPuMjG~M">
+                    <field name="NUM">4</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO3">
+              <block type="mlplay_return_action" id="[Z6t()~0K@%wZv9,b`A_">
+                <field name="ACTION">['RIGHT']</field>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="mlplay_return_action" id="BamCo|O%Ej89iID`(a:F">
+                <field name="ACTION">['NONE']</field>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
