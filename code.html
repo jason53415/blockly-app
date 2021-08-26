@@ -465,6 +465,25 @@
             </value>
           </block>
         </category>
+        <category name="%{BKY_CATNDARRAYS}" colour="%{BKY_NDARRAY_HUE}">
+          <block type="ndarrays_create_with">
+            <mutation items="0"></mutation>
+          </block>
+          <block type="ndarrays_create_with">
+            <value name="FILL">
+              <shadow type="math_number">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="ndarrays_create_with_list">
+            <value name="LIST">
+              <block type="variables_get">
+                <field name="VAR">{listVariable}</field>
+              </block>
+            </value>
+          </block>
+        </category>
         <category name="%{BKY_CATMODEL}" colour="%{BKY_MODEL_HUE}">
           <block type="model_create_classification"></block>
           <block type="model_create_regression"></block>

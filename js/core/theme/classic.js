@@ -29,19 +29,22 @@ Blockly.Themes.Classic.defaultBlockStyles = {
     "colourPrimary": "140"
   },
   "math_blocks": {
-    "colourPrimary": "180"
+    "colourPrimary": "170"
   },
   "text_blocks": {
-    "colourPrimary": "200"
+    "colourPrimary": "190"
   },
   "list_blocks": {
-    "colourPrimary": "220"
+    "colourPrimary": "210"
   },
   "dict_blocks": {
-    "colourPrimary": "240"
+    "colourPrimary": "230"
+  },
+  "ndarray_blocks": {
+    "colourPrimary": "250"
   },
   "model_blocks": {
-    "colourPrimary": "260"
+    "colourPrimary": "270"
   },
   "variable_blocks": {
     "colourPrimary": "290"

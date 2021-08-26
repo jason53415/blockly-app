@@ -23,6 +23,7 @@ var MSG = {
   catText: "文字",
   catLists: "清單",
   catDicts: "字典",
+  catNdarrays: "多維陣列",
   catColour: "顏色",
   catFile: "檔案",
   catPlot: "繪圖",

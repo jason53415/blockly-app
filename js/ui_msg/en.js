@@ -23,6 +23,7 @@ var MSG = {
   catText: "Text",
   catLists: "Lists",
   catDicts: "Dictionaries",
+  catNdarrays: "Ndarrays",
   catColour: "Colour",
   catVariables: "Variables",
   catFunctions: "Functions",
