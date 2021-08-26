@@ -477,6 +477,40 @@
           </block>
           <block type="model_evaluate_classification"></block>
           <block type="model_evaluate_regression"></block>
+          <block type="model_train_test_split">
+            <value name="TEST_SIZE">
+              <shadow type="math_number">
+                <field name="NUM">0.25</field>
+              </shadow>
+            </value>
+            <value name="TRAIN_DATA">
+              <block type="variables_get">
+                <field name="VAR">{trainData}</field>
+              </block>
+            </value>
+            <value name="TEST_DATA">
+              <block type="variables_get">
+                <field name="VAR">{testData}</field>
+              </block>
+            </value>
+            <value name="TRAIN_TARGET">
+              <block type="variables_get">
+                <field name="VAR">{trainTarget}</field>
+              </block>
+            </value>
+            <value name="TEST_TARGET">
+              <block type="variables_get">
+                <field name="VAR">{testTarget}</field>
+              </block>
+            </value>
+          </block>
+          <block type="model_k_fold">
+            <value name="K">
+              <shadow type="math_number">
+                <field name="NUM">5</field>
+              </shadow>
+            </value>
+          </block>
         </category>
         <sep></sep>
         <category name="%{BKY_CATVARIABLES}" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>

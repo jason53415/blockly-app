@@ -505,8 +505,16 @@
 	"MODEL_ACTIVATION_RELU": "ReLU",
 	"MODEL_BATCH_SIZE": "batch size",
 	"MODEL_EVALUATE_CLASSIFICATION": "use true results：%1 predicted results：%2 to evaluate accuracy of classification results",
+	"MODEL_EVALUATE_CLASSIFICATION_TOOLTIP": "Calculate the proportion of the predicted classification results that is the same as the true results.",
 	"MODEL_EVALUATE_REGRESSION": "use true results：%1 predicted results：%2 to evaluate %3 of regression results",
+	"MODEL_EVALUATE_REGRESSION_TOOLTIP": "Calculate the mean absolute error or mean squared error between the predicted regression results and the true results.",
 	"MODEL_EVALUATE_MAE": "mean absolute error",
 	"MODEL_EVALUATE_MSE": "mean squared error",
-	"MODEL_EVALUATE_TOOLTIP": "Evaluate the predicted results according to the true results."
+	"MODEL_EVALUATE_TOOLTIP": "Evaluate the predicted results according to the true results.",
+	"MODEL_TRAIN_TEST_SPLIT": "split training data: %1 target values: %2 into %5, %6, %7, %8 with the ratio of %3 %4",
+	"MODEL_TRAIN_TEST_SPLIT_TOOLTIP": "Split a certain proportion from the data randomly or sequentially as the test data. This block will return a list of length 4, including the split training data, testing data, training targets, and testing targets.",
+	"MODEL_K_FOLD": "split training data: %1 target values: %2 for %3-fold cross-validation %4",
+	"MODEL_K_FOLD_TOOLTIP": "Perform k-fold cross-validation on the training data randomly or sequentially. This block will return k lists of length 4, including training data, testing data, training targets, and testing targets for each cross-validation.",
+	"MODEL_SHUFFLE": "after shuffling",
+	"MODEL_NO_SHUFFLE": "without shuffling"
 }

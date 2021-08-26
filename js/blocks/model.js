@@ -67,7 +67,7 @@ Blockly.defineBlocksWithJsonArray([
     "inputsInline": true,
     "output": null,
     "style": "model_blocks",
-    "tooltip": "%{BKY_MODEL_TOOLTIP}"
+    "tooltip": "%{BKY_MODEL_EVALUATE_CLASSIFICATION_TOOLTIP}"
   },
   // Evaluate the predicted regression results.
   {
@@ -94,7 +94,86 @@ Blockly.defineBlocksWithJsonArray([
     "inputsInline": true,
     "output": null,
     "style": "model_blocks",
-    "tooltip": "%{BKY_MODEL_TOOLTIP}"
+    "tooltip": "%{BKY_MODEL_EVALUATE_REGRESSION_TOOLTIP}"
+  },
+  {
+    "type": "model_train_test_split",
+    "message0": "%{BKY_MODEL_TRAIN_TEST_SPLIT}",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "X"
+      },
+      {
+        "type": "input_value",
+        "name": "Y"
+      },
+      {
+        "type": "input_value",
+        "name": "TEST_SIZE",
+        "check": "Number"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "SHUFFLE",
+        "options": [
+          ["%{BKY_MODEL_SHUFFLE}", "True"],
+          ["%{BKY_MODEL_NO_SHUFFLE}", "False"]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "TRAIN_DATA"
+      },
+      {
+        "type": "input_value",
+        "name": "TEST_DATA"
+      },
+      {
+        "type": "input_value",
+        "name": "TRAIN_TARGET"
+      },
+      {
+        "type": "input_value",
+        "name": "TEST_TARGET"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "style": "model_blocks",
+    "tooltip": "%{BKY_MODEL_TRAIN_TEST_SPLIT_TOOLTIP}"
+  },
+  {
+    "type": "model_k_fold",
+    "message0": "%{BKY_MODEL_K_FOLD}",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "X"
+      },
+      {
+        "type": "input_value",
+        "name": "Y"
+      },
+      {
+        "type": "input_value",
+        "name": "K",
+        "check": "Number"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "SHUFFLE",
+        "options": [
+          ["%{BKY_MODEL_NO_SHUFFLE}", "False"],
+          ["%{BKY_MODEL_SHUFFLE}", "True"]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "style": "model_blocks",
+    "tooltip": "%{BKY_MODEL_K_FOLD_TOOLTIP}"
   }
 ]);
 
