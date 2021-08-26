@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>PAIA</title>
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script>window.jQuery = window.$ = require('jquery');</script>
@@ -50,6 +51,7 @@
             <p class="card-text">來一場競速的排位賽吧！駕駛著自己的車子享受在馬路上狂飆的快感吧！注意前方與左右來車來妨礙你，閃避其他車子的步步逼近，同時還要小心速度太慢被遠遠甩在後頭喔！關卡還有金幣競爭模式，在競速之餘盡可能的去搶奪路上散落的金幣，衝向終點成為最終贏家。</p>
             <a href="code.html?game=RacingCar" class="btn btn-primary">積木</a>
             <a href="python.html?game=RacingCar" class="btn btn-primary">Python</a>
+            <a onclick="git_download('direct:https://github.com/yen900611/RacingCar.git', 'MLGame/games/RacingCar', this)" class="btn btn-primary float-right"><i class="bi bi-download"></i> 下載 / 更新</a>
           </div>
         </div>
       </div>
@@ -65,9 +67,33 @@
             <p class="card-text">在錯綜復雜的棋盤迷宮中，如何讓你的自走車突破重圍，走到出口，而不會迷失在其之中。本遊戲也提供多元的關卡，隨著遊戲難度提升，迷宮的牆壁可是會移動，考驗各位玩家如何再多變的環境下，依然能夠逃出迷宮。</p>
             <a href="code.html?game=Maze_Car" class="btn btn-primary">積木</a>
             <a href="python.html?game=Maze_Car" class="btn btn-primary">Python</a>
+            <a onclick="git_download('direct:https://github.com/yen900611/Maze_Car.git', 'MLGame/games/Maze_Car', this)" class="btn btn-primary float-right"><i class="bi bi-download"></i> 下載 / 更新</a>
           </div>
         </div>
       </div>
     </div>
   </body>
 </html>
+
+<script>
+  function git_download(url, destination, button) {
+    if (window.confirm('下載前會清除此遊戲資料夾下的所有檔案，確定執行？')) {
+      button.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> 下載 / 更新';
+      document.querySelectorAll('a.btn').forEach(e => {
+        e.classList.add("disabled");
+      });
+      var path = require('path');
+      var fs = require('fs');
+      destination = path.join(__dirname, destination);
+      fs.rmdirSync(destination, { recursive: true });
+      var download = require('download-git-repo');
+      download(url, destination, { clone: true }, function (err) {
+        button.innerHTML = '<i class="bi bi-download"></i> 下載 / 更新';
+        document.querySelectorAll('a.btn').forEach(e => {
+          e.classList.remove("disabled");
+        });
+        window.alert(err ? '發生錯誤' : '下載成功');
+      });
+    };
+  };
+</script>
