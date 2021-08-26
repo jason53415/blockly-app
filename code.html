@@ -544,6 +544,30 @@
               </shadow>
             </value>
           </block>
+          <block type="file_csv_save">
+            <value name="OBJECT">
+              <block type="variables_get">
+                <field name="VAR">{objVariable}</field>
+              </block>
+            </value>
+            <value name="FILENAME">
+              <shadow type="text">
+                <field name="TEXT">{filename}</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="file_csv_load">
+            <value name="OBJECT">
+              <block type="variables_get">
+                <field name="VAR">{objVariable}</field>
+              </block>
+            </value>
+            <value name="FILENAME">
+              <shadow type="text">
+                <field name="TEXT">{filename}</field>
+              </shadow>
+            </value>
+          </block>
         </category>
         <sep></sep>
         <!-- MLGame category -->
