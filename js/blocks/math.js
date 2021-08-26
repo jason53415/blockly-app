@@ -385,6 +385,31 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "style": "math_blocks",
     "tooltip": "%{BKY_MATH_ATAN2_TOOLTIP}",
     "helpUrl": "%{BKY_MATH_ATAN2_HELPURL}"
+  },
+
+  // Block for converting str to int or float.
+  {
+    "type": "math_convert",
+    "message0": "%{BKY_MATH_CONVERT_TITLE}",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "STR",
+        "check": "String"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "TYPE",
+        "options": [
+          ["%{BKY_MATH_INT}", "int"],
+          ["%{BKY_MATH_FLOAT}", "float"]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "output": "Number",
+    "style": "math_blocks",
+    "tooltip": "%{BKY_MATH_CONVERT_TOOLTIP}"
   }
 ]);  // END JSON EXTRACT (Do not delete this comment.)
 

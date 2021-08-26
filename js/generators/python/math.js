@@ -383,3 +383,11 @@ Blockly.Python['math_atan2'] = function(block) {
   return ['math.atan2(' + argument1 + ', ' + argument0 + ') / math.pi * 180',
       Blockly.Python.ORDER_MULTIPLICATIVE];
 };
+
+Blockly.Python['math_convert'] = function(block) {
+  // Converting str to int or float
+  var str = Blockly.Python.valueToCode(block, 'STR',
+      Blockly.Python.ORDER_NONE) || '0';
+  var type = block.getFieldValue('TYPE');
+  return [type + '(' + str + ')', Blockly.Python.ORDER_MULTIPLICATIVE];
+};
