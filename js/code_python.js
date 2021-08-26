@@ -173,6 +173,13 @@ Code.init = function() {
     styleActiveLine: true
   });
 
+  Code.editor.setOption("extraKeys", {
+    Tab: function(cm) {
+      var spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
+      cm.replaceSelection(spaces);
+    }
+  });
+
   Code.loadExample('1. start');
 
   var example_dir = path.join(__dirname, 'python', 'examples', Code.GAME.toLowerCase());
