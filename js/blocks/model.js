@@ -86,6 +86,7 @@ Blockly.defineBlocksWithJsonArray([
         "type": "field_dropdown",
         "name": "FUNC",
         "options": [
+          ["%{BKY_MODEL_EVALUATE_R2}", "R2"],
           ["%{BKY_MODEL_EVALUATE_MAE}", "MAE"],
           ["%{BKY_MODEL_EVALUATE_MSE}", "MSE"]
         ]
@@ -189,7 +190,8 @@ Blockly.Blocks["model_create_classification"] = {
           [Blockly.Msg['MODEL_LINEAR_SVM'], 'LinearSVC'],
           [Blockly.Msg['MODEL_DECISION_TREE'], 'DecisionTreeClassifier'],
           [Blockly.Msg['MODEL_RANDOM_FOREST'], 'RandomForestClassifier'],
-          [Blockly.Msg['MODEL_MLP'], 'MLPClassifier']
+          [Blockly.Msg['MODEL_MLP'], 'MLPClassifier'],
+          [Blockly.Msg['MODEL_SGD'], 'SGDClassifier']
         ];
     this.setStyle('model_blocks');
     var modelMenu = new Blockly.FieldDropdown(MODEL, function(value) {
@@ -217,7 +219,14 @@ Blockly.Blocks["model_create_classification"] = {
             .appendField(new Blockly.FieldDropdown([
               [Blockly.Msg['MODEL_WEIGHT_UNIFORM'], 'uniform'],
               [Blockly.Msg['MODEL_WEIGHT_DISTANCE'], 'distance']
-            ]), 'PARAM_WEIGHTS');
+            ]), 'PARAM_WEIGHTS')
+            .appendField(" " + Blockly.Msg['MODEL_ALGORITHM'] + " :")
+            .appendField(new Blockly.FieldDropdown([
+              [Blockly.Msg['MODEL_ALGORITHM_AUTO'], 'auto'],
+              [Blockly.Msg['MODEL_ALGORITHM_BALL_TREE'], 'ball_tree'],
+              [Blockly.Msg['MODEL_ALGORITHM_KD_TREE'], 'kd_tree'],
+              [Blockly.Msg['MODEL_ALGORITHM_BRUTE'], 'brute'],
+            ]), 'PARAM_ALGORITHM');
         this.paramCount_ = 1;
         break
       case 'LinearSVC':
@@ -268,6 +277,21 @@ Blockly.Blocks["model_create_classification"] = {
             .appendField(new Blockly.FieldNumber(200, 1, null, 1), 'PARAM_BATCH_SIZE');
         this.paramCount_ = 2;
         break
+      case 'SGDClassifier':
+        this.appendDummyInput('PARAM0')
+            .appendField(" " + Blockly.Msg['MODEL_LOSS'] + " :")
+            .appendField(new Blockly.FieldDropdown([
+              [Blockly.Msg['MODEL_LOSS_HINGE'], 'hinge'],
+              [Blockly.Msg['MODEL_LOSS_MODIFIED_HUBER'], 'modified_huber'],
+              [Blockly.Msg['MODEL_LOSS_LOG'], 'log']
+            ]), 'PARAM_LOSS')
+            .appendField(" " + Blockly.Msg['MODEL_PENALTY'] + " :")
+            .appendField(new Blockly.FieldDropdown([
+              [Blockly.Msg['MODEL_PENALTY_L2'], 'l2'],
+              [Blockly.Msg['MODEL_PENALTY_L1'], 'l1']
+            ]), 'PARAM_PENALTY');
+        this.paramCount_ = 1;
+        break
     }
   }
 }
@@ -284,7 +308,8 @@ Blockly.Blocks["model_create_regression"] = {
       [Blockly.Msg['MODEL_LINEAR_SVM'], 'LinearSVR'],
       [Blockly.Msg['MODEL_DECISION_TREE'], 'DecisionTreeRegressor'],
       [Blockly.Msg['MODEL_RANDOM_FOREST'], 'RandomForestRegressor'],
-      [Blockly.Msg['MODEL_MLP'], 'MLPRegressor']
+      [Blockly.Msg['MODEL_MLP'], 'MLPRegressor'],
+      [Blockly.Msg['MODEL_SGD'], 'SGDRegressor']
     ];
     this.setStyle('model_blocks');
     var modelMenu = new Blockly.FieldDropdown(MODEL, function(value) {
@@ -312,7 +337,14 @@ Blockly.Blocks["model_create_regression"] = {
             .appendField(new Blockly.FieldDropdown([
               [Blockly.Msg['MODEL_WEIGHT_UNIFORM'], 'uniform'],
               [Blockly.Msg['MODEL_WEIGHT_DISTANCE'], 'distance']
-            ]), 'PARAM_WEIGHTS');
+            ]), 'PARAM_WEIGHTS')
+            .appendField(" " + Blockly.Msg['MODEL_ALGORITHM'] + " :")
+            .appendField(new Blockly.FieldDropdown([
+              [Blockly.Msg['MODEL_ALGORITHM_AUTO'], 'auto'],
+              [Blockly.Msg['MODEL_ALGORITHM_BALL_TREE'], 'ball_tree'],
+              [Blockly.Msg['MODEL_ALGORITHM_KD_TREE'], 'kd_tree'],
+              [Blockly.Msg['MODEL_ALGORITHM_BRUTE'], 'brute'],
+            ]), 'PARAM_ALGORITHM');
         this.paramCount_ = 1;
         break
       case 'LinearSVR':
@@ -352,6 +384,21 @@ Blockly.Blocks["model_create_regression"] = {
             .appendField(" " + Blockly.Msg['MODEL_BATCH_SIZE'] + " :")
             .appendField(new Blockly.FieldNumber(200, 1, null, 1), 'PARAM_BATCH_SIZE');
         this.paramCount_ = 2;
+        break
+      case 'SGDRegressor':
+        this.appendDummyInput('PARAM0')
+            .appendField(" " + Blockly.Msg['MODEL_LOSS'] + " :")
+            .appendField(new Blockly.FieldDropdown([
+              [Blockly.Msg['MODEL_LOSS_SQUARED_LOSS'], 'squared_loss'],
+              [Blockly.Msg['MODEL_LOSS_HUBER'], 'huber'],
+              [Blockly.Msg['MODEL_LOSS_EPSILON_INSENSITIVE'], 'epsilon_insensitive']
+            ]), 'PARAM_LOSS')
+            .appendField(" " + Blockly.Msg['MODEL_PENALTY'] + " :")
+            .appendField(new Blockly.FieldDropdown([
+              [Blockly.Msg['MODEL_PENALTY_L2'], 'l2'],
+              [Blockly.Msg['MODEL_PENALTY_L1'], 'l1']
+            ]), 'PARAM_PENALTY');
+        this.paramCount_ = 1;
         break
     }
   }

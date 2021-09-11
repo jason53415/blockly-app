@@ -12,7 +12,8 @@ Blockly.Python['model_create_classification'] = function(block) {
       Blockly.Python.definitions_['import_neighbors'] = 'from sklearn import neighbors';
       var k = block.getFieldValue('PARAM_K');
       var weights = block.getFieldValue('PARAM_WEIGHTS');
-      var code = "neighbors.KNeighborsClassifier(" + k + ", weights='" + weights + "')";
+      var algorithm = block.getFieldValue('PARAM_ALGORITHM');
+      var code = "neighbors.KNeighborsClassifier(" + k + ", weights='" + weights + "', algorithm='" + algorithm + "')";
       break
     case 'LinearSVC':
       Blockly.Python.definitions_['import_svm'] = 'from sklearn import svm';
@@ -48,6 +49,12 @@ Blockly.Python['model_create_classification'] = function(block) {
       var batch_size = block.getFieldValue('PARAM_BATCH_SIZE');
       var code = "neural_network.MLPClassifier(" + hidden_layer_sizes + ", '" + activation + "', batch_size=" + batch_size + ")";
       break
+    case 'SGDClassifier':
+      Blockly.Python.definitions_['import_linear_model'] = 'from sklearn import linear_model';
+      var loss = block.getFieldValue('PARAM_LOSS');
+      var penalty = block.getFieldValue('PARAM_PENALTY');
+      var code = "linear_model.SGDClassifier('" + loss + "', penalty='" + penalty + "')";
+      break
   }
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
@@ -60,7 +67,8 @@ Blockly.Python['model_create_regression'] = function(block) {
       Blockly.Python.definitions_['import_neighbors'] = 'from sklearn import neighbors';
       var k = block.getFieldValue('PARAM_K');
       var weights = block.getFieldValue('PARAM_WEIGHTS');
-      var code = "neighbors.KNeighborsRegressor(" + k + ", weights='" + weights + "')"
+      var algorithm = block.getFieldValue('PARAM_ALGORITHM');
+      var code = "neighbors.KNeighborsRegressor(" + k + ", weights='" + weights + "', algorithm='" + algorithm +  "')"
       break
     case 'LinearSVR':
       Blockly.Python.definitions_['import_svm'] = 'from sklearn import svm';
@@ -93,6 +101,12 @@ Blockly.Python['model_create_regression'] = function(block) {
       var activation = block.getFieldValue('PARAM_ACTIVATION');
       var batch_size = block.getFieldValue('PARAM_BATCH_SIZE');
       var code = "neural_network.MLPRegressor(" + hidden_layer_sizes + ", '" + activation + "', batch_size=" + batch_size + ")";
+      break
+    case 'SGDRegressor':
+      Blockly.Python.definitions_['import_linear_model'] = 'from sklearn import linear_model';
+      var loss = block.getFieldValue('PARAM_LOSS');
+      var penalty = block.getFieldValue('PARAM_PENALTY');
+      var code = "linear_model.SGDRegressor('" + loss + "', penalty='" + penalty + "')";
       break
   }
   return [code, Blockly.Python.ORDER_ATOMIC];
@@ -140,6 +154,9 @@ Blockly.Python['model_evaluate_regression'] = function(block) {
   Blockly.Python.ORDER_COLLECTION) || '[]';
   var func = block.getFieldValue('FUNC');
   switch(func) {
+    case 'R2':
+      var code = 'metrics.r2_score(' + y_true + ', ' + y_pred + ')';
+      break
     case 'MAE':
       var code = 'metrics.mean_absolute_error(' + y_true + ', ' + y_pred + ')';
       break
