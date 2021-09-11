@@ -1,32 +1,32 @@
 <xml xmlns="https://developers.google.com/blockly/xml">
   <variables>
-    <variable id="XL$*h)tY?h^-S+9XiU[a">玩家編號</variable>
-    <variable id="{^8ZIziEfWls5ZA1W,w|">我的位置</variable>
-    <variable id="J3]Ipygc?h`ciLJ3^Z{9">行動</variable>
+    <variable id="{^8ZIziEfWls5ZA1W,w|">特徵資料</variable>
+    <variable id="J3]Ipygc?h`ciLJ3^Z{9">移動結果</variable>
+    <variable id="=rt641;e~8jXF!(1FV63">資料計數</variable>
   </variables>
-  <block type="mlplay_class" id=".q?9PX,j0gIuBm?GGdZ6" x="188" y="-488">
+  <block type="mlplay_class" id=".q?9PX,j0gIuBm?GGdZ6" x="138" y="-413">
     <statement name="INIT">
-      <block type="variables_set" id="Xh54;3F9:+xUcBHbBXSh">
-        <field name="VAR" id="XL$*h)tY?h^-S+9XiU[a">玩家編號</field>
+      <block type="variables_set" id="A=!mG#MA%%a3Z]^[WRtL">
+        <field name="VAR" id="{^8ZIziEfWls5ZA1W,w|">特徵資料</field>
         <value name="VALUE">
-          <block type="mlplay_init_info" id="qU0/2ZctxiGnxgxs=may">
-            <field name="FIELD">player</field>
+          <block type="lists_create_with" id="~9[4Y_sXQo:p4lE?Sb}K">
+            <mutation items="0"></mutation>
           </block>
         </value>
         <next>
-          <block type="variables_set" id="A=!mG#MA%%a3Z]^[WRtL">
-            <field name="VAR" id="{^8ZIziEfWls5ZA1W,w|">我的位置</field>
+          <block type="variables_set" id="PhYr);?*]E}Pc*Co6g?7">
+            <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">移動結果</field>
             <value name="VALUE">
-              <block type="lists_create_with" id="~9[4Y_sXQo:p4lE?Sb}K">
+              <block type="lists_create_with" id="U1xKPn.W7[k*:y-tp[Pv">
                 <mutation items="0"></mutation>
               </block>
             </value>
             <next>
-              <block type="variables_set" id="PhYr);?*]E}Pc*Co6g?7">
-                <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">行動</field>
+              <block type="variables_set" id=",W@aY}$u{!s;dIjS#Z7Q">
+                <field name="VAR" id="=rt641;e~8jXF!(1FV63">資料計數</field>
                 <value name="VALUE">
-                  <block type="lists_create_with" id="U1xKPn.W7[k*:y-tp[Pv">
-                    <mutation items="0"></mutation>
+                  <block type="math_number" id="gt-.PL2KV|IsFPefVr9O">
+                    <field name="NUM">1</field>
                   </block>
                 </value>
               </block>
@@ -37,29 +37,83 @@
     </statement>
     <statement name="UPDATE">
       <block type="controls_if" id="80BpnBz=%9gY9!hPD8Cg">
-        <mutation elseif="1"></mutation>
+        <mutation else="1"></mutation>
         <value name="IF0">
-          <block type="logic_compare" id="E%%]L/9ixxrx7-ds%QyS">
-            <field name="OP">EQ</field>
+          <block type="logic_compare" id=".D?{z3/VPndLe0qflOg{">
+            <field name="OP">NEQ</field>
             <value name="A">
-              <block type="mlplay_get_info" id="?W5|/1Za.At5{=whd5/b">
+              <block type="mlplay_get_info" id="Y*wMs#h;j+*v_{*b[;76">
                 <field name="FIELD">scene_info['status']</field>
               </block>
             </value>
             <value name="B">
-              <block type="mlplay_game_status" id="f%V9c9aE.KV6~mvt=G?(">
-                <field name="STATUS">RUNNING</field>
+              <block type="mlplay_game_status" id="fS35Mgh14/yF-I})g:o?">
+                <field name="STATUS">GAME_ALIVE</field>
               </block>
             </value>
           </block>
         </value>
         <statement name="DO0">
+          <block type="file_save" id="`a?#}|YZ-}N5AK9nFCfm">
+            <value name="OBJECT">
+              <block type="variables_get" id="mq+ePdvTHwAH9fgBJT7H">
+                <field name="VAR" id="{^8ZIziEfWls5ZA1W,w|">特徵資料</field>
+              </block>
+            </value>
+            <value name="FILENAME">
+              <block type="text_join" id="In(SyXpl.^jDOuj@kP%?">
+                <mutation items="2"></mutation>
+                <value name="ADD0">
+                  <block type="text" id="12UPGmmY`k}6#y/Aza7l">
+                    <field name="TEXT">feature</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="variables_get" id="Zcundq-;Z;:m3WlE^eZw">
+                    <field name="VAR" id="=rt641;e~8jXF!(1FV63">資料計數</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="file_save" id="h;6$;fp,$:=d1u!=B_:b">
+                <value name="OBJECT">
+                  <block type="variables_get" id="[x}9kj[H)DdSCd3MDJb/">
+                    <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">移動結果</field>
+                  </block>
+                </value>
+                <value name="FILENAME">
+                  <block type="text_join" id="Wap,Gu;[U(VsMPwgE29m">
+                    <mutation items="2"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id="=#R+e@+E^ChPubb[S_Zp">
+                        <field name="TEXT">target</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="variables_get" id="8i8:?I.U$Cy7wIS*n1gN">
+                        <field name="VAR" id="=rt641;e~8jXF!(1FV63">資料計數</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="mlplay_return_action" id="Kz:5CiRra}rSpQxC0leQ">
+                    <field name="ACTION">RESET</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <statement name="ELSE">
           <block type="lists_insertIndex" id="+tGgUGY)!8nU*~eP)J0f">
             <mutation at="false"></mutation>
             <field name="WHERE">LAST</field>
             <value name="TO">
               <block type="lists_create_with" id="Q@+;X0f{*LUO|/E{!79$">
                 <mutation items="2"></mutation>
+                <comment pinned="false" h="48" w="192">可以增加更多的特徵</comment>
                 <value name="ADD0">
                   <block type="mlplay_get_info" id="[u3#;ZmjB{4sH/d9%F|k">
                     <field name="FIELD">scene_info['x']</field>
@@ -74,12 +128,12 @@
             </value>
             <value name="LIST">
               <block type="variables_get" id="eEp1UilSLK+~uM}L$.ic">
-                <field name="VAR" id="{^8ZIziEfWls5ZA1W,w|">我的位置</field>
+                <field name="VAR" id="{^8ZIziEfWls5ZA1W,w|">特徵資料</field>
               </block>
             </value>
             <next>
               <block type="controls_if" id="C(tAWF2BBkLz|`gW/GGp">
-                <mutation elseif="3"></mutation>
+                <mutation elseif="3" else="1"></mutation>
                 <value name="IF0">
                   <block type="mlplay_is_key_pressed" id=")X5[FV#8]PsG6{W01,YX">
                     <field name="TYPE">arrow</field>
@@ -97,7 +151,7 @@
                     </value>
                     <value name="LIST">
                       <block type="variables_get" id="M.JD9r2E?@bvH7Oep%L;">
-                        <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">行動</field>
+                        <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">移動結果</field>
                       </block>
                     </value>
                     <next>
@@ -124,7 +178,7 @@
                     </value>
                     <value name="LIST">
                       <block type="variables_get" id="JS:*}z`t*ke^V-PpAzmm">
-                        <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">行動</field>
+                        <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">移動結果</field>
                       </block>
                     </value>
                     <next>
@@ -151,7 +205,7 @@
                     </value>
                     <value name="LIST">
                       <block type="variables_get" id="GW0}y`b]wY)b2UWDTtoM">
-                        <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">行動</field>
+                        <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">移動結果</field>
                       </block>
                     </value>
                     <next>
@@ -178,7 +232,7 @@
                     </value>
                     <value name="LIST">
                       <block type="variables_get" id="W!4{gfG!f26V)|rZ{4k1">
-                        <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">行動</field>
+                        <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">移動結果</field>
                       </block>
                     </value>
                     <next>
@@ -188,53 +242,73 @@
                     </next>
                   </block>
                 </statement>
+                <statement name="ELSE">
+                  <block type="lists_insertIndex" id="SB$]I4oRd}g_z8c[8|Yk">
+                    <mutation at="false"></mutation>
+                    <field name="WHERE">LAST</field>
+                    <value name="TO">
+                      <block type="math_number" id="+1P9!!w?b,;2C:YmlWHZ">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <value name="LIST">
+                      <block type="variables_get" id="9P^zk;=W!}x#QR]ddiY~">
+                        <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">移動結果</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="mlplay_return_action" id="sUfXAD[A6*/qcD[q#6U%">
+                        <field name="ACTION">['SPEED']</field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
               </block>
             </next>
           </block>
         </statement>
-        <value name="IF1">
-          <block type="logic_compare" id=".D?{z3/VPndLe0qflOg{">
-            <field name="OP">EQ</field>
-            <value name="A">
-              <block type="mlplay_get_info" id="Y*wMs#h;j+*v_{*b[;76">
-                <field name="FIELD">scene_info['status']</field>
-              </block>
-            </value>
-            <value name="B">
-              <block type="mlplay_game_status" id="fS35Mgh14/yF-I})g:o?">
-                <field name="STATUS">END</field>
-              </block>
-            </value>
+      </block>
+    </statement>
+    <statement name="RESET">
+      <block type="text_print" id="xDa=7gNnknYdp4Y5dF(r">
+        <value name="TEXT">
+          <shadow type="text" id=";7y1^l/d3G9{clz|X9OH">
+            <field name="TEXT">abc</field>
+          </shadow>
+          <block type="text" id="HXC(A4FD8]9|Y[^ZIyU.">
+            <field name="TEXT">遊戲重置</field>
           </block>
         </value>
-        <statement name="DO1">
-          <block type="file_save" id="`a?#}|YZ-}N5AK9nFCfm">
-            <value name="OBJECT">
-              <block type="variables_get" id="mq+ePdvTHwAH9fgBJT7H">
-                <field name="VAR" id="{^8ZIziEfWls5ZA1W,w|">我的位置</field>
-              </block>
-            </value>
-            <value name="FILENAME">
-              <block type="text" id="12UPGmmY`k}6#y/Aza7l">
-                <field name="TEXT">feature</field>
+        <next>
+          <block type="variables_set" id="_b|i$Mrg%Yt(_9K|1ZhA">
+            <field name="VAR" id="{^8ZIziEfWls5ZA1W,w|">特徵資料</field>
+            <value name="VALUE">
+              <block type="lists_create_with" id="oT:Zj^(c-/!He/t3LZQX">
+                <mutation items="0"></mutation>
               </block>
             </value>
             <next>
-              <block type="file_save" id="h;6$;fp,$:=d1u!=B_:b">
-                <value name="OBJECT">
-                  <block type="variables_get" id="[x}9kj[H)DdSCd3MDJb/">
-                    <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">行動</field>
+              <block type="variables_set" id="mgs+I6^9P{gOtdly{p:d">
+                <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">移動結果</field>
+                <value name="VALUE">
+                  <block type="lists_create_with" id="1,*MpbY*,Pur@4QA|-BT">
+                    <mutation items="0"></mutation>
                   </block>
                 </value>
-                <value name="FILENAME">
-                  <block type="text" id="=#R+e@+E^ChPubb[S_Zp">
-                    <field name="TEXT">target</field>
+                <next>
+                  <block type="math_change" id="8[,QfN4Bhe#,Ky8codNY">
+                    <field name="VAR" id="=rt641;e~8jXF!(1FV63">資料計數</field>
+                    <value name="DELTA">
+                      <shadow type="math_number" id="$cHi0c5xg$XgR-?c!OPQ">
+                        <field name="NUM">1</field>
+                      </shadow>
+                    </value>
                   </block>
-                </value>
+                </next>
               </block>
             </next>
           </block>
-        </statement>
+        </next>
       </block>
     </statement>
   </block>

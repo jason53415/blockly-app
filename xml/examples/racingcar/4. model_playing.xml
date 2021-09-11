@@ -1,51 +1,41 @@
 <xml xmlns="https://developers.google.com/blockly/xml">
   <variables>
-    <variable id="XL$*h)tY?h^-S+9XiU[a">玩家編號</variable>
     <variable id="Y4#pjd?0_ye+2+r!%*JH">其他車輛位置</variable>
-    <variable id="J3]Ipygc?h`ciLJ3^Z{9">行動</variable>
+    <variable id="J3]Ipygc?h`ciLJ3^Z{9">預測結果</variable>
     <variable id="H/rDA)mGnhVImu:E+/(_">model</variable>
-    <variable id="Flw.vlQKGBTyh^mvy9,J">車輛位置</variable>
+    <variable id="c6Q]2p8j~SLa7C9m7S2;">行動</variable>
   </variables>
   <block type="mlplay_class" id=".q?9PX,j0gIuBm?GGdZ6" x="313" y="-37">
     <statement name="INIT">
-      <block type="variables_set" id="Xh54;3F9:+xUcBHbBXSh">
-        <field name="VAR" id="XL$*h)tY?h^-S+9XiU[a">玩家編號</field>
+      <block type="variables_set" id=")4d-=g|I~Zb9_:Yb^aG@">
+        <field name="VAR" id="Y4#pjd?0_ye+2+r!%*JH">其他車輛位置</field>
         <value name="VALUE">
-          <block type="mlplay_init_info" id="qU0/2ZctxiGnxgxs=may">
-            <field name="FIELD">player</field>
+          <block type="lists_create_with" id="l2G0Ozp_4V)G8GFaOc8S">
+            <mutation items="0"></mutation>
           </block>
         </value>
         <next>
-          <block type="variables_set" id=")4d-=g|I~Zb9_:Yb^aG@">
-            <field name="VAR" id="Y4#pjd?0_ye+2+r!%*JH">其他車輛位置</field>
-            <value name="VALUE">
-              <block type="lists_create_with" id="l2G0Ozp_4V)G8GFaOc8S">
-                <mutation items="0"></mutation>
+          <block type="file_load" id="!f/Vzc@70%efiSE:2JI[">
+            <value name="FILENAME">
+              <block type="text" id="heIKLCO#2Y_yC8mTtFb*">
+                <field name="TEXT">model</field>
               </block>
             </value>
-            <next>
-              <block type="file_load" id="!f/Vzc@70%efiSE:2JI[">
-                <value name="FILENAME">
-                  <block type="text" id="heIKLCO#2Y_yC8mTtFb*">
-                    <field name="TEXT">模型</field>
-                  </block>
-                </value>
-                <value name="OBJECT">
-                  <block type="variables_get" id="nd|nmspcUkU5z+F,v)G]">
-                    <field name="VAR" id="H/rDA)mGnhVImu:E+/(_">model</field>
-                  </block>
-                </value>
+            <value name="OBJECT">
+              <block type="variables_get" id="nd|nmspcUkU5z+F,v)G]">
+                <field name="VAR" id="H/rDA)mGnhVImu:E+/(_">model</field>
               </block>
-            </next>
+            </value>
           </block>
         </next>
       </block>
     </statement>
     <statement name="UPDATE">
       <block type="controls_if" id="80BpnBz=%9gY9!hPD8Cg">
+        <mutation else="1"></mutation>
         <value name="IF0">
           <block type="logic_compare" id="E%%]L/9ixxrx7-ds%QyS">
-            <field name="OP">EQ</field>
+            <field name="OP">NEQ</field>
             <value name="A">
               <block type="mlplay_get_info" id="?W5|/1Za.At5{=whd5/b">
                 <field name="FIELD">scene_info['status']</field>
@@ -53,14 +43,19 @@
             </value>
             <value name="B">
               <block type="mlplay_game_status" id="f%V9c9aE.KV6~mvt=G?(">
-                <field name="STATUS">RUNNING</field>
+                <field name="STATUS">GAME_ALIVE</field>
               </block>
             </value>
           </block>
         </value>
         <statement name="DO0">
+          <block type="mlplay_return_action" id="cRoS/uL{`ge[WSA8{5Oe">
+            <field name="ACTION">RESET</field>
+          </block>
+        </statement>
+        <statement name="ELSE">
           <block type="variables_set" id=".xg6fTpct3vVV^(,0C$A">
-            <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">行動</field>
+            <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">預測結果</field>
             <value name="VALUE">
               <block type="model_predict" id="2{b6J[=6c3SzNh*#{gq2">
                 <value name="MODEL">
@@ -74,6 +69,7 @@
                     <value name="ADD0">
                       <block type="lists_create_with" id="L/zap?0BGWP?s9Bu1i$$">
                         <mutation items="2"></mutation>
+                        <comment pinned="false" h="69.60000610351562" w="302.4000244140625">一定要跟收集的特徵資料項目和順序皆相同喔!</comment>
                         <value name="ADD0">
                           <block type="mlplay_get_info" id="^Qz;dWWK^VX.{hmo#n^Z">
                             <field name="FIELD">scene_info['x']</field>
@@ -91,102 +87,121 @@
               </block>
             </value>
             <next>
-              <block type="controls_if" id="C(tAWF2BBkLz|`gW/GGp">
-                <mutation elseif="3"></mutation>
-                <value name="IF0">
-                  <block type="logic_compare" id="rBlTwFBYMdt]9W)TY^{!">
-                    <field name="OP">EQ</field>
-                    <value name="A">
-                      <block type="variables_get" id="1ut14i8GyyV*ag2Ed3Na">
-                        <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">行動</field>
-                      </block>
-                    </value>
-                    <value name="B">
-                      <block type="math_number" id="tnc]*gg3}~Vib4n1Ihkl">
-                        <field name="NUM">1</field>
-                      </block>
-                    </value>
-                  </block>
-                </value>
-                <statement name="DO0">
-                  <block type="mlplay_return_action" id="PY[0*ssQ@|K7~78q5tLE">
-                    <field name="ACTION">['SPEED']</field>
-                  </block>
-                </statement>
-                <value name="IF1">
-                  <block type="logic_compare" id="sS=*o:mH{K$9}8?D!vS7">
-                    <field name="OP">EQ</field>
-                    <value name="A">
-                      <block type="variables_get" id="q,Skw4!P|rVltLTv2[|U">
-                        <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">行動</field>
-                      </block>
-                    </value>
-                    <value name="B">
-                      <block type="math_number" id="}RC:kHu(*EZdfXNzjx)d">
-                        <field name="NUM">2</field>
-                      </block>
-                    </value>
-                  </block>
-                </value>
-                <statement name="DO1">
-                  <block type="mlplay_return_action" id="1czJP[e3$,$OyIhy@6.$">
-                    <field name="ACTION">['BRAKE']</field>
-                  </block>
-                </statement>
-                <value name="IF2">
-                  <block type="logic_compare" id="(ROV+]rbbtLjl@v{)nR1">
-                    <field name="OP">EQ</field>
-                    <value name="A">
-                      <block type="variables_get" id="D^xvHha;?Z/L4la^xmk7">
-                        <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">行動</field>
-                      </block>
-                    </value>
-                    <value name="B">
-                      <block type="math_number" id="[uc/d_Xx@:y?IxDD|1cJ">
-                        <field name="NUM">3</field>
-                      </block>
-                    </value>
-                  </block>
-                </value>
-                <statement name="DO2">
-                  <block type="mlplay_return_action" id="U+?l/S]bdIGLHcwSs9ng">
-                    <field name="ACTION">['MOVE_LEFT']</field>
-                  </block>
-                </statement>
-                <value name="IF3">
-                  <block type="logic_compare" id="6RN*Gu22m1gxYN6p5Qcc">
-                    <field name="OP">EQ</field>
-                    <value name="A">
-                      <block type="variables_get" id="4G.DFfNB[UiLLPwJd6jz">
-                        <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">行動</field>
-                      </block>
-                    </value>
-                    <value name="B">
-                      <block type="math_number" id="qKK-M@SFRH9Yp}*2P%c`">
-                        <field name="NUM">4</field>
-                      </block>
-                    </value>
-                  </block>
-                </value>
-                <statement name="DO3">
-                  <block type="mlplay_return_action" id="tOd6lRA0i{~J1v_%dQAb">
-                    <field name="ACTION">['MOVE_RIGHT']</field>
-                  </block>
-                </statement>
-                <next>
-                  <block type="variables_set" id="Z]FDut$Z.uO7}#JSVKS?">
-                    <field name="VAR" id="Flw.vlQKGBTyh^mvy9,J">車輛位置</field>
+              <block type="variables_set" id="C6u50/HAesl6tp$oS*%1">
+                <field name="VAR" id="c6Q]2p8j~SLa7C9m7S2;">行動</field>
+                <value name="VALUE">
+                  <block type="lists_getIndex" id="4lSnxXZ[NH1$yj6P/$C!">
+                    <mutation statement="false" at="false"></mutation>
+                    <field name="MODE">GET</field>
+                    <field name="WHERE">FIRST</field>
                     <value name="VALUE">
-                      <block type="mlplay_get_info" id="=)=3^lycSQrdi8@QTMYo">
-                        <field name="FIELD">scene_info['frame']</field>
+                      <block type="variables_get" id="?vW)p4;;PgFcpIN)~7wF">
+                        <field name="VAR" id="J3]Ipygc?h`ciLJ3^Z{9">預測結果</field>
                       </block>
                     </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="C(tAWF2BBkLz|`gW/GGp">
+                    <mutation elseif="3"></mutation>
+                    <value name="IF0">
+                      <block type="logic_compare" id="rBlTwFBYMdt]9W)TY^{!">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="1ut14i8GyyV*ag2Ed3Na">
+                            <field name="VAR" id="c6Q]2p8j~SLa7C9m7S2;">行動</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="tnc]*gg3}~Vib4n1Ihkl">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="mlplay_return_action" id="PY[0*ssQ@|K7~78q5tLE">
+                        <field name="ACTION">['SPEED']</field>
+                      </block>
+                    </statement>
+                    <value name="IF1">
+                      <block type="logic_compare" id="sS=*o:mH{K$9}8?D!vS7">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="q,Skw4!P|rVltLTv2[|U">
+                            <field name="VAR" id="c6Q]2p8j~SLa7C9m7S2;">行動</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="}RC:kHu(*EZdfXNzjx)d">
+                            <field name="NUM">2</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO1">
+                      <block type="mlplay_return_action" id="1czJP[e3$,$OyIhy@6.$">
+                        <field name="ACTION">['BRAKE']</field>
+                      </block>
+                    </statement>
+                    <value name="IF2">
+                      <block type="logic_compare" id="(ROV+]rbbtLjl@v{)nR1">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="D^xvHha;?Z/L4la^xmk7">
+                            <field name="VAR" id="c6Q]2p8j~SLa7C9m7S2;">行動</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="[uc/d_Xx@:y?IxDD|1cJ">
+                            <field name="NUM">3</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO2">
+                      <block type="mlplay_return_action" id="U+?l/S]bdIGLHcwSs9ng">
+                        <field name="ACTION">['MOVE_LEFT']</field>
+                      </block>
+                    </statement>
+                    <value name="IF3">
+                      <block type="logic_compare" id="6RN*Gu22m1gxYN6p5Qcc">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="4G.DFfNB[UiLLPwJd6jz">
+                            <field name="VAR" id="c6Q]2p8j~SLa7C9m7S2;">行動</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="qKK-M@SFRH9Yp}*2P%c`">
+                            <field name="NUM">4</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO3">
+                      <block type="mlplay_return_action" id="tOd6lRA0i{~J1v_%dQAb">
+                        <field name="ACTION">['MOVE_RIGHT']</field>
+                      </block>
+                    </statement>
                   </block>
                 </next>
               </block>
             </next>
           </block>
         </statement>
+      </block>
+    </statement>
+    <statement name="RESET">
+      <block type="text_print" id="DWGdti1~`9s|Q[-OLkYq">
+        <value name="TEXT">
+          <shadow type="text" id="7%NhaZZly^u/]n[OkCc|">
+            <field name="TEXT">abc</field>
+          </shadow>
+          <block type="text" id="`MqE%b+TC%G-$4oz^NAc">
+            <field name="TEXT">重置遊戲</field>
+          </block>
+        </value>
       </block>
     </statement>
   </block>

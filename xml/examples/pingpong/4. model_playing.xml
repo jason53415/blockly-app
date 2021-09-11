@@ -2,10 +2,14 @@
   <variables>
     <variable id="EWpA?kB2m|(U-dhXf:S9">已經發球</variable>
     <variable id="Hx_tmkxsaE/QweCL3EP2">玩家編號</variable>
-    <variable id="K/qkR:JYq!?Ortvf:rSM">行動</variable>
-    <variable id="AH61U?,1A?Lp7`=z-0mX">model</variable>
+    <variable id="AH61U?,1A?Lp7`=z-0mX">1P模型</variable>
+    <variable id="=fl|O+xkzobXiSKekJcg">1P預測結果</variable>
+    <variable id="(^o:xUzEj@n]`zwl/zP$">2P預測結果</variable>
+    <variable id="(k|5Rj.gTWDmEyv_jw9A">2P模型</variable>
+    <variable id="K/qkR:JYq!?Ortvf:rSM">1P行動</variable>
+    <variable id="HduWGI@6*b]@l-F}:;^i">2P行動</variable>
   </variables>
-  <block type="mlplay_class" id="RUg|=sCltV/Pf]+(7O)_" x="38" y="38">
+  <block type="mlplay_class" id="RUg|=sCltV/Pf]+(7O)_" x="-787" y="-213">
     <statement name="INIT">
       <block type="variables_set" id="QeucbJiW.zl=Ratc$rvP">
         <field name="VAR" id="EWpA?kB2m|(U-dhXf:S9">已經發球</field>
@@ -24,16 +28,32 @@
             </value>
             <next>
               <block type="file_load" id="7y!-EKu{(,pL%eyVgGe3">
+                <comment pinned="false" h="44" w="159">載入1P的AI模型</comment>
                 <value name="FILENAME">
                   <block type="text" id=")(MK9SK6)-WzKeK)Mm_p">
-                    <field name="TEXT">模型</field>
+                    <field name="TEXT">model_1P</field>
                   </block>
                 </value>
                 <value name="OBJECT">
                   <block type="variables_get" id="(=IU_onin7rBKjiw3Z`:">
-                    <field name="VAR" id="AH61U?,1A?Lp7`=z-0mX">model</field>
+                    <field name="VAR" id="AH61U?,1A?Lp7`=z-0mX">1P模型</field>
                   </block>
                 </value>
+                <next>
+                  <block type="file_load" id=")Xn:ztvL|*lWI-i7|p#d">
+                    <comment pinned="false" h="45" w="146">載入2P的AI模型</comment>
+                    <value name="FILENAME">
+                      <block type="text" id="@PohqpXRl_lm|WsDcr?9">
+                        <field name="TEXT">model_2P</field>
+                      </block>
+                    </value>
+                    <value name="OBJECT">
+                      <block type="variables_get" id="c~4tW}@1UHh;Tpza#H[@">
+                        <field name="VAR" id="(k|5Rj.gTWDmEyv_jw9A">2P模型</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
               </block>
             </next>
           </block>
@@ -90,67 +110,262 @@
               </block>
             </statement>
             <statement name="ELSE">
-              <block type="variables_set" id="PQa`0a(mH/X^}8zl`@x0">
-                <field name="VAR" id="K/qkR:JYq!?Ortvf:rSM">行動</field>
-                <value name="VALUE">
-                  <block type="model_predict" id="wzpbhKL$s?-va`CCp+Xz">
-                    <value name="MODEL">
-                      <block type="variables_get" id="duv3?RbnT=*DP2{tHHAD">
-                        <field name="VAR" id="AH61U?,1A?Lp7`=z-0mX">model</field>
+              <block type="controls_if" id="atwRI}4%@vvSV){GS~es">
+                <mutation elseif="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="|Z~*?yVBaB;MJ/FiZ?6p">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="X^/.l@bQt+C$Qz3c`fCe">
+                        <field name="VAR" id="Hx_tmkxsaE/QweCL3EP2">玩家編號</field>
                       </block>
                     </value>
-                    <value name="X">
-                      <block type="lists_create_with" id=";y|K]`JoaH6Prg?;tuV[">
-                        <mutation items="1"></mutation>
-                        <value name="ADD0">
-                          <block type="lists_create_with" id="o5]0m4Hw2ksO(fD?h6Ys">
-                            <mutation items="2"></mutation>
-                            <value name="ADD0">
-                              <block type="mlplay_get_info" id="5tQ/6tTBMw*)j~39p|i6">
-                                <field name="FIELD">scene_info['ball'][0]</field>
-                              </block>
-                            </value>
-                            <value name="ADD1">
-                              <block type="mlplay_get_info" id="|8G1f}`MKl?bV;}-Hmb.">
-                                <field name="FIELD">scene_info['ball'][1]</field>
-                              </block>
-                            </value>
-                          </block>
-                        </value>
+                    <value name="B">
+                      <block type="text" id="EVk4R,-togGviG?24u/4">
+                        <field name="TEXT">1P</field>
                       </block>
                     </value>
                   </block>
                 </value>
-                <next>
-                  <block type="controls_if" id="2o=8.}LnkQP_I~z)yA;S">
-                    <mutation else="1"></mutation>
-                    <value name="IF0">
-                      <block type="logic_compare" id="v.~[]5KYoKF(}P4B%YDx">
-                        <field name="OP">EQ</field>
-                        <value name="A">
-                          <block type="variables_get" id="_pyKunR_w9%h/VUu9;wR">
-                            <field name="VAR" id="K/qkR:JYq!?Ortvf:rSM">行動</field>
+                <statement name="DO0">
+                  <block type="variables_set" id="PQa`0a(mH/X^}8zl`@x0">
+                    <field name="VAR" id="=fl|O+xkzobXiSKekJcg">1P預測結果</field>
+                    <value name="VALUE">
+                      <block type="model_predict" id="wzpbhKL$s?-va`CCp+Xz">
+                        <value name="MODEL">
+                          <block type="variables_get" id="duv3?RbnT=*DP2{tHHAD">
+                            <field name="VAR" id="AH61U?,1A?Lp7`=z-0mX">1P模型</field>
                           </block>
                         </value>
-                        <value name="B">
-                          <block type="math_number" id="aMC%cu~;xq+aJ{Y9#b*h">
-                            <field name="NUM">1</field>
+                        <value name="X">
+                          <block type="lists_create_with" id=";y|K]`JoaH6Prg?;tuV[">
+                            <mutation items="1"></mutation>
+                            <value name="ADD0">
+                              <block type="lists_create_with" id="o5]0m4Hw2ksO(fD?h6Ys">
+                                <mutation items="5"></mutation>
+                                <comment pinned="false" h="72" w="261">所有的特徵資料必須跟收集的順序相同喔!!</comment>
+                                <value name="ADD0">
+                                  <block type="mlplay_get_info" id="H#[@q(4FUSQ/3?PelGEM">
+                                    <field name="FIELD">scene_info['ball_speed'][0]</field>
+                                  </block>
+                                </value>
+                                <value name="ADD1">
+                                  <block type="mlplay_get_info" id="M4]pFtDzp}4p]TcYro}.">
+                                    <field name="FIELD">scene_info['ball_speed'][1]</field>
+                                  </block>
+                                </value>
+                                <value name="ADD2">
+                                  <block type="mlplay_get_info" id="5tQ/6tTBMw*)j~39p|i6">
+                                    <field name="FIELD">scene_info['ball'][0]</field>
+                                  </block>
+                                </value>
+                                <value name="ADD3">
+                                  <block type="mlplay_get_info" id="|8G1f}`MKl?bV;}-Hmb.">
+                                    <field name="FIELD">scene_info['ball'][1]</field>
+                                  </block>
+                                </value>
+                                <value name="ADD4">
+                                  <block type="mlplay_get_info" id="1mCY2g0=.QKz9MHCNh]S">
+                                    <field name="FIELD">scene_info['platform_1P'][0]</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
                           </block>
                         </value>
                       </block>
                     </value>
-                    <statement name="DO0">
-                      <block type="mlplay_return_action" id="b=[-UbwhyZ8=ccKgH=d7">
-                        <field name="ACTION">MOVE_LEFT</field>
+                    <next>
+                      <block type="variables_set" id="wG#A+q=]0r-e6ODmV;-P">
+                        <field name="VAR" id="K/qkR:JYq!?Ortvf:rSM">1P行動</field>
+                        <value name="VALUE">
+                          <block type="lists_getIndex" id="t_`25m`Xg9lPyj.)u{Rz">
+                            <mutation statement="false" at="false"></mutation>
+                            <field name="MODE">GET</field>
+                            <field name="WHERE">FIRST</field>
+                            <value name="VALUE">
+                              <block type="variables_get" id="9c_k-]3Vb[va?Z.e1;#T">
+                                <field name="VAR" id="=fl|O+xkzobXiSKekJcg">1P預測結果</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="controls_if" id="2o=8.}LnkQP_I~z)yA;S">
+                            <mutation elseif="1"></mutation>
+                            <value name="IF0">
+                              <block type="logic_compare" id="v.~[]5KYoKF(}P4B%YDx">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="_pyKunR_w9%h/VUu9;wR">
+                                    <field name="VAR" id="K/qkR:JYq!?Ortvf:rSM">1P行動</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="aMC%cu~;xq+aJ{Y9#b*h">
+                                    <field name="NUM">1</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="mlplay_return_action" id="b=[-UbwhyZ8=ccKgH=d7">
+                                <field name="ACTION">MOVE_RIGHT</field>
+                              </block>
+                            </statement>
+                            <value name="IF1">
+                              <block type="logic_compare" id="z[dL:X[(@PHg$J[$Fi.R">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="nmG49paxrgENs2JB4,ZN">
+                                    <field name="VAR" id="K/qkR:JYq!?Ortvf:rSM">1P行動</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="/K9kV~V|`F_zu60qE?Sh">
+                                    <field name="NUM">2</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO1">
+                              <block type="mlplay_return_action" id=";uo+(l_:Uj}71uAdCcVe">
+                                <field name="ACTION">MOVE_LEFT</field>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
                       </block>
-                    </statement>
-                    <statement name="ELSE">
-                      <block type="mlplay_return_action" id="Q1|^6`8CFp8~%[EWR5Ql">
-                        <field name="ACTION">SERVE_TO_RIGHT</field>
-                      </block>
-                    </statement>
+                    </next>
                   </block>
-                </next>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="AE^/[5-k[xz#;+IwP=z,">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="nn5Ha{)TxwGetTd@19p#">
+                        <field name="VAR" id="Hx_tmkxsaE/QweCL3EP2">玩家編號</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text" id="/8hZt}ODJKRZ?i(3N3r%">
+                        <field name="TEXT">2P</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="variables_set" id="Qa68:W+/12Ns6:%4$E2$">
+                    <field name="VAR" id="(^o:xUzEj@n]`zwl/zP$">2P預測結果</field>
+                    <value name="VALUE">
+                      <block type="model_predict" id="7){+f6lD7|EkfrHw;W60">
+                        <value name="MODEL">
+                          <block type="variables_get" id="mRj75_eH,R#723BDoh-S">
+                            <field name="VAR" id="(k|5Rj.gTWDmEyv_jw9A">2P模型</field>
+                          </block>
+                        </value>
+                        <value name="X">
+                          <block type="lists_create_with" id="ej/Wo2h8H!fRC2Z!h*1[">
+                            <mutation items="1"></mutation>
+                            <value name="ADD0">
+                              <block type="lists_create_with" id="RoFvK5b6(5;GeWj.a*b2">
+                                <mutation items="5"></mutation>
+                                <comment pinned="false" h="70" w="213">所有的特徵資料必須跟收集的順序相同喔!!</comment>
+                                <value name="ADD0">
+                                  <block type="mlplay_get_info" id="mfTNZNnQ|B^C6?S{7;gp">
+                                    <field name="FIELD">scene_info['ball_speed'][0]</field>
+                                  </block>
+                                </value>
+                                <value name="ADD1">
+                                  <block type="mlplay_get_info" id="UAj]i+|!)!SNroY%@FJ_">
+                                    <field name="FIELD">scene_info['ball_speed'][1]</field>
+                                  </block>
+                                </value>
+                                <value name="ADD2">
+                                  <block type="mlplay_get_info" id="%J2Onpf5Hwd:2PHQ-iC,">
+                                    <field name="FIELD">scene_info['ball'][0]</field>
+                                  </block>
+                                </value>
+                                <value name="ADD3">
+                                  <block type="mlplay_get_info" id="{=^]41I7^F4pBvZxmw,X">
+                                    <field name="FIELD">scene_info['ball'][1]</field>
+                                  </block>
+                                </value>
+                                <value name="ADD4">
+                                  <block type="mlplay_get_info" id="L+JW_*=.cohY66inLrcE">
+                                    <field name="FIELD">scene_info['platform_2P'][0]</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="Jf#xmt6FAkOO2W3~#Rm9">
+                        <field name="VAR" id="HduWGI@6*b]@l-F}:;^i">2P行動</field>
+                        <value name="VALUE">
+                          <block type="lists_getIndex" id="G/P/Ib.%aAkHiE;g1PnO">
+                            <mutation statement="false" at="false"></mutation>
+                            <field name="MODE">GET</field>
+                            <field name="WHERE">FIRST</field>
+                            <value name="VALUE">
+                              <block type="variables_get" id="B];0QB/+[G2mTs({`wLu">
+                                <field name="VAR" id="(^o:xUzEj@n]`zwl/zP$">2P預測結果</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="controls_if" id="hm?3-.4DPOI-b_rRvYw3">
+                            <mutation elseif="1"></mutation>
+                            <value name="IF0">
+                              <block type="logic_compare" id="kLWaj18?i!nz}E+#qoN?">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="/uyRjbs3S#3s@BV0{jo`">
+                                    <field name="VAR" id="HduWGI@6*b]@l-F}:;^i">2P行動</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="?!)FFjS_*lHx{Uydf4J+">
+                                    <field name="NUM">1</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="mlplay_return_action" id="5Q5=y5.E^HUA#RNN:moA">
+                                <field name="ACTION">MOVE_RIGHT</field>
+                              </block>
+                            </statement>
+                            <value name="IF1">
+                              <block type="logic_compare" id="BWMwiOZ/fjd-_rkN(_H~">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="$uBrhZ^[zKxNuIWrSMI7">
+                                    <field name="VAR" id="HduWGI@6*b]@l-F}:;^i">2P行動</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="j8F$W_Kg{5eYtdWP;xOn">
+                                    <field name="NUM">2</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO1">
+                              <block type="mlplay_return_action" id=")tav8nC5S1|KD|d+Q%Ht">
+                                <field name="ACTION">MOVE_LEFT</field>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
               </block>
             </statement>
           </block>

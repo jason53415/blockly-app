@@ -1,71 +1,313 @@
 <xml xmlns="https://developers.google.com/blockly/xml">
   <variables>
-    <variable id="bZF*G~d.@0t%P5b4kn6Y">球坐標</variable>
-    <variable id="*G.u3bGoAmejpXzu1}a*">行動</variable>
+    <variable id="bZF*G~d.@0t%P5b4kn6Y">特徵資料</variable>
+    <variable id="*G.u3bGoAmejpXzu1}a*">移動結果</variable>
+    <variable id="9]}z*a-D3UY|1`rC#dQu">i</variable>
     <variable id="ke3~%KA+=lNKhxN)^L1n">模型</variable>
+    <variable id="vu+IPgs~~[Fa0q,xAEo5">資料</variable>
+    <variable id="RF$^@:CBQ@hy7mN`{$5W">答案</variable>
   </variables>
-  <block type="file_load" id="U]n%ou~dt7|LSDvmQQN)" x="113" y="113">
-    <value name="FILENAME">
-      <block type="text" id="^yLC-TC~NjG^I$p5L6X6">
-        <field name="TEXT">feature</field>
-      </block>
-    </value>
-    <value name="OBJECT">
-      <block type="variables_get" id="VA[b[)Qa-XguxSwmYo!8">
-        <field name="VAR" id="bZF*G~d.@0t%P5b4kn6Y">球坐標</field>
+  <block type="variables_set" id=";~@srPD[-rYtY*so;p,x" x="113" y="-13">
+    <field name="VAR" id="bZF*G~d.@0t%P5b4kn6Y">特徵資料</field>
+    <value name="VALUE">
+      <block type="lists_create_with" id="C$JZ,(bmyZQn9`zq~4[o">
+        <mutation items="0"></mutation>
       </block>
     </value>
     <next>
-      <block type="file_load" id="=P.V2jz^{Lm39cfvdEM2">
-        <value name="FILENAME">
-          <block type="text" id="#A/s_7F%9CjvYldJQC.+">
-            <field name="TEXT">target</field>
-          </block>
-        </value>
-        <value name="OBJECT">
-          <block type="variables_get" id="i]PaQ{kpB!p^IT`;ekjZ">
-            <field name="VAR" id="*G.u3bGoAmejpXzu1}a*">行動</field>
+      <block type="variables_set" id="uVC%u)i(TSu[Qi#%7$(@">
+        <field name="VAR" id="*G.u3bGoAmejpXzu1}a*">移動結果</field>
+        <value name="VALUE">
+          <block type="lists_create_with" id="xDd`b5sj1*r4lmrugLG#">
+            <mutation items="0"></mutation>
           </block>
         </value>
         <next>
-          <block type="variables_set" id="BW]Z+D|5FZyS:Vb]JXj4">
-            <field name="VAR" id="ke3~%KA+=lNKhxN)^L1n">模型</field>
-            <value name="VALUE">
-              <block type="model_create_regression" id="LmMmYjCd)?Je}R^tAmXu">
-                <field name="MODEL">DecisionTreeRegressor</field>
-                <field name="PARAM_MAX_DEPTH">5</field>
-                <field name="PARAM_MIN_SAMPLES_SPLIT">2</field>
-              </block>
+          <block type="controls_for" id="QXj)*+Rj-QDyPVeQ=n4X">
+            <field name="VAR" id="9]}z*a-D3UY|1`rC#dQu">i</field>
+            <comment pinned="false" h="59" w="248">1P的資料數量要自行設定正確的數字喔!</comment>
+            <value name="FROM">
+              <shadow type="math_number" id="CUT?2T*k?=/.hvK6!nkf">
+                <field name="NUM">1</field>
+              </shadow>
             </value>
-            <next>
-              <block type="model_train" id="a7,$$,?-y6hL2Ug5$i%W">
-                <value name="X">
-                  <block type="variables_get" id="3*Z4RswB4zD*b;e[L`N[">
-                    <field name="VAR" id="bZF*G~d.@0t%P5b4kn6Y">球坐標</field>
+            <value name="TO">
+              <shadow type="math_number" id=".wX@AcBi2Emb5=R+a-99">
+                <field name="NUM">5</field>
+              </shadow>
+            </value>
+            <value name="BY">
+              <shadow type="math_number" id="xDKi9/f+}!A=Qu,fb$`|">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <statement name="DO">
+              <block type="file_load" id="U]n%ou~dt7|LSDvmQQN)">
+                <value name="FILENAME">
+                  <block type="text_join" id="oyngtQsY.F`Hm[.9ZA?P">
+                    <mutation items="2"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id="^yLC-TC~NjG^I$p5L6X6">
+                        <field name="TEXT">feature_1P</field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="variables_get" id="VzC!:X`_pUHwN:3lPcoR">
+                        <field name="VAR" id="9]}z*a-D3UY|1`rC#dQu">i</field>
+                      </block>
+                    </value>
                   </block>
                 </value>
-                <value name="Y">
-                  <block type="variables_get" id="ySOr;UtpTJLHM5U;qv)S">
-                    <field name="VAR" id="*G.u3bGoAmejpXzu1}a*">行動</field>
-                  </block>
-                </value>
-                <value name="MODEL">
-                  <block type="variables_get" id="lwR(q]XjzdO3=yy*R5b{">
-                    <field name="VAR" id="ke3~%KA+=lNKhxN)^L1n">模型</field>
+                <value name="OBJECT">
+                  <block type="variables_get" id="VA[b[)Qa-XguxSwmYo!8">
+                    <field name="VAR" id="vu+IPgs~~[Fa0q,xAEo5">資料</field>
                   </block>
                 </value>
                 <next>
-                  <block type="file_save" id="Z[M#NNI@Ew8y^VrB]_Y!">
+                  <block type="file_load" id="=P.V2jz^{Lm39cfvdEM2">
+                    <value name="FILENAME">
+                      <block type="text_join" id="DZ(O_)O0=^)VHPB.Hx9l">
+                        <mutation items="2"></mutation>
+                        <value name="ADD0">
+                          <block type="text" id="#A/s_7F%9CjvYldJQC.+">
+                            <field name="TEXT">target_1P</field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="variables_get" id="2(J=YU2z~x)t+Ic*^3!s">
+                            <field name="VAR" id="9]}z*a-D3UY|1`rC#dQu">i</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
                     <value name="OBJECT">
-                      <block type="variables_get" id="6F6$~RQ_^npf~;@O_Eo)">
+                      <block type="variables_get" id="i]PaQ{kpB!p^IT`;ekjZ">
+                        <field name="VAR" id="RF$^@:CBQ@hy7mN`{$5W">答案</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="lists_extend" id="w5Yj/|T.9_nKAycQY+[a">
+                        <field name="VAR" id="bZF*G~d.@0t%P5b4kn6Y">特徵資料</field>
+                        <value name="LIST">
+                          <block type="variables_get" id="}JcM9mRZ|[V8slRaq*p(">
+                            <field name="VAR" id="vu+IPgs~~[Fa0q,xAEo5">資料</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="lists_extend" id=".nAWJqIDMmWHUw*=)~%V">
+                            <field name="VAR" id="*G.u3bGoAmejpXzu1}a*">移動結果</field>
+                            <value name="LIST">
+                              <block type="variables_get" id="xUR+HlRk]1[O#|t{I|bw">
+                                <field name="VAR" id="RF$^@:CBQ@hy7mN`{$5W">答案</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="variables_set" id="BW]Z+D|5FZyS:Vb]JXj4">
+                <field name="VAR" id="ke3~%KA+=lNKhxN)^L1n">模型</field>
+                <value name="VALUE">
+                  <block type="model_create_classification" id="7x:dBJp4i?op/HGbWl[3">
+                    <field name="MODEL">KNeighborsClassifier</field>
+                    <field name="PARAM_K">3</field>
+                    <field name="PARAM_WEIGHTS">uniform</field>
+                    <field name="PARAM_ALGORITHM">auto</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="model_train" id="a7,$$,?-y6hL2Ug5$i%W">
+                    <value name="X">
+                      <block type="variables_get" id="3*Z4RswB4zD*b;e[L`N[">
+                        <field name="VAR" id="bZF*G~d.@0t%P5b4kn6Y">特徵資料</field>
+                      </block>
+                    </value>
+                    <value name="Y">
+                      <block type="variables_get" id="ySOr;UtpTJLHM5U;qv)S">
+                        <field name="VAR" id="*G.u3bGoAmejpXzu1}a*">移動結果</field>
+                      </block>
+                    </value>
+                    <value name="MODEL">
+                      <block type="variables_get" id="lwR(q]XjzdO3=yy*R5b{">
                         <field name="VAR" id="ke3~%KA+=lNKhxN)^L1n">模型</field>
                       </block>
                     </value>
-                    <value name="FILENAME">
-                      <block type="text" id=",e:H-3?C-GEPx#F]UW`7">
-                        <field name="TEXT">模型</field>
+                    <next>
+                      <block type="file_save" id="Z[M#NNI@Ew8y^VrB]_Y!">
+                        <comment pinned="false" h="48" w="130">儲存1P的模型</comment>
+                        <value name="OBJECT">
+                          <block type="variables_get" id="6F6$~RQ_^npf~;@O_Eo)">
+                            <field name="VAR" id="ke3~%KA+=lNKhxN)^L1n">模型</field>
+                          </block>
+                        </value>
+                        <value name="FILENAME">
+                          <block type="text" id=",e:H-3?C-GEPx#F]UW`7">
+                            <field name="TEXT">model_1P</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="Fpi)]W3f%Hh4IV[M^I9o">
+                            <field name="VAR" id="bZF*G~d.@0t%P5b4kn6Y">特徵資料</field>
+                            <value name="VALUE">
+                              <block type="lists_create_with" id="I0qKN#n%JW8e8TN`+1S,">
+                                <mutation items="0"></mutation>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="^L(Xj~XNu^#!geyN_=Wk">
+                                <field name="VAR" id="*G.u3bGoAmejpXzu1}a*">移動結果</field>
+                                <value name="VALUE">
+                                  <block type="lists_create_with" id="?}|@skdWK5?[3.Ru`@6f">
+                                    <mutation items="0"></mutation>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="controls_for" id="00N|;5}TVGSf(Lbv,Fm-">
+                                    <field name="VAR" id="9]}z*a-D3UY|1`rC#dQu">i</field>
+                                    <comment pinned="false" h="78" w="234">2P的資料數量要自行設定正確的數字喔!</comment>
+                                    <value name="FROM">
+                                      <shadow type="math_number" id="4/CPItR/id*5yqJ-^r~/">
+                                        <field name="NUM">1</field>
+                                      </shadow>
+                                    </value>
+                                    <value name="TO">
+                                      <shadow type="math_number" id="NW*C8u^tme-#S^z1SxA2">
+                                        <field name="NUM">5</field>
+                                      </shadow>
+                                    </value>
+                                    <value name="BY">
+                                      <shadow type="math_number" id="en@tqC-:ynf-)X,aL1EM">
+                                        <field name="NUM">1</field>
+                                      </shadow>
+                                    </value>
+                                    <statement name="DO">
+                                      <block type="file_load" id="g/i.n_[S7dAL2[MBH)|*">
+                                        <value name="FILENAME">
+                                          <block type="text_join" id="]Y8%gnh_7()O)`0#ma[m">
+                                            <mutation items="2"></mutation>
+                                            <value name="ADD0">
+                                              <block type="text" id="?-v:hh@,w(hVgN6Kly{7">
+                                                <field name="TEXT">feature_2P</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD1">
+                                              <block type="variables_get" id=":x8mPwMua.XC49#c^|(h">
+                                                <field name="VAR" id="9]}z*a-D3UY|1`rC#dQu">i</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="OBJECT">
+                                          <block type="variables_get" id="Px)hWhg*h_9e(%QlBVIx">
+                                            <field name="VAR" id="vu+IPgs~~[Fa0q,xAEo5">資料</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="file_load" id="mACVoG3O5=5dH/^rRgRt">
+                                            <value name="FILENAME">
+                                              <block type="text_join" id="~5/3vu7st*|S4W/V/8nQ">
+                                                <mutation items="2"></mutation>
+                                                <value name="ADD0">
+                                                  <block type="text" id="3e(q8EK(c|f0=E1;x9qA">
+                                                    <field name="TEXT">target_2P</field>
+                                                  </block>
+                                                </value>
+                                                <value name="ADD1">
+                                                  <block type="variables_get" id="/Z6BNOafRo+LS9Q|BRVH">
+                                                    <field name="VAR" id="9]}z*a-D3UY|1`rC#dQu">i</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <value name="OBJECT">
+                                              <block type="variables_get" id="Ib?YPa(|pen56=[~a{%o">
+                                                <field name="VAR" id="RF$^@:CBQ@hy7mN`{$5W">答案</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="lists_extend" id="8+4l)$Tix[^5X1zO=}W?">
+                                                <field name="VAR" id="bZF*G~d.@0t%P5b4kn6Y">特徵資料</field>
+                                                <value name="LIST">
+                                                  <block type="variables_get" id="Zoh9H;%$Dofwy}fYgr5W">
+                                                    <field name="VAR" id="vu+IPgs~~[Fa0q,xAEo5">資料</field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="lists_extend" id="tk(s`0dUmL$?O|%e4EZU">
+                                                    <field name="VAR" id="*G.u3bGoAmejpXzu1}a*">移動結果</field>
+                                                    <value name="LIST">
+                                                      <block type="variables_get" id="3g_mcP/zp+CUkxp[:z8|">
+                                                        <field name="VAR" id="RF$^@:CBQ@hy7mN`{$5W">答案</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </statement>
+                                    <next>
+                                      <block type="variables_set" id="2#GhXb|ik7kuS9F:[msU">
+                                        <field name="VAR" id="ke3~%KA+=lNKhxN)^L1n">模型</field>
+                                        <value name="VALUE">
+                                          <block type="model_create_classification" id="X}NE=l_(Ux4.;0z(%Ea^">
+                                            <field name="MODEL">KNeighborsClassifier</field>
+                                            <field name="PARAM_K">3</field>
+                                            <field name="PARAM_WEIGHTS">uniform</field>
+                                            <field name="PARAM_ALGORITHM">auto</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="model_train" id="M)(/S#(qijylexuF,d$`">
+                                            <value name="X">
+                                              <block type="variables_get" id="_@v+F#4+}F_acD:#n(Df">
+                                                <field name="VAR" id="bZF*G~d.@0t%P5b4kn6Y">特徵資料</field>
+                                              </block>
+                                            </value>
+                                            <value name="Y">
+                                              <block type="variables_get" id="]q,13Pk`gv~}6}KbNztn">
+                                                <field name="VAR" id="*G.u3bGoAmejpXzu1}a*">移動結果</field>
+                                              </block>
+                                            </value>
+                                            <value name="MODEL">
+                                              <block type="variables_get" id="7j2q%:oCeH1S5!#fxDjP">
+                                                <field name="VAR" id="ke3~%KA+=lNKhxN)^L1n">模型</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="file_save" id="RDsg/[aB^=V8kXEITRb=">
+                                                <comment pinned="false" h="43" w="156">儲存2P的模型</comment>
+                                                <value name="OBJECT">
+                                                  <block type="variables_get" id="HWDB(w]T}3H.*HS{[m=;">
+                                                    <field name="VAR" id="ke3~%KA+=lNKhxN)^L1n">模型</field>
+                                                  </block>
+                                                </value>
+                                                <value name="FILENAME">
+                                                  <block type="text" id="Th+d9MKR5I`gKsURs45=">
+                                                    <field name="TEXT">model_2P</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
                       </block>
-                    </value>
+                    </next>
                   </block>
                 </next>
               </block>

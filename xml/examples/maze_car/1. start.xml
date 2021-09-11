@@ -1,12 +1,14 @@
 <xml xmlns="https://developers.google.com/blockly/xml">
   <variables>
     <variable id="Es,MOK^RYJ_1;u2DfG-W">前方距離</variable>
-    <variable id="69R+bVSBfx?.^Lo}~=Y=">右側距離</variable>
+    <variable id="fc9)+ofHx}:*pYi!nk8{">左輪轉速</variable>
     <variable id="w:VS^|3qGMapmI@M!$nk">左側距離</variable>
-    <variable id="3mu%ock7yMNJRcn`_dyf">左輪轉速</variable>
-    <variable id="}]+AasxtgeR%@4=.s}3V">右輪轉速</variable>
+    <variable id="m._Ao(nCcIPVI7x#zX9]">右輪轉速</variable>
+    <variable id="69R+bVSBfx?.^Lo}~=Y=">右側距離</variable>
+    <variable id="3mu%ock7yMNJRcn`_dyf">左前距離</variable>
+    <variable id="}]+AasxtgeR%@4=.s}3V">右前距離</variable>
   </variables>
-  <block type="mlplay_class" id="Z*lb-wWxg7v@ss05TP[c" x="262" y="88">
+  <block type="mlplay_class" id="Z*lb-wWxg7v@ss05TP[c" x="613" y="213">
     <statement name="INIT">
       <block type="variables_set" id="=$e80s4CDNe%kR8ly%xA">
         <field name="VAR" id="Es,MOK^RYJ_1;u2DfG-W">前方距離</field>
@@ -17,7 +19,7 @@
         </value>
         <next>
           <block type="variables_set" id="1(7+5ETmJ)[Uby[05=EL">
-            <field name="VAR" id="69R+bVSBfx?.^Lo}~=Y=">右側距離</field>
+            <field name="VAR" id="w:VS^|3qGMapmI@M!$nk">左側距離</field>
             <value name="VALUE">
               <block type="math_number" id="+tw75}nSk`@cgna4Q}?A">
                 <field name="NUM">0</field>
@@ -25,28 +27,48 @@
             </value>
             <next>
               <block type="variables_set" id="0/1A@zU1F=,l(-%3W-07">
-                <field name="VAR" id="w:VS^|3qGMapmI@M!$nk">左側距離</field>
+                <field name="VAR" id="69R+bVSBfx?.^Lo}~=Y=">右側距離</field>
                 <value name="VALUE">
                   <block type="math_number" id="tv3z+g`ud:+#c#Fs53L^">
                     <field name="NUM">0</field>
                   </block>
                 </value>
                 <next>
-                  <block type="variables_set" id="uRdL:[^V2Vo6eaPOv}r0">
-                    <field name="VAR" id="3mu%ock7yMNJRcn`_dyf">左輪轉速</field>
+                  <block type="variables_set" id="hd/H^dArLTEx{X$Z$zJ4">
+                    <field name="VAR" id="3mu%ock7yMNJRcn`_dyf">左前距離</field>
                     <value name="VALUE">
-                      <block type="math_number" id="*0+v2ZqOmS`0:pjFQ-m,">
+                      <block type="math_number" id="u:D}e-NiyT5Ki0!60|fg">
                         <field name="NUM">0</field>
                       </block>
                     </value>
                     <next>
-                      <block type="variables_set" id="?xzk-EhE}Q(Z~%frhs#I">
-                        <field name="VAR" id="}]+AasxtgeR%@4=.s}3V">右輪轉速</field>
+                      <block type="variables_set" id="SMDcvlV=`k7EjK{lk?Lb">
+                        <field name="VAR" id="}]+AasxtgeR%@4=.s}3V">右前距離</field>
                         <value name="VALUE">
-                          <block type="math_number" id="obyuoEux6c;[tK.3Ja_Q">
+                          <block type="math_number" id="{D)py^+8TxJ[q?;X/b|u">
                             <field name="NUM">0</field>
                           </block>
                         </value>
+                        <next>
+                          <block type="variables_set" id="uRdL:[^V2Vo6eaPOv}r0">
+                            <field name="VAR" id="fc9)+ofHx}:*pYi!nk8{">左輪轉速</field>
+                            <value name="VALUE">
+                              <block type="math_number" id="*0+v2ZqOmS`0:pjFQ-m,">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="?xzk-EhE}Q(Z~%frhs#I">
+                                <field name="VAR" id="m._Ao(nCcIPVI7x#zX9]">右輪轉速</field>
+                                <value name="VALUE">
+                                  <block type="math_number" id="obyuoEux6c;[tK.3Ja_Q">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
                       </block>
                     </next>
                   </block>
@@ -58,63 +80,119 @@
       </block>
     </statement>
     <statement name="UPDATE">
-      <block type="variables_set" id="[ocaOkFN0mm*qj2d)8QK">
-        <field name="VAR" id="Es,MOK^RYJ_1;u2DfG-W">前方距離</field>
-        <value name="VALUE">
-          <block type="mlplay_get_info" id="UN[-pzjpG-p~w[6.A[{V">
-            <field name="FIELD">scene_info['F_sensor']</field>
+      <block type="controls_if" id="A!{ro;zA|n@ceKyvY6;]">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id="{?5zS-.npmKm1/IYM?T%">
+            <field name="OP">NEQ</field>
+            <value name="A">
+              <block type="mlplay_get_info" id="JEo2ZCRVn{^yr0_]CUWc">
+                <field name="FIELD">scene_info['status']</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="mlplay_game_status" id="%jcbV5JJ+PZ=1fgC.C;2">
+                <field name="STATUS">GAME_ALIVE</field>
+              </block>
+            </value>
           </block>
         </value>
-        <next>
-          <block type="variables_set" id="e{B_FdlmR*_@_OUHQHw3">
-            <field name="VAR" id="w:VS^|3qGMapmI@M!$nk">左側距離</field>
+        <statement name="DO0">
+          <block type="mlplay_return_action" id="C;4i@FW{4*reV|Z7SosK">
+            <field name="ACTION">RESET</field>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="variables_set" id="[ocaOkFN0mm*qj2d)8QK">
+            <field name="VAR" id="Es,MOK^RYJ_1;u2DfG-W">前方距離</field>
             <value name="VALUE">
-              <block type="mlplay_get_info" id="^9Dva800:6rVjKyrHlUb">
-                <field name="FIELD">scene_info['L_sensor']</field>
+              <block type="mlplay_get_info" id="UN[-pzjpG-p~w[6.A[{V">
+                <field name="FIELD">scene_info['F_sensor']</field>
               </block>
             </value>
             <next>
-              <block type="variables_set" id="Ot`4)rAJuEs-3[mC0jAq">
-                <field name="VAR" id="69R+bVSBfx?.^Lo}~=Y=">右側距離</field>
+              <block type="variables_set" id="e{B_FdlmR*_@_OUHQHw3">
+                <field name="VAR" id="w:VS^|3qGMapmI@M!$nk">左側距離</field>
                 <value name="VALUE">
-                  <block type="mlplay_get_info" id="dC%eE2{j;gTy|x56Aenb">
-                    <field name="FIELD">scene_info['R_sensor']</field>
+                  <block type="mlplay_get_info" id="^9Dva800:6rVjKyrHlUb">
+                    <field name="FIELD">scene_info['L_sensor']</field>
                   </block>
                 </value>
                 <next>
-                  <block type="variables_set" id="VLv6f188gbvz+$iv.@.*">
-                    <field name="VAR" id="3mu%ock7yMNJRcn`_dyf">左輪轉速</field>
+                  <block type="variables_set" id="Ot`4)rAJuEs-3[mC0jAq">
+                    <field name="VAR" id="69R+bVSBfx?.^Lo}~=Y=">右側距離</field>
                     <value name="VALUE">
-                      <block type="math_number" id="g:}?EZ_?]@jgGUz57aJ8">
-                        <field name="NUM">50</field>
+                      <block type="mlplay_get_info" id="dC%eE2{j;gTy|x56Aenb">
+                        <field name="FIELD">scene_info['R_sensor']</field>
                       </block>
                     </value>
                     <next>
-                      <block type="variables_set" id="k4?4@~p8hM+5bZ[{,A?9">
-                        <field name="VAR" id="}]+AasxtgeR%@4=.s}3V">右輪轉速</field>
+                      <block type="variables_set" id="kg+Tcc1Y;0L8T)mgWKn{">
+                        <field name="VAR" id="3mu%ock7yMNJRcn`_dyf">左前距離</field>
                         <value name="VALUE">
-                          <block type="math_number" id="PDqrXk:.!81-|:y`)WL-">
-                            <field name="NUM">50</field>
+                          <block type="mlplay_get_info" id=":`?Fhk}mQ|-NvwDW2gM|">
+                            <field name="FIELD">scene_info['L_T_sensor']</field>
                           </block>
                         </value>
                         <next>
-                          <block type="mlplay_return_mazecar_action" id="B;/xii/!_J5VvAD~}]@g">
-                            <value name="LEFT_RPM">
-                              <shadow type="math_number" id="k`gF9vOij#40eqpIP]{n">
-                                <field name="NUM">100</field>
-                              </shadow>
-                              <block type="variables_get" id="9T^pYUZcIAvJ#hlSD|S,">
-                                <field name="VAR" id="3mu%ock7yMNJRcn`_dyf">左輪轉速</field>
+                          <block type="variables_set" id="1shk{9D8|e8c6D45-kE7">
+                            <field name="VAR" id="}]+AasxtgeR%@4=.s}3V">右前距離</field>
+                            <value name="VALUE">
+                              <block type="mlplay_get_info" id=";RUT?Fo4{}BH)Sbz`rGi">
+                                <field name="FIELD">scene_info['R_T_sensor']</field>
                               </block>
                             </value>
-                            <value name="RIGHT_RPM">
-                              <shadow type="math_number" id="6Wsi!C`M@K)/!k;BWmnJ">
-                                <field name="NUM">100</field>
-                              </shadow>
-                              <block type="variables_get" id="+0$|M_XT[jN|.$YA4PZ$">
-                                <field name="VAR" id="}]+AasxtgeR%@4=.s}3V">右輪轉速</field>
+                            <next>
+                              <block type="controls_if" id="|u[n:p|dFbmD9RYOBSK;">
+                                <mutation else="1"></mutation>
+                                <comment pinned="false" h="80" w="160">請自行設計轉彎或其它的函式喔!</comment>
+                                <value name="IF0">
+                                  <block type="logic_compare" id="bzD%f|RbI,6~1+tBTzCH">
+                                    <field name="OP">GT</field>
+                                    <value name="A">
+                                      <block type="variables_get" id="%b/fIRuuc[Ct0uTID8~f">
+                                        <field name="VAR" id="Es,MOK^RYJ_1;u2DfG-W">前方距離</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id="Mhx@Rcfbq@=i:Nj!%4hB">
+                                        <field name="NUM">15</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block type="procedures_callnoreturn" id="9/4=KaC2(Cb6?qKfOY9.">
+                                    <mutation name="前進"></mutation>
+                                  </block>
+                                </statement>
+                                <statement name="ELSE">
+                                  <block type="procedures_callnoreturn" id="ZK5|G%g~wTlvTSn7X*qe">
+                                    <mutation name="後退"></mutation>
+                                  </block>
+                                </statement>
+                                <next>
+                                  <block type="mlplay_return_mazecar_action" id="B;/xii/!_J5VvAD~}]@g">
+                                    <value name="LEFT_RPM">
+                                      <shadow type="math_number" id="k`gF9vOij#40eqpIP]{n">
+                                        <field name="NUM">100</field>
+                                      </shadow>
+                                      <block type="variables_get" id="9T^pYUZcIAvJ#hlSD|S,">
+                                        <field name="VAR" id="fc9)+ofHx}:*pYi!nk8{">左輪轉速</field>
+                                      </block>
+                                    </value>
+                                    <value name="RIGHT_RPM">
+                                      <shadow type="math_number" id="6Wsi!C`M@K)/!k;BWmnJ">
+                                        <field name="NUM">100</field>
+                                      </shadow>
+                                      <block type="variables_get" id="+0$|M_XT[jN|.$YA4PZ$">
+                                        <field name="VAR" id="m._Ao(nCcIPVI7x#zX9]">右輪轉速</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
                               </block>
-                            </value>
+                            </next>
                           </block>
                         </next>
                       </block>
@@ -123,6 +201,66 @@
                 </next>
               </block>
             </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <statement name="RESET">
+      <block type="text_print" id="ue:Pa4?TRLC``Q8^:Zz?">
+        <value name="TEXT">
+          <shadow type="text" id="shRXdIX_)/fEGSl_u(-G">
+            <field name="TEXT">abc</field>
+          </shadow>
+          <block type="text" id="T_}?Q.HIJc=SY_`cDuTS">
+            <field name="TEXT">遊戲重置</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="Au/x:A,-v4Q~(1YGRjM_" x="1138" y="512">
+    <field name="NAME">前進</field>
+    <comment pinned="false" h="80" w="160">描述此函式...</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="yao}(4Zp[n6L:LOq[wMI">
+        <field name="VAR" id="fc9)+ofHx}:*pYi!nk8{">左輪轉速</field>
+        <value name="VALUE">
+          <block type="math_number" id="q1Qv$o`11:aAut:8qF-U">
+            <field name="NUM">200</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="A~H~@GBR5ew=bQuG)Ei+">
+            <field name="VAR" id="m._Ao(nCcIPVI7x#zX9]">右輪轉速</field>
+            <value name="VALUE">
+              <block type="math_number" id="Ti_=~he9*ZPr7_ad9I-V">
+                <field name="NUM">200</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="[7ce+,jK!Sg8E]p-VLAa" x="1138" y="663">
+    <field name="NAME">後退</field>
+    <comment pinned="false" h="80" w="160">描述此函式...</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="qpgdL5V06EM^rCLK{;.?">
+        <field name="VAR" id="fc9)+ofHx}:*pYi!nk8{">左輪轉速</field>
+        <value name="VALUE">
+          <block type="math_number" id="Kz$]l6}2TuMn1`e%Wi?l">
+            <field name="NUM">-200</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="1%2QlIbN(]w1U}3tNw/r">
+            <field name="VAR" id="m._Ao(nCcIPVI7x#zX9]">右輪轉速</field>
+            <value name="VALUE">
+              <block type="math_number" id="b%j1WY6H2NUjh}-?YILv">
+                <field name="NUM">-200</field>
+              </block>
+            </value>
           </block>
         </next>
       </block>

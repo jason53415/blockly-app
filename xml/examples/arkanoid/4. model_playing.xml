@@ -1,7 +1,8 @@
 <xml xmlns="https://developers.google.com/blockly/xml">
   <variables>
     <variable id="Byr4iZ7Psx3yv_1uOLCb">已經發球</variable>
-    <variable id="=50T,U7=/!k46o$5DiWM">model</variable>
+    <variable id="=50T,U7=/!k46o$5DiWM">AI模型</variable>
+    <variable id=",#5=v}##H9yh)yE@5jAr">預測結果</variable>
     <variable id="fov^7;pw=*pCf`?zXTv{">行動</variable>
   </variables>
   <block type="mlplay_class" id="(S0`q*z*f5{ng]`fBLpg" x="63" y="-38">
@@ -15,14 +16,15 @@
         </value>
         <next>
           <block type="file_load" id="w#5P`51-BN_k7J^ejrFV">
+            <comment pinned="false" h="52" w="219">載入已經訓練好的AI模型</comment>
             <value name="FILENAME">
               <block type="text" id="NR2,v?SB|+UUK)|z;_Y2">
-                <field name="TEXT">模型</field>
+                <field name="TEXT">model</field>
               </block>
             </value>
             <value name="OBJECT">
               <block type="variables_get" id="/B5fsa$Vy/vP`yRs]5gL">
-                <field name="VAR" id="=50T,U7=/!k46o$5DiWM">model</field>
+                <field name="VAR" id="=50T,U7=/!k46o$5DiWM">AI模型</field>
               </block>
             </value>
           </block>
@@ -84,10 +86,10 @@
               </block>
             </value>
             <statement name="DO0">
-              <block type="variables_set" id="EeGq`f2[WXWEk}ADn=]*">
+              <block type="variables_set" id="b5~p]%#N?OJc$LIH-}km">
                 <field name="VAR" id="Byr4iZ7Psx3yv_1uOLCb">已經發球</field>
                 <value name="VALUE">
-                  <block type="logic_boolean" id="wO[q~2tstBtuBGo@CG(S">
+                  <block type="logic_boolean" id="#Dqp|)-7EIz]!|w3L^NR">
                     <field name="BOOL">TRUE</field>
                   </block>
                 </value>
@@ -100,12 +102,13 @@
             </statement>
             <statement name="ELSE">
               <block type="variables_set" id="f5LdH[p5:YLu45TU01k.">
-                <field name="VAR" id="fov^7;pw=*pCf`?zXTv{">行動</field>
+                <field name="VAR" id=",#5=v}##H9yh)yE@5jAr">預測結果</field>
+                <comment pinned="false" h="76" w="292">利用AI模型預測移動方向，1代表向右移動，2代表向左移動</comment>
                 <value name="VALUE">
                   <block type="model_predict" id="3wC+@(1]`pk8yC.KJVn9">
                     <value name="MODEL">
                       <block type="variables_get" id="QYT4yP+epB]-EG$=EhHG">
-                        <field name="VAR" id="=50T,U7=/!k46o$5DiWM">model</field>
+                        <field name="VAR" id="=50T,U7=/!k46o$5DiWM">AI模型</field>
                       </block>
                     </value>
                     <value name="X">
@@ -113,7 +116,8 @@
                         <mutation items="1"></mutation>
                         <value name="ADD0">
                           <block type="lists_create_with" id="Mf0Hvz1c0P@$3pUlzGl.">
-                            <mutation items="2"></mutation>
+                            <mutation items="3"></mutation>
+                            <comment pinned="false" h="65" w="231">這裡的特徵資料一定要跟遊戲收集的一樣喔!!</comment>
                             <value name="ADD0">
                               <block type="mlplay_get_info" id="76D|xTLYb_qEoAD,NC_^">
                                 <field name="FIELD">scene_info['ball'][0]</field>
@@ -124,6 +128,11 @@
                                 <field name="FIELD">scene_info['ball'][1]</field>
                               </block>
                             </value>
+                            <value name="ADD2">
+                              <block type="mlplay_get_info" id=".d`oqVG22/+;I90aq`ny">
+                                <field name="FIELD">scene_info['platform'][0]</field>
+                              </block>
+                            </value>
                           </block>
                         </value>
                       </block>
@@ -131,33 +140,65 @@
                   </block>
                 </value>
                 <next>
-                  <block type="controls_if" id="KNxZ~LU$F)b7|A(fV{Xx">
-                    <mutation else="1"></mutation>
-                    <value name="IF0">
-                      <block type="logic_compare" id="z`E,fI)AmGB0?DCvM:3j">
-                        <field name="OP">EQ</field>
-                        <value name="A">
-                          <block type="variables_get" id="r][c.t|*o-P(mzCDGUa}">
-                            <field name="VAR" id="fov^7;pw=*pCf`?zXTv{">行動</field>
-                          </block>
-                        </value>
-                        <value name="B">
-                          <block type="math_number" id="$J|~Epbr.:B~7)h%r@eh">
-                            <field name="NUM">1</field>
+                  <block type="variables_set" id="X1nP]Q=V*YuEs@q8daE~">
+                    <field name="VAR" id="fov^7;pw=*pCf`?zXTv{">行動</field>
+                    <value name="VALUE">
+                      <block type="lists_getIndex" id=".%wDn;R).)(gkWav+zO)">
+                        <mutation statement="false" at="false"></mutation>
+                        <field name="MODE">GET</field>
+                        <field name="WHERE">FIRST</field>
+                        <value name="VALUE">
+                          <block type="variables_get" id="-D3Bm}VG?]QI$9?e+IDa">
+                            <field name="VAR" id=",#5=v}##H9yh)yE@5jAr">預測結果</field>
                           </block>
                         </value>
                       </block>
                     </value>
-                    <statement name="DO0">
-                      <block type="mlplay_return_action" id="mypVXkM.!VVyh=hd7nX3">
-                        <field name="ACTION">MOVE_LEFT</field>
+                    <next>
+                      <block type="controls_if" id="KNxZ~LU$F)b7|A(fV{Xx">
+                        <mutation elseif="1"></mutation>
+                        <value name="IF0">
+                          <block type="logic_compare" id="z`E,fI)AmGB0?DCvM:3j">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="r][c.t|*o-P(mzCDGUa}">
+                                <field name="VAR" id="fov^7;pw=*pCf`?zXTv{">行動</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="$J|~Epbr.:B~7)h%r@eh">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="mlplay_return_action" id="mypVXkM.!VVyh=hd7nX3">
+                            <field name="ACTION">MOVE_RIGHT</field>
+                          </block>
+                        </statement>
+                        <value name="IF1">
+                          <block type="logic_compare" id="t/Ce|4@x7v`vcV33[c3/">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="Dixcdu`XMeY#XYMXB{[|">
+                                <field name="VAR" id="fov^7;pw=*pCf`?zXTv{">行動</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="]YkmDkVi!_sqIQI=oSwb">
+                                <field name="NUM">2</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO1">
+                          <block type="mlplay_return_action" id="-5kn2iSPH=WCx1/gvMLd">
+                            <field name="ACTION">MOVE_LEFT</field>
+                          </block>
+                        </statement>
                       </block>
-                    </statement>
-                    <statement name="ELSE">
-                      <block type="mlplay_return_action" id="-5kn2iSPH=WCx1/gvMLd">
-                        <field name="ACTION">MOVE_RIGHT</field>
-                      </block>
-                    </statement>
+                    </next>
                   </block>
                 </next>
               </block>

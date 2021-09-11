@@ -1,8 +1,10 @@
 <xml xmlns="https://developers.google.com/blockly/xml">
   <variables>
     <variable id="Byr4iZ7Psx3yv_1uOLCb">已經發球</variable>
+    <variable id="Y(|uwjS5a}Fu1+2Ghx`u">前一個球的x座標</variable>
+    <variable id="cm?;1CZ8a*17D+MFpnKt">球的x方向</variable>
   </variables>
-  <block type="mlplay_class" id="(S0`q*z*f5{ng]`fBLpg">
+  <block type="mlplay_class" id="(S0`q*z*f5{ng]`fBLpg" x="-62" y="-13">
     <statement name="INIT">
       <block type="variables_set" id="c))y.U{^yhe{fv::Gc^F">
         <field name="VAR" id="Byr4iZ7Psx3yv_1uOLCb">已經發球</field>
@@ -11,6 +13,16 @@
             <field name="BOOL">FALSE</field>
           </block>
         </value>
+        <next>
+          <block type="variables_set" id="z)wx[|VC/VD9G#f~(qcy">
+            <field name="VAR" id="Y(|uwjS5a}Fu1+2Ghx`u">前一個球的x座標</field>
+            <value name="VALUE">
+              <block type="math_number" id="[tl1TA=nat],OY5:W|il">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </next>
       </block>
     </statement>
     <statement name="UPDATE">
@@ -68,23 +80,171 @@
               </block>
             </value>
             <statement name="DO0">
-              <block type="variables_set" id="EeGq`f2[WXWEk}ADn=]*">
-                <field name="VAR" id="Byr4iZ7Psx3yv_1uOLCb">已經發球</field>
-                <value name="VALUE">
-                  <block type="logic_boolean" id="wO[q~2tstBtuBGo@CG(S">
-                    <field name="BOOL">TRUE</field>
+              <block type="controls_if" id="s!0FyVnA}26#Yq$PD32e">
+                <mutation elseif="1"></mutation>
+                <value name="IF0">
+                  <block type="mlplay_is_key_pressed" id="?ln(g~_p!{ci0naPm|({">
+                    <field name="TYPE">alpha</field>
+                    <field name="KEY">A</field>
                   </block>
                 </value>
-                <next>
-                  <block type="mlplay_return_action" id="]yYsVM)(LHzGD!d@k@rW">
-                    <field name="ACTION">SERVE_TO_LEFT</field>
+                <statement name="DO0">
+                  <block type="variables_set" id="EeGq`f2[WXWEk}ADn=]*">
+                    <field name="VAR" id="Byr4iZ7Psx3yv_1uOLCb">已經發球</field>
+                    <value name="VALUE">
+                      <block type="logic_boolean" id="wO[q~2tstBtuBGo@CG(S">
+                        <field name="BOOL">TRUE</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="mlplay_return_action" id="]yYsVM)(LHzGD!d@k@rW">
+                        <field name="ACTION">SERVE_TO_LEFT</field>
+                      </block>
+                    </next>
                   </block>
-                </next>
+                </statement>
+                <value name="IF1">
+                  <block type="mlplay_is_key_pressed" id="qHGGwz{x}.Rvq{D}ocG6">
+                    <field name="TYPE">alpha</field>
+                    <field name="KEY">D</field>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="variables_set" id="2ymiu`~#lLIXTJ87woy,">
+                    <field name="VAR" id="Byr4iZ7Psx3yv_1uOLCb">已經發球</field>
+                    <value name="VALUE">
+                      <block type="logic_boolean" id=")fPig-C$p1Al15Nr6-*h">
+                        <field name="BOOL">TRUE</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="mlplay_return_action" id="giqtuf3avh+ha~vyHppm">
+                        <field name="ACTION">SERVE_TO_RIGHT</field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
               </block>
             </statement>
             <statement name="ELSE">
-              <block type="mlplay_return_action" id="mypVXkM.!VVyh=hd7nX3">
-                <field name="ACTION">MOVE_LEFT</field>
+              <block type="variables_set" id="NJV5JtEgUKl[|tULA}RQ">
+                <field name="VAR" id="cm?;1CZ8a*17D+MFpnKt">球的x方向</field>
+                <value name="VALUE">
+                  <block type="math_arithmetic" id="1L#I%-XRD;(*E$4@!o;G">
+                    <field name="OP">MINUS</field>
+                    <value name="A">
+                      <shadow type="math_number" id="Py=`j+DlsGr6y;|88FE`">
+                        <field name="NUM">1</field>
+                      </shadow>
+                      <block type="mlplay_get_info" id=".+E@*:psqLaIm5e/?J!V">
+                        <field name="FIELD">scene_info['ball'][0]</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <shadow type="math_number" id="jHqxkF%YUT[e{)y*e];K">
+                        <field name="NUM">1</field>
+                      </shadow>
+                      <block type="variables_get" id="21;rZ.^QbAO]IJ#sVfl%">
+                        <field name="VAR" id="Y(|uwjS5a}Fu1+2Ghx`u">前一個球的x座標</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="ng@`ZNwIcjw)rfS!Y}Nm">
+                    <field name="VAR" id="Y(|uwjS5a}Fu1+2Ghx`u">前一個球的x座標</field>
+                    <value name="VALUE">
+                      <block type="mlplay_get_info" id="`5_j}]`LKB26jrI2V0_F">
+                        <field name="FIELD">scene_info['ball'][0]</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_if" id="n${SD;8k(WBG;pr=z:G1">
+                        <mutation elseif="1"></mutation>
+                        <value name="IF0">
+                          <block type="logic_operation" id="PUK~mo4GYBi@xGtZJrM-">
+                            <field name="OP">OR</field>
+                            <value name="A">
+                              <block type="logic_compare" id="kWKSUIm/s/HnN@LWlq6G">
+                                <field name="OP">GT</field>
+                                <value name="A">
+                                  <block type="variables_get" id="$/vE*%%hBzoOBUAtUm5?">
+                                    <field name="VAR" id="cm?;1CZ8a*17D+MFpnKt">球的x方向</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="S^5U-6ou:yOF+5v3{AbZ">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="logic_compare" id="XR!E{pM)fNviOf0{!zbi">
+                                <field name="OP">GT</field>
+                                <value name="A">
+                                  <block type="mlplay_get_info" id="xi#_Vd2djIP_.yo3ke_H">
+                                    <field name="FIELD">scene_info['ball'][0]</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="mlplay_get_info" id="X!#+3?vO]V6yM.Nqc2Y0">
+                                    <field name="FIELD">scene_info['platform'][0]</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="mlplay_return_action" id="`aWy!LK`hsCT5e]=7{w|">
+                            <field name="ACTION">MOVE_RIGHT</field>
+                          </block>
+                        </statement>
+                        <value name="IF1">
+                          <block type="logic_operation" id="/`g*Ig9N}r6x2FhzF{V}">
+                            <field name="OP">OR</field>
+                            <value name="A">
+                              <block type="logic_compare" id="X9j_.[[z~FeyQcgWBeXL">
+                                <field name="OP">LT</field>
+                                <value name="A">
+                                  <block type="variables_get" id="wKBUmZY%rA6%t@k$CS%H">
+                                    <field name="VAR" id="cm?;1CZ8a*17D+MFpnKt">球的x方向</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="4B#`q;i%S1}7Z;.:wo#f">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="logic_compare" id="dBlr65M,a2O*1kYv.{sz">
+                                <field name="OP">LT</field>
+                                <value name="A">
+                                  <block type="mlplay_get_info" id="De|8Cu:MFTL]F)rF%45v">
+                                    <field name="FIELD">scene_info['ball'][0]</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="mlplay_get_info" id="/w%};L*#db+uI4C:)7*t">
+                                    <field name="FIELD">scene_info['platform'][0]</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO1">
+                          <block type="mlplay_return_action" id="up1-h*MAb-FRNa3H_gI/">
+                            <field name="ACTION">MOVE_LEFT</field>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </next>
               </block>
             </statement>
           </block>
@@ -101,5 +261,8 @@
         </value>
       </block>
     </statement>
+  </block>
+  <block type="mlplay_return_action" id="*/Y+;h}q)=91U(tiC^W." disabled="true" x="488" y="1087">
+    <field name="ACTION">NONE</field>
   </block>
 </xml>
