@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script>window.jQuery = window.$ = require('jquery');</script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="renderer.js"></script>
   </head>
   <body>
     <div class="card m-3 mx-auto">
@@ -107,7 +108,12 @@
         document.querySelectorAll('a.btn').forEach(e => {
           e.classList.remove("disabled");
         });
-        window.alert(err ? '發生錯誤' : '下載成功');
+        if (err) {
+          window.alert(err);
+        } else {
+          var config = JSON.parse(window.readFile(path.join(destination, 'game_config.json')));
+          window.alert(config['game_name'] + '-' + config['version'] + ' 下載成功');
+        }
       });
     };
   };
