@@ -8,14 +8,14 @@ Pre-built installers of latest release can be downloaded from the links below.
 
 #### Windows 64-bit
 
-[![](https://img.shields.io/badge/EXE%20Installer-v1.2.3-red)](https://github.com/jason53415/blockly-app/releases/download/v1.2.3/blockly-app-1.2.3.Setup.exe) [![](https://img.shields.io/badge/ZIP%20Portable-v1.2.3-red)](https://github.com/jason53415/blockly-app/releases/download/v1.2.3/blockly-app-win32-x64-1.2.3.zip)
+[![](https://img.shields.io/badge/EXE%20Installer-v1.2.5-red)](https://github.com/jason53415/blockly-app/releases/download/v1.2.5/blockly-app-1.2.5.Setup.exe) [![](https://img.shields.io/badge/ZIP%20Portable-v1.2.5-red)](https://github.com/jason53415/blockly-app/releases/download/v1.2.5/blockly-app-win32-x64-1.2.5.zip)
 #### macOS 64-bit
 
-[![](https://img.shields.io/badge/DMG%20Installer-v1.2.3-blue)](https://github.com/jason53415/blockly-app/releases/download/v1.2.3/blockly-app-1.2.3.dmg) [![](https://img.shields.io/badge/ZIP%20Portable-v1.2.3-blue)](https://github.com/jason53415/blockly-app/releases/download/v1.2.3/blockly-app-darwin-x64-1.2.3.zip)
+[![](https://img.shields.io/badge/DMG%20Installer-v1.2.5-blue)](https://github.com/jason53415/blockly-app/releases/download/v1.2.5/blockly-app-1.2.5.dmg) [![](https://img.shields.io/badge/ZIP%20Portable-v1.2.5-blue)](https://github.com/jason53415/blockly-app/releases/download/v1.2.5/blockly-app-darwin-x64-1.2.5.zip)
 
 #### Linux 64-bit
 
-[![](https://img.shields.io/badge/DEB%20Installer-v1.2.3-green)](https://github.com/jason53415/blockly-app/releases/download/v1.2.3/blockly-app-1.2.3.deb) [![](https://img.shields.io/badge/RPM%20Installer-v1.2.3-green)](https://github.com/jason53415/blockly-app/releases/download/v1.2.3/blockly-app-1.2.3.rpm) 
+[![](https://img.shields.io/badge/DEB%20Installer-v1.2.5-green)](https://github.com/jason53415/blockly-app/releases/download/v1.2.5/blockly-app-1.2.5.deb) [![](https://img.shields.io/badge/RPM%20Installer-v1.2.5-green)](https://github.com/jason53415/blockly-app/releases/download/v1.2.5/blockly-app-1.2.5.rpm) 
 
 ## Building
 
