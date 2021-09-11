@@ -1,6 +1,7 @@
 <block type="mlplay_class"></block>
 <block type="mlplay_game_status"></block>
 <block type="mlplay_get_info"></block>
+<block type="mlplay_return_action"></block>
 <block type="mlplay_return_mazecar_action">
   <value name="LEFT_RPM">
     <shadow type="math_number">

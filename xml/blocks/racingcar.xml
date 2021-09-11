@@ -1,6 +1,4 @@
 <block type="mlplay_class"></block>
-<block type="mlplay_init_info"></block>
-<block type="mlplay_player_status"></block>
 <block type="mlplay_game_status"></block>
 <block type="mlplay_get_info"></block>
 <block type="mlplay_get_constant"></block>

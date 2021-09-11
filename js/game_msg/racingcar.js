@@ -1,27 +1,19 @@
-Blockly.Msg["MLPLAY_INIT_INFO_OPTIONS"] = [
-  ["%{BKY_RACINGCAR_INIT_INFO_1}", "player"]
-];
-Blockly.Msg["MLPLAY_PLAYER_STATUS_OPTIONS"] = [
-  ["%{BKY_RACINGCAR_PLAYER_STATUS_1}", "player1"],
-  ["%{BKY_RACINGCAR_PLAYER_STATUS_2}", "player2"],
-  ["%{BKY_RACINGCAR_PLAYER_STATUS_3}", "player3"],
-  ["%{BKY_RACINGCAR_PLAYER_STATUS_4}", "player4"]
-];
 Blockly.Msg["MLPLAY_GAME_STATUS_OPTIONS"] = [
-  ["%{BKY_RACINGCAR_GAME_STATUS_1}", "START"],
-  ["%{BKY_RACINGCAR_GAME_STATUS_2}", "RUNNING"],
-  ["%{BKY_RACINGCAR_GAME_STATUS_3}", "END"]
+  ["%{BKY_RACINGCAR_GAME_STATUS_1}", "GAME_ALIVE"],
+  ["%{BKY_RACINGCAR_GAME_STATUS_2}", "GAME_PASS"],
+  ["%{BKY_RACINGCAR_GAME_STATUS_3}", "GAME_OVER"]
 ];
 Blockly.Msg["MLPLAY_GET_INFO_OPTIONS"] = [
   ["%{BKY_RACINGCAR_SCENE_INFO_1}", "scene_info['frame']"],
   ["%{BKY_RACINGCAR_SCENE_INFO_2}", "scene_info['status']"],
-  ["%{BKY_RACINGCAR_SCENE_INFO_3}", "scene_info['x']"],
-  ["%{BKY_RACINGCAR_SCENE_INFO_4}", "scene_info['y']"],
-  ["%{BKY_RACINGCAR_SCENE_INFO_5}", "scene_info['distance']"],
-  ["%{BKY_RACINGCAR_SCENE_INFO_6}", "scene_info['velocity']"],
-  ["%{BKY_RACINGCAR_SCENE_INFO_7}", "scene_info['cars_pos']"],
-  ["%{BKY_RACINGCAR_SCENE_INFO_8}", "scene_info['coin']"],
-  ["%{BKY_RACINGCAR_SCENE_INFO_9}", "scene_info['coin_num']"]
+  ["%{BKY_RACINGCAR_SCENE_INFO_3}", "scene_info['id']"],
+  ["%{BKY_RACINGCAR_SCENE_INFO_4}", "scene_info['x']"],
+  ["%{BKY_RACINGCAR_SCENE_INFO_5}", "scene_info['y']"],
+  ["%{BKY_RACINGCAR_SCENE_INFO_6}", "scene_info['distance']"],
+  ["%{BKY_RACINGCAR_SCENE_INFO_7}", "scene_info['velocity']"],
+  ["%{BKY_RACINGCAR_SCENE_INFO_8}", "scene_info['all_cars_pos']"],
+  ["%{BKY_RACINGCAR_SCENE_INFO_9}", "scene_info['coin']"],
+  ["%{BKY_RACINGCAR_SCENE_INFO_10}", "scene_info['coin_num']"]
 ];
 Blockly.Msg["MLPLAY_GET_CONSTANT_OPTIONS"] = [
   ["%{BKY_RACINGCAR_CONSTANT_1}", "1/0"],
@@ -42,5 +34,6 @@ Blockly.Msg["MLPLAY_RETURN_ACTION_OPTIONS"] = [
   ["%{BKY_RACINGCAR_ACTION_6}", "['SPEED', 'MOVE_RIGHT']"],
   ["%{BKY_RACINGCAR_ACTION_7}", "['BRAKE', 'MOVE_LEFT']"],
   ["%{BKY_RACINGCAR_ACTION_8}", "['BRAKE', 'MOVE_RIGHT']"],
-  ["%{BKY_RACINGCAR_ACTION_9}", "[]"]
+  ["%{BKY_RACINGCAR_ACTION_9}", "RESET"],
+  ["%{BKY_RACINGCAR_ACTION_10}", "[]"]
 ];

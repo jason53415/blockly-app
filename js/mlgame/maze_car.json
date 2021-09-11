@@ -11,8 +11,9 @@
         ["player6", "6P", "6P"]
     ],
     "GAME_STATUS": [
-        ["GAME_PASS", "running", "進行中"],
-        ["GAME OVER", "over", "已結束"]
+        ["GAME_ALIVE", "alive", "存活"],
+        ["GAME_PASS", "pass", "通關"],
+        ["GAME_OVER", "over", "失敗"]
     ],
     "SCENE_INFO": [
         ["scene_info['frame']", "# frame", "# 幀數"],
@@ -34,9 +35,6 @@
         [520, "bottom boundary", "下邊界"]
     ],
     "ACTION": [
-        ["[{'left_PWM':75,'right_PWM':75}]", "move forward", "向前移動"],
-        ["[{'left_PWM':-75,'right_PWM':-75}]", "move backwards", "向後移動"],
-        ["[{'left_PWM':0,'right_PWM':60}]", "turn left", "向左旋轉"],
-        ["[{'left_PWM':60,'right_PWM':0}]", "turn right", "向右旋轉"]
+        ["RESET", "reset", "重置"]
     ]
 }
