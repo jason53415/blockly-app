@@ -655,23 +655,31 @@ Code.play = function() {
   var ml_path = path.join(__dirname, 'MLGame', 'games', Code.GAME, 'ml');
   var file_path = path.join(ml_path, file_name);
   window.writeFile(file_path, python_text);
-  var fps_element = document.getElementById('game_fps');
-  var fps = fps_element.options[fps_element.selectedIndex].getAttribute("value");
+  var fps = document.getElementById('game_fps').value;
   var args_elements = document.getElementById('game-args').getElementsByClassName('game-arg');
+  var user_num = 1;
   var args = [];
   for (var i = 0; i < args_elements.length; i++) {
     var e = args_elements[i];
+    if (e.id == "user_num") {
+      user_num = parseInt(e.value, 10);
+    }
     if (e.tagName == "SELECT") {
       args.push(e.options[e.selectedIndex].getAttribute("value"));
     } else {
-      args.push(e.getAttribute("value"));
+      args.push(e.value);
     }
   }
+  var total_args = [];
+  for (var i = 0; i < user_num; i++) {
+    total_args = total_args.concat(['-i', file_name])
+  }
+  total_args = total_args.concat(['-f', fps, Code.GAME]).concat(args);
   var options = {
     mode: 'text',
     pythonPath: path.join(__dirname, 'python', 'dist', 'interpreter', 'interpreter'),
     scriptPath: path.join(__dirname, 'MLGame'),
-    args: ['-i', file_name, '-f', fps, Code.GAME].concat(args)
+    args: total_args
   };
   $('#run-mlgame-dialog').modal('hide');
   document.getElementById('content_console').textContent = '> Python program running\n';
