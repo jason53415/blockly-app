@@ -347,9 +347,9 @@ Code.checkAllGeneratorFunctionsDefined = function(generator) {
  */
 Code.init = function() {
   // Load dialog body for selecting game arguments.
-  var html_path = path.join(__dirname, 'html', Code.GAME.toLowerCase() + '.html');
-  var html_text = window.readFile(html_path);
-  $('#game-args').append(html_text);
+  Code.initGameArgs();
+
+  // Make modal draggable.
   $(".modal-header").on("mousedown", function(mousedownEvt) {
     var $draggable = $(this);
     var x = mousedownEvt.pageX - $draggable.offset().left,
@@ -550,6 +550,58 @@ Code.initLanguage = function() {
   document.getElementById('discard').textContent = MSG['discard'];
   document.getElementById('en').textContent = MSG['en'];
   document.getElementById('zh-hant').textContent = MSG['zh_hant'];
+};
+
+/**
+ * Initialize dialog body for selecting game arguments.
+ */
+Code.initGameArgs = function() {
+  var config = JSON.parse(window.readFile(path.join(__dirname, 'MLGame', 'games', Code.GAME, 'game_config.json')));
+  var $body = $('<div class="modal-body my-2"></div>')
+  $body.append('<div class="form-group"><label for="">每秒顯示張數 (FPS)</label><input type="number" class="form-control", id="game_fps", min="1", max="300", step="1", value="30", data-bind="value:replyNumber"></div>');
+  $('#game-args').append($body);
+  for (var params of config['game_params']) {
+    var $param = $('<div class="form-group"></div>');
+    $param.append('<label for="">' + params["verbose"] + '</label>');
+    if (params["type"] == "int") {
+      if ("choices" in params) {
+        $choices = $('<select class="form-control game-arg", id="' + params["name"] + '"></select>');
+        for (var value of params['choices']) {
+          if (params["default"] == value) {
+            $choices.append('<option selected value="' + value + '">' + value + '</option>');
+          } else {
+            $choices.append('<option value="' + value + '">' + value + '</option>');
+          }
+        };
+        $param.append($choices);
+      } else {
+        var step = 1;
+        if ("step" in params) {
+          step = params["step"];
+        }
+        $param.append('<input type="number" class="form-control game-arg", id="' + params["name"] + '", min="' + params["min"] + '", max="' + params["max"] + '", step="' + step + '", value="' + params["default"] + '", data-bind="value:replyNumber">');
+      }
+    } else if (params["type"] == "str") {
+      var $choices = $('<select class="form-control game-arg", id="' + params["name"] + '"></select>');
+      for (var choice of params['choices']) {
+        if (typeof(choice) === "object") {
+          if (params["default"] == choice["value"]) {
+            $choices.append('<option selected value="' + choice["value"] + '">' + choice["verbose"] + '</option>');
+          } else {
+            $choices.append('<option value="' + choice["value"] + '">' + choice["verbose"] + '</option>');
+          }
+        } else {
+          if (params["default"] == choice) {
+            $choices.append('<option selected value="' + choice + '">' + choice + '</option>');
+          } else {
+            $choices.append('<option value="' + choice + '">' + choice + '</option>');
+          }
+        }
+      }
+      $param.append($choices);
+    }
+    $body.append($param);
+  };
 };
 
 /**
