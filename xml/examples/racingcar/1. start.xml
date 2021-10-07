@@ -1,6 +1,7 @@
 <xml xmlns="https://developers.google.com/blockly/xml">
   <variables>
     <variable id="Y4#pjd?0_ye+2+r!%*JH">其他車輛位置</variable>
+    <variable id="!$,0d|,yY|X;3{lQ5rV@">玩家編號</variable>
     <variable id="Flw.vlQKGBTyh^mvy9,J">本車x</variable>
     <variable id="zx%|im8Z`l%l6V94hWN,">本車y</variable>
     <variable id="^J;$8Ni-jx`#h(Dq3]E5">i</variable>
@@ -8,7 +9,7 @@
     <variable id="kcEr-4MRW`Coq5kup9R}">其他車y</variable>
     <variable id="*{4[xNq%so2fb:J!t;9E">j</variable>
   </variables>
-  <block type="mlplay_class" id=".q?9PX,j0gIuBm?GGdZ6" x="-388" y="-388">
+  <block type="mlplay_class" id=".q?9PX,j0gIuBm?GGdZ6" x="-112" y="-537">
     <statement name="INIT">
       <block type="variables_set" id=")4d-=g|I~Zb9_:Yb^aG@">
         <field name="VAR" id="Y4#pjd?0_ye+2+r!%*JH">其他車輛位置</field>
@@ -43,307 +44,415 @@
           </block>
         </statement>
         <statement name="ELSE">
-          <block type="variables_set" id="Z]FDut$Z.uO7}#JSVKS?">
-            <field name="VAR" id="Flw.vlQKGBTyh^mvy9,J">本車x</field>
+          <block type="variables_set" id="u`oFW1IXc-=KO]r*`tB9">
+            <field name="VAR" id="!$,0d|,yY|X;3{lQ5rV@">玩家編號</field>
             <value name="VALUE">
-              <block type="mlplay_get_info" id="=)=3^lycSQrdi8@QTMYo">
-                <field name="FIELD">scene_info['x']</field>
+              <block type="mlplay_get_info" id=".c??B(|Zm[fLnC1NBBmJ">
+                <field name="FIELD">scene_info['id']</field>
               </block>
             </value>
             <next>
-              <block type="variables_set" id="U%KAx5nHnIbBY9qN_my}">
-                <field name="VAR" id="zx%|im8Z`l%l6V94hWN,">本車y</field>
+              <block type="variables_set" id="Z]FDut$Z.uO7}#JSVKS?">
+                <field name="VAR" id="Flw.vlQKGBTyh^mvy9,J">本車x</field>
                 <value name="VALUE">
-                  <block type="mlplay_get_info" id="hA!V*X~sX5|:Nh~$x]@h">
-                    <field name="FIELD">scene_info['y']</field>
+                  <block type="mlplay_get_info" id="=)=3^lycSQrdi8@QTMYo">
+                    <field name="FIELD">scene_info['x']</field>
                   </block>
                 </value>
                 <next>
-                  <block type="variables_set" id="[~/$;mjRaG*S$M6HJF5c">
-                    <field name="VAR" id="Y4#pjd?0_ye+2+r!%*JH">其他車輛位置</field>
+                  <block type="variables_set" id="U%KAx5nHnIbBY9qN_my}">
+                    <field name="VAR" id="zx%|im8Z`l%l6V94hWN,">本車y</field>
                     <value name="VALUE">
-                      <block type="mlplay_get_info" id="q:16Z^;R$v8R0ZpV:1}r">
-                        <field name="FIELD">scene_info['all_cars_pos']</field>
+                      <block type="mlplay_get_info" id="hA!V*X~sX5|:Nh~$x]@h">
+                        <field name="FIELD">scene_info['y']</field>
                       </block>
                     </value>
                     <next>
-                      <block type="lists_getIndex" id="4Ly;1U$Bw(Yu];zkynfi">
-                        <mutation statement="true" at="false"></mutation>
-                        <field name="MODE">REMOVE</field>
-                        <field name="WHERE">FIRST</field>
-                        <comment pinned="false" h="82" w="255">第一項是本車的座標，故先移除</comment>
+                      <block type="variables_set" id="[~/$;mjRaG*S$M6HJF5c">
+                        <field name="VAR" id="Y4#pjd?0_ye+2+r!%*JH">其他車輛位置</field>
                         <value name="VALUE">
-                          <block type="variables_get" id="Y}N@}E07126ACnp%%;s)">
-                            <field name="VAR" id="Y4#pjd?0_ye+2+r!%*JH">其他車輛位置</field>
+                          <block type="mlplay_get_info" id="q:16Z^;R$v8R0ZpV:1}r">
+                            <field name="FIELD">scene_info['all_cars_pos']</field>
                           </block>
                         </value>
                         <next>
-                          <block type="controls_forEach" id="%U0c0Ifh}xmJk;mKMBy*">
-                            <field name="VAR" id="^J;$8Ni-jx`#h(Dq3]E5">i</field>
-                            <value name="LIST">
-                              <block type="variables_get" id="a7{J$;TLk40O8X}(jI!W">
+                          <block type="lists_getIndex" id="4Ly;1U$Bw(Yu];zkynfi">
+                            <mutation statement="true" at="true"></mutation>
+                            <field name="MODE">REMOVE</field>
+                            <field name="WHERE">FROM_START</field>
+                            <comment pinned="false" h="82" w="255">第一項是本車的座標，故先移除</comment>
+                            <value name="VALUE">
+                              <block type="variables_get" id="Y}N@}E07126ACnp%%;s)">
                                 <field name="VAR" id="Y4#pjd?0_ye+2+r!%*JH">其他車輛位置</field>
                               </block>
                             </value>
-                            <statement name="DO">
-                              <block type="variables_set" id="4CRuR;`2PwH#QQRP.LJc">
-                                <field name="VAR" id="U$qa(#ceZj*3WF0+d)D8">其他車x</field>
-                                <value name="VALUE">
-                                  <block type="lists_getIndex" id="J6)ZQgwvY#pt=2L,r1t#">
-                                    <mutation statement="false" at="false"></mutation>
-                                    <field name="MODE">GET</field>
-                                    <field name="WHERE">FIRST</field>
-                                    <value name="VALUE">
-                                      <block type="variables_get" id="?[i,?kmP^8`dmMW9YCjX">
-                                        <field name="VAR" id="^J;$8Ni-jx`#h(Dq3]E5">i</field>
-                                      </block>
-                                    </value>
+                            <value name="AT">
+                              <block type="math_arithmetic" id="^@,kO{p(=5PV7Sx)znFj">
+                                <field name="OP">ADD</field>
+                                <value name="A">
+                                  <shadow type="math_number" id="7ANHqEWf]%uwH[Ag2(26">
+                                    <field name="NUM">1</field>
+                                  </shadow>
+                                  <block type="variables_get" id="i%Md`B^+n00fHtl@M$pc">
+                                    <field name="VAR" id="!$,0d|,yY|X;3{lQ5rV@">玩家編號</field>
                                   </block>
                                 </value>
-                                <next>
-                                  <block type="variables_set" id="F9gn+}k0@vhN#-u,98WP">
-                                    <field name="VAR" id="kcEr-4MRW`Coq5kup9R}">其他車y</field>
+                                <value name="B">
+                                  <shadow type="math_number" id="}j@L2T[[0*W)LN2OO*2n">
+                                    <field name="NUM">1</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="controls_forEach" id="%U0c0Ifh}xmJk;mKMBy*">
+                                <field name="VAR" id="^J;$8Ni-jx`#h(Dq3]E5">i</field>
+                                <value name="LIST">
+                                  <block type="variables_get" id="a7{J$;TLk40O8X}(jI!W">
+                                    <field name="VAR" id="Y4#pjd?0_ye+2+r!%*JH">其他車輛位置</field>
+                                  </block>
+                                </value>
+                                <statement name="DO">
+                                  <block type="variables_set" id="4CRuR;`2PwH#QQRP.LJc">
+                                    <field name="VAR" id="U$qa(#ceZj*3WF0+d)D8">其他車x</field>
                                     <value name="VALUE">
-                                      <block type="lists_getIndex" id="K@Td+_ObLMHD-Y$eKTEl">
+                                      <block type="lists_getIndex" id="J6)ZQgwvY#pt=2L,r1t#">
                                         <mutation statement="false" at="false"></mutation>
                                         <field name="MODE">GET</field>
-                                        <field name="WHERE">LAST</field>
+                                        <field name="WHERE">FIRST</field>
                                         <value name="VALUE">
-                                          <block type="variables_get" id=":D3))4~HNsy}Mgnu-Sam">
+                                          <block type="variables_get" id="?[i,?kmP^8`dmMW9YCjX">
                                             <field name="VAR" id="^J;$8Ni-jx`#h(Dq3]E5">i</field>
                                           </block>
                                         </value>
                                       </block>
                                     </value>
                                     <next>
-                                      <block type="controls_if" id="!u-03|t7{g.w|i^pqsD%">
-                                        <value name="IF0">
-                                          <block type="logic_operation" id="]:!X:A}vrVKWV^mI}JQ(">
-                                            <field name="OP">AND</field>
-                                            <value name="A">
-                                              <block type="logic_compare" id="B4W|2W__$F%hx!xn?JB^">
-                                                <field name="OP">LT</field>
-                                                <value name="A">
-                                                  <block type="math_single" id="iOAr(Xs;)NVk;d;w~-Cl">
-                                                    <field name="OP">ABS</field>
-                                                    <value name="NUM">
-                                                      <shadow type="math_number">
-                                                        <field name="NUM">9</field>
-                                                      </shadow>
-                                                      <block type="math_arithmetic" id="b422njB:G*PnD|W+J@WX">
-                                                        <field name="OP">MINUS</field>
-                                                        <value name="A">
-                                                          <shadow type="math_number">
-                                                            <field name="NUM">1</field>
-                                                          </shadow>
-                                                          <block type="variables_get" id=",|H7.n^3wLVo1CH~17K^">
-                                                            <field name="VAR" id="kcEr-4MRW`Coq5kup9R}">其他車y</field>
-                                                          </block>
-                                                        </value>
-                                                        <value name="B">
-                                                          <shadow type="math_number">
-                                                            <field name="NUM">1</field>
-                                                          </shadow>
-                                                          <block type="variables_get" id="aJXkbPJWK*Kt1B2N@Aw,">
-                                                            <field name="VAR" id="zx%|im8Z`l%l6V94hWN,">本車y</field>
-                                                          </block>
-                                                        </value>
-                                                      </block>
-                                                    </value>
-                                                  </block>
-                                                </value>
-                                                <value name="B">
-                                                  <block type="math_number" id="0Z9$u%@.gLmOjxT4#HE?">
-                                                    <field name="NUM">50</field>
-                                                  </block>
-                                                </value>
-                                              </block>
-                                            </value>
-                                            <value name="B">
-                                              <block type="logic_operation" id="8bqR2rMu;KQF?MSJa0T%">
-                                                <field name="OP">AND</field>
-                                                <comment pinned="false" h="69" w="336">判斷是否有其他車輛在本車的關鍵區</comment>
-                                                <value name="A">
-                                                  <block type="logic_compare" id="R5mW@fsAaK{y=Ji8,2j$">
-                                                    <field name="OP">LT</field>
-                                                    <value name="A">
-                                                      <block type="math_arithmetic" id="u{s7aH{qD+cm#X_*~f7,">
-                                                        <field name="OP">ADD</field>
-                                                        <value name="A">
-                                                          <shadow type="math_number" id="3etvF+dfW*(!z?Wg67qz">
-                                                            <field name="NUM">1</field>
-                                                          </shadow>
-                                                          <block type="variables_get" id="R6dum7BhpJ`fv.(4lU;#">
-                                                            <field name="VAR" id="Flw.vlQKGBTyh^mvy9,J">本車x</field>
-                                                          </block>
-                                                        </value>
-                                                        <value name="B">
-                                                          <shadow type="math_number" id="vo(zY[)P,N/-MhrVHoZ_">
-                                                            <field name="NUM">1</field>
-                                                          </shadow>
-                                                          <block type="mlplay_get_constant" id="SK/jW*C^9:5PN0m%,eQK">
-                                                            <field name="CONSTANT">5/60</field>
-                                                          </block>
-                                                        </value>
-                                                      </block>
-                                                    </value>
-                                                    <value name="B">
-                                                      <block type="variables_get" id="*s8Qs%p@{O0EXg8{M:ta">
-                                                        <field name="VAR" id="U$qa(#ceZj*3WF0+d)D8">其他車x</field>
-                                                      </block>
-                                                    </value>
-                                                  </block>
-                                                </value>
-                                                <value name="B">
-                                                  <block type="logic_compare" id="!?![1jfkZa[h{0]M8mrA">
-                                                    <field name="OP">LT</field>
-                                                    <value name="A">
-                                                      <block type="variables_get" id="8~sQOt%.M$FJoZ%RHw?T">
-                                                        <field name="VAR" id="U$qa(#ceZj*3WF0+d)D8">其他車x</field>
-                                                      </block>
-                                                    </value>
-                                                    <value name="B">
-                                                      <block type="math_arithmetic" id="W(^A3vM`2RSZ9!G3?9(a">
-                                                        <field name="OP">ADD</field>
-                                                        <value name="A">
-                                                          <shadow type="math_number">
-                                                            <field name="NUM">1</field>
-                                                          </shadow>
-                                                          <block type="variables_get" id="MFBv%W*#q-x?VbzdvfhN">
-                                                            <field name="VAR" id="Flw.vlQKGBTyh^mvy9,J">本車x</field>
-                                                          </block>
-                                                        </value>
-                                                        <value name="B">
-                                                          <shadow type="math_number" id="s)Z+#nEXT,;qDgQgizaS">
-                                                            <field name="NUM">1</field>
-                                                          </shadow>
-                                                          <block type="math_number" id="_pu3etorYkL)h]zgx/w8">
-                                                            <field name="NUM">150</field>
-                                                          </block>
-                                                        </value>
-                                                      </block>
-                                                    </value>
-                                                  </block>
-                                                </value>
+                                      <block type="variables_set" id="F9gn+}k0@vhN#-u,98WP">
+                                        <field name="VAR" id="kcEr-4MRW`Coq5kup9R}">其他車y</field>
+                                        <value name="VALUE">
+                                          <block type="lists_getIndex" id="K@Td+_ObLMHD-Y$eKTEl">
+                                            <mutation statement="false" at="false"></mutation>
+                                            <field name="MODE">GET</field>
+                                            <field name="WHERE">LAST</field>
+                                            <value name="VALUE">
+                                              <block type="variables_get" id=":D3))4~HNsy}Mgnu-Sam">
+                                                <field name="VAR" id="^J;$8Ni-jx`#h(Dq3]E5">i</field>
                                               </block>
                                             </value>
                                           </block>
                                         </value>
-                                        <statement name="DO0">
-                                          <block type="controls_forEach" id="F?1lUoFGYrk*:mxDb)wd">
-                                            <field name="VAR" id="*{4[xNq%so2fb:J!t;9E">j</field>
-                                            <value name="LIST">
-                                              <block type="variables_get" id="@DCYS+~;R-GvH#4h:@}*">
-                                                <field name="VAR" id="Y4#pjd?0_ye+2+r!%*JH">其他車輛位置</field>
-                                              </block>
-                                            </value>
-                                            <statement name="DO">
-                                              <block type="controls_if" id="%CHOh]@rrVRPUe,_)QCQ">
-                                                <mutation elseif="1" else="1"></mutation>
-                                                <value name="IF0">
-                                                  <block type="logic_compare" id="0}w,;#f8kg^Hi$c,YrOR">
-                                                    <field name="OP">GT</field>
+                                        <next>
+                                          <block type="controls_if" id="!u-03|t7{g.w|i^pqsD%">
+                                            <value name="IF0">
+                                              <block type="logic_operation" id="]:!X:A}vrVKWV^mI}JQ(">
+                                                <field name="OP">AND</field>
+                                                <comment pinned="false" h="50.203887939453125" w="254.64645385742188">判斷是否有其他車輛在本車的關鍵區3:本車前方</comment>
+                                                <value name="A">
+                                                  <block type="logic_compare" id="B4W|2W__$F%hx!xn?JB^">
+                                                    <field name="OP">LT</field>
                                                     <value name="A">
-                                                      <block type="math_arithmetic" id=";5vq8B,4fljc]/jb)$jc">
-                                                        <field name="OP">MINUS</field>
-                                                        <value name="A">
-                                                          <shadow type="math_number" id="sKh*$STP@!8GB^./L)iH">
-                                                            <field name="NUM">1</field>
+                                                      <block type="math_single" id="iOAr(Xs;)NVk;d;w~-Cl">
+                                                        <field name="OP">ABS</field>
+                                                        <value name="NUM">
+                                                          <shadow type="math_number">
+                                                            <field name="NUM">9</field>
                                                           </shadow>
-                                                          <block type="lists_getIndex" id="NTUhh]iaP)%}%y%,R|W^">
-                                                            <mutation statement="false" at="false"></mutation>
-                                                            <field name="MODE">GET</field>
-                                                            <field name="WHERE">LAST</field>
-                                                            <value name="VALUE">
-                                                              <block type="variables_get" id="]CxV6KNW2Y.gzI4Vp0fX">
-                                                                <field name="VAR" id="*{4[xNq%so2fb:J!t;9E">j</field>
+                                                          <block type="math_arithmetic" id="b422njB:G*PnD|W+J@WX">
+                                                            <field name="OP">MINUS</field>
+                                                            <value name="A">
+                                                              <shadow type="math_number">
+                                                                <field name="NUM">1</field>
+                                                              </shadow>
+                                                              <block type="variables_get" id=",|H7.n^3wLVo1CH~17K^">
+                                                                <field name="VAR" id="kcEr-4MRW`Coq5kup9R}">其他車y</field>
                                                               </block>
                                                             </value>
-                                                          </block>
-                                                        </value>
-                                                        <value name="B">
-                                                          <shadow type="math_number">
-                                                            <field name="NUM">1</field>
-                                                          </shadow>
-                                                          <block type="variables_get" id="Zha=FDEu]8CjTIY^~fJ{">
-                                                            <field name="VAR" id="zx%|im8Z`l%l6V94hWN,">本車y</field>
+                                                            <value name="B">
+                                                              <shadow type="math_number">
+                                                                <field name="NUM">1</field>
+                                                              </shadow>
+                                                              <block type="variables_get" id="aJXkbPJWK*Kt1B2N@Aw,">
+                                                                <field name="VAR" id="zx%|im8Z`l%l6V94hWN,">本車y</field>
+                                                              </block>
+                                                            </value>
                                                           </block>
                                                         </value>
                                                       </block>
                                                     </value>
                                                     <value name="B">
-                                                      <block type="math_number" id=",m=.@xSHX*[8T%`kOpNp">
+                                                      <block type="math_number" id="0Z9$u%@.gLmOjxT4#HE?">
                                                         <field name="NUM">30</field>
                                                       </block>
                                                     </value>
                                                   </block>
                                                 </value>
-                                                <statement name="DO0">
-                                                  <block type="mlplay_return_action" id="vsE9UF7{KKvov|%{{=/;">
-                                                    <field name="ACTION">['MOVE_RIGHT']</field>
-                                                  </block>
-                                                </statement>
-                                                <value name="IF1">
-                                                  <block type="logic_compare" id="Vtf0$D*2aPb2LHf)DpjM">
-                                                    <field name="OP">LT</field>
+                                                <value name="B">
+                                                  <block type="logic_operation" id="8bqR2rMu;KQF?MSJa0T%">
+                                                    <field name="OP">AND</field>
+                                                    <comment pinned="false" h="69" w="336">判斷是否有其他車輛在本車的關鍵區3:本車前方</comment>
                                                     <value name="A">
-                                                      <block type="math_arithmetic" id="5p,u^rA{b|Uc9e?-@F2f">
-                                                        <field name="OP">MINUS</field>
+                                                      <block type="logic_compare" id="R5mW@fsAaK{y=Ji8,2j$">
+                                                        <field name="OP">LT</field>
                                                         <value name="A">
-                                                          <shadow type="math_number" id="N(a(.,9Rb[G%XPk!O_rH">
-                                                            <field name="NUM">1</field>
-                                                          </shadow>
-                                                          <block type="lists_getIndex" id="t6!W-Cdw?K50G:U$3$Lu">
-                                                            <mutation statement="false" at="false"></mutation>
-                                                            <field name="MODE">GET</field>
-                                                            <field name="WHERE">LAST</field>
-                                                            <value name="VALUE">
-                                                              <block type="variables_get" id="!Ar*Ir1SNWlvnQ4~cP~l">
-                                                                <field name="VAR" id="*{4[xNq%so2fb:J!t;9E">j</field>
+                                                          <block type="math_arithmetic" id="u{s7aH{qD+cm#X_*~f7,">
+                                                            <field name="OP">ADD</field>
+                                                            <value name="A">
+                                                              <shadow type="math_number" id="3etvF+dfW*(!z?Wg67qz">
+                                                                <field name="NUM">1</field>
+                                                              </shadow>
+                                                              <block type="variables_get" id="R6dum7BhpJ`fv.(4lU;#">
+                                                                <field name="VAR" id="Flw.vlQKGBTyh^mvy9,J">本車x</field>
+                                                              </block>
+                                                            </value>
+                                                            <value name="B">
+                                                              <shadow type="math_number" id="vo(zY[)P,N/-MhrVHoZ_">
+                                                                <field name="NUM">1</field>
+                                                              </shadow>
+                                                              <block type="mlplay_get_constant" id="SK/jW*C^9:5PN0m%,eQK">
+                                                                <field name="CONSTANT">5/60</field>
                                                               </block>
                                                             </value>
                                                           </block>
                                                         </value>
                                                         <value name="B">
-                                                          <shadow type="math_number">
-                                                            <field name="NUM">1</field>
-                                                          </shadow>
-                                                          <block type="variables_get" id="XsWb..)K(16TUG`]N-JB">
-                                                            <field name="VAR" id="zx%|im8Z`l%l6V94hWN,">本車y</field>
+                                                          <block type="variables_get" id="*s8Qs%p@{O0EXg8{M:ta">
+                                                            <field name="VAR" id="U$qa(#ceZj*3WF0+d)D8">其他車x</field>
                                                           </block>
                                                         </value>
                                                       </block>
                                                     </value>
                                                     <value name="B">
-                                                      <block type="math_number" id="N,5=FrW!UMviofZCpuj8">
-                                                        <field name="NUM">-30</field>
+                                                      <block type="logic_compare" id="!?![1jfkZa[h{0]M8mrA">
+                                                        <field name="OP">LT</field>
+                                                        <value name="A">
+                                                          <block type="variables_get" id="8~sQOt%.M$FJoZ%RHw?T">
+                                                            <field name="VAR" id="U$qa(#ceZj*3WF0+d)D8">其他車x</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="B">
+                                                          <block type="math_arithmetic" id="W(^A3vM`2RSZ9!G3?9(a">
+                                                            <field name="OP">ADD</field>
+                                                            <value name="A">
+                                                              <shadow type="math_number">
+                                                                <field name="NUM">1</field>
+                                                              </shadow>
+                                                              <block type="variables_get" id="MFBv%W*#q-x?VbzdvfhN">
+                                                                <field name="VAR" id="Flw.vlQKGBTyh^mvy9,J">本車x</field>
+                                                              </block>
+                                                            </value>
+                                                            <value name="B">
+                                                              <shadow type="math_number" id="s)Z+#nEXT,;qDgQgizaS">
+                                                                <field name="NUM">1</field>
+                                                              </shadow>
+                                                              <block type="math_number" id="_pu3etorYkL)h]zgx/w8">
+                                                                <field name="NUM">150</field>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </value>
                                                       </block>
                                                     </value>
                                                   </block>
                                                 </value>
-                                                <statement name="DO1">
-                                                  <block type="mlplay_return_action" id="$Jpdx-Q,sP?mkt3fC}:+">
-                                                    <field name="ACTION">['MOVE_LEFT']</field>
+                                              </block>
+                                            </value>
+                                            <statement name="DO0">
+                                              <block type="controls_forEach" id="F?1lUoFGYrk*:mxDb)wd">
+                                                <field name="VAR" id="*{4[xNq%so2fb:J!t;9E">j</field>
+                                                <value name="LIST">
+                                                  <block type="variables_get" id="@DCYS+~;R-GvH#4h:@}*">
+                                                    <field name="VAR" id="Y4#pjd?0_ye+2+r!%*JH">其他車輛位置</field>
+                                                  </block>
+                                                </value>
+                                                <statement name="DO">
+                                                  <block type="controls_if" id="%CHOh]@rrVRPUe,_)QCQ">
+                                                    <value name="IF0">
+                                                      <block type="logic_operation" id="1|*cY0W6|wT3:WGk777i">
+                                                        <field name="OP">AND</field>
+                                                        <value name="A">
+                                                          <block type="logic_operation" id="IM$FuVxJ*ihZ!w;,o1u.">
+                                                            <field name="OP">AND</field>
+                                                            <value name="A">
+                                                              <block type="logic_compare" id="!1jjvOqI72rqL3Z`Ye$1">
+                                                                <field name="OP">LT</field>
+                                                                <value name="A">
+                                                                  <block type="math_number" id="{M#w^x[B]E)8LEQ-SZMJ">
+                                                                    <field name="NUM">0</field>
+                                                                  </block>
+                                                                </value>
+                                                                <value name="B">
+                                                                  <block type="math_arithmetic" id="`OR4RGr5PeUuR;ii6e(u">
+                                                                    <field name="OP">MINUS</field>
+                                                                    <value name="A">
+                                                                      <shadow type="math_number">
+                                                                        <field name="NUM">1</field>
+                                                                      </shadow>
+                                                                      <block type="lists_getIndex" id="Z7aNM#{o{!:fF+WBx2T1">
+                                                                        <mutation statement="false" at="false"></mutation>
+                                                                        <field name="MODE">GET</field>
+                                                                        <field name="WHERE">LAST</field>
+                                                                        <value name="VALUE">
+                                                                          <block type="variables_get" id="AjSe+S`D-En8rvAZ3UoA">
+                                                                            <field name="VAR" id="*{4[xNq%so2fb:J!t;9E">j</field>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="B">
+                                                                      <shadow type="math_number">
+                                                                        <field name="NUM">1</field>
+                                                                      </shadow>
+                                                                      <block type="variables_get" id="AGBQD^N|?hQ;$oli7F$i">
+                                                                        <field name="VAR" id="zx%|im8Z`l%l6V94hWN,">本車y</field>
+                                                                      </block>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                              </block>
+                                                            </value>
+                                                            <value name="B">
+                                                              <block type="logic_compare" id="0}w,;#f8kg^Hi$c,YrOR">
+                                                                <field name="OP">LT</field>
+                                                                <value name="A">
+                                                                  <block type="math_arithmetic" id=";5vq8B,4fljc]/jb)$jc">
+                                                                    <field name="OP">MINUS</field>
+                                                                    <value name="A">
+                                                                      <shadow type="math_number" id="sKh*$STP@!8GB^./L)iH">
+                                                                        <field name="NUM">1</field>
+                                                                      </shadow>
+                                                                      <block type="lists_getIndex" id="NTUhh]iaP)%}%y%,R|W^">
+                                                                        <mutation statement="false" at="false"></mutation>
+                                                                        <field name="MODE">GET</field>
+                                                                        <field name="WHERE">LAST</field>
+                                                                        <value name="VALUE">
+                                                                          <block type="variables_get" id="]CxV6KNW2Y.gzI4Vp0fX">
+                                                                            <field name="VAR" id="*{4[xNq%so2fb:J!t;9E">j</field>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="B">
+                                                                      <shadow type="math_number">
+                                                                        <field name="NUM">1</field>
+                                                                      </shadow>
+                                                                      <block type="variables_get" id="Zha=FDEu]8CjTIY^~fJ{">
+                                                                        <field name="VAR" id="zx%|im8Z`l%l6V94hWN,">本車y</field>
+                                                                      </block>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                                <value name="B">
+                                                                  <block type="math_number" id=",m=.@xSHX*[8T%`kOpNp">
+                                                                    <field name="NUM">80</field>
+                                                                  </block>
+                                                                </value>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                        <value name="B">
+                                                          <block type="logic_operation" id="jU5XST(%}ve6m0^sc;uv">
+                                                            <field name="OP">AND</field>
+                                                            <value name="A">
+                                                              <block type="logic_compare" id="-oD7G/]e4`eOg[|Q${y}">
+                                                                <field name="OP">LT</field>
+                                                                <value name="A">
+                                                                  <block type="math_arithmetic" id="]q*|#r6[7+Oj}_caM[E#">
+                                                                    <field name="OP">MINUS</field>
+                                                                    <value name="A">
+                                                                      <shadow type="math_number">
+                                                                        <field name="NUM">1</field>
+                                                                      </shadow>
+                                                                      <block type="variables_get" id="vdQZNKWxNeYLeb-jFXSP">
+                                                                        <field name="VAR" id="Flw.vlQKGBTyh^mvy9,J">本車x</field>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="B">
+                                                                      <shadow type="math_number" id="zoCm#[)qdXs#md_j;^Xg">
+                                                                        <field name="NUM">50</field>
+                                                                      </shadow>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                                <value name="B">
+                                                                  <block type="lists_getIndex" id="[CugPp7~+0dyL}fGQcA-">
+                                                                    <mutation statement="false" at="false"></mutation>
+                                                                    <field name="MODE">GET</field>
+                                                                    <field name="WHERE">FIRST</field>
+                                                                    <value name="VALUE">
+                                                                      <block type="variables_get" id="$:|/1cz]1w|bg%`qVQs1">
+                                                                        <field name="VAR" id="*{4[xNq%so2fb:J!t;9E">j</field>
+                                                                      </block>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                              </block>
+                                                            </value>
+                                                            <value name="B">
+                                                              <block type="logic_compare" id="4DAq/t,N9H*@]Lt{w,8X">
+                                                                <field name="OP">LT</field>
+                                                                <value name="A">
+                                                                  <block type="lists_getIndex" id=";,Kli[HxK5bZ6[XTDsvs">
+                                                                    <mutation statement="false" at="false"></mutation>
+                                                                    <field name="MODE">GET</field>
+                                                                    <field name="WHERE">FIRST</field>
+                                                                    <value name="VALUE">
+                                                                      <block type="variables_get" id="gm[bpqxpqP}snIuM}L{^">
+                                                                        <field name="VAR" id="*{4[xNq%so2fb:J!t;9E">j</field>
+                                                                      </block>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                                <value name="B">
+                                                                  <block type="math_arithmetic" id="p-!`^9b/e*s+2$J^9g*=">
+                                                                    <field name="OP">ADD</field>
+                                                                    <value name="A">
+                                                                      <shadow type="math_number" id="Rs~:[WdO@^Q#@h}4vV`T">
+                                                                        <field name="NUM">1</field>
+                                                                      </shadow>
+                                                                      <block type="variables_get" id="#wg_5by@B|k65CO]DMtl">
+                                                                        <field name="VAR" id="Flw.vlQKGBTyh^mvy9,J">本車x</field>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="B">
+                                                                      <shadow type="math_number" id="Ay,|vMFjuNqA+pq^t;GA">
+                                                                        <field name="NUM">120</field>
+                                                                      </shadow>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <statement name="DO0">
+                                                      <block type="mlplay_return_action" id="9*.B-6wmPukK!Hq$9]X7">
+                                                        <field name="ACTION">['BRAKE']</field>
+                                                      </block>
+                                                    </statement>
                                                   </block>
                                                 </statement>
-                                                <statement name="ELSE">
-                                                  <block type="mlplay_return_action" id="9*.B-6wmPukK!Hq$9]X7">
-                                                    <field name="ACTION">['BRAKE']</field>
+                                                <next>
+                                                  <block type="mlplay_return_action" id="+YFg:7-aB@1dIr-P4bsZ">
+                                                    <field name="ACTION">['MOVE_RIGHT']</field>
                                                   </block>
-                                                </statement>
+                                                </next>
                                               </block>
                                             </statement>
                                           </block>
-                                        </statement>
+                                        </next>
                                       </block>
                                     </next>
                                   </block>
+                                </statement>
+                                <next>
+                                  <block type="mlplay_return_action" id="Jx`1U[t2YGdSNP?E](%7">
+                                    <field name="ACTION">['SPEED']</field>
+                                  </block>
                                 </next>
-                              </block>
-                            </statement>
-                            <next>
-                              <block type="mlplay_return_action" id="Jx`1U[t2YGdSNP?E](%7">
-                                <field name="ACTION">['SPEED']</field>
                               </block>
                             </next>
                           </block>
@@ -370,5 +479,8 @@
         </value>
       </block>
     </statement>
+  </block>
+  <block type="mlplay_return_action" id="1:unMM[FwO:Xiq+YU/*!" disabled="true" x="688" y="488">
+    <field name="ACTION">['SPEED', 'MOVE_LEFT']</field>
   </block>
 </xml>
