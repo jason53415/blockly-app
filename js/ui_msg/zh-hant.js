@@ -31,6 +31,7 @@ var MSG = {
   catVariables: "變數",
   catFunctions: "函式",
   listVariable: "清單",
+  ndarrayVariable: "多維陣列",
   textVariable: "文字",
   dictVariable: "字典",
   modelVariable: "模型",

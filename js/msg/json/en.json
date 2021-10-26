@@ -415,6 +415,8 @@
 	"NDARRAYS_CREATE_WITH_DIM_TOOLTIP": "Add a dimension to the ndarray.",
 	"NDARRAYS_CREATE_WITH_LIST": "create ndarray from %1",
 	"NDARRAYS_CREATE_WITH_LIST_TOOLTIP": "Create an ndarray from a list.",
+	"NDARRAYS_TO_LIST": "convert %1 to list",
+	"NDARRAYS_TO_LIST_TOOLTIP": "Return a copy of the ndarray data as a nested list.",
 	"ORDINAL_NUMBER_SUFFIX": "",
 	"VARIABLES_GET_HELPURL": "https://github.com/google/blockly/wiki/Variables#get",
 	"VARIABLES_GET_TOOLTIP": "Returns the value of this variable.",

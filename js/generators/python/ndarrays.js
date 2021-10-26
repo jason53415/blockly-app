@@ -26,3 +26,12 @@ Blockly.Python['ndarrays_create_with_list'] = function(block) {
   var code = 'np.array(' + list + ')';
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python['ndarrays_to_list'] = function(block) {
+  // Create an ndarray of any shape filled with a specific element.
+  Blockly.Python.definitions_['import_np'] = 'import numpy as np';
+  var array = Blockly.Python.valueToCode(block, 'ARRAY',
+             Blockly.Python.ORDER_NONE) || '0';
+  var code = array + '.tolist()';
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};

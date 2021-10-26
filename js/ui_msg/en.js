@@ -31,6 +31,7 @@ var MSG = {
   catPlot: "Plot",
   catModel: "Model",
   listVariable: "list",
+  ndarrayVariable: "ndarray",
   textVariable: "text",
   dictVariable: "dictionary",
   modelVariable: "model",

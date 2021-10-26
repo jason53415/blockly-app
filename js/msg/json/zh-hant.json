@@ -376,6 +376,8 @@
 	"NDARRAYS_CREATE_WITH_DIM_TOOLTIP": "添加維度到到這個多維陣列",
 	"NDARRAYS_CREATE_WITH_LIST": "使用 %1 建立多維陣列",
 	"NDARRAYS_CREATE_WITH_LIST_TOOLTIP": "使用清單來建立一個多維陣列。",
+	"NDARRAYS_TO_LIST": "將 %1 轉成清單",
+	"NDARRAYS_TO_LIST_TOOLTIP": "回傳由多維陣列轉成的巢狀清單。",
 	"VARIABLES_GET_TOOLTIP": "返回此變數的值。",
 	"VARIABLES_GET_CREATE_SET": "建立「賦值 %1」",
 	"VARIABLES_SET": "變數 %1 設為 %2",

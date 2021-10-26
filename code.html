@@ -483,6 +483,13 @@
               </block>
             </value>
           </block>
+          <block type="ndarrays_to_list">
+            <value name="ARRAY">
+              <block type="variables_get">
+                <field name="VAR">{ndarrayVariable}</field>
+              </block>
+            </value>
+          </block>
         </category>
         <category name="%{BKY_CATMODEL}" colour="%{BKY_MODEL_HUE}">
           <block type="model_create_classification"></block>

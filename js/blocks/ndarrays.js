@@ -21,6 +21,21 @@ Blockly.defineBlocksWithJsonArray([
     "inputsInline": true,
     "style": "ndarray_blocks",
     "tooltip": "%{BKY_NDARRAYS_CREATE_WITH_LIST_TOOLTIP}"
+  },
+  // Block for convert an ndarray to a list.
+  {
+    "type": "ndarrays_to_list",
+    "message0": "%{BKY_NDARRAYS_TO_LIST}",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ARRAY"
+      }
+    ],
+    "output": "Array",
+    "inputsInline": true,
+    "style": "ndarray_blocks",
+    "tooltip": "%{BKY_NDARRAYS_TO_LIST_TOOLTIP}"
   }
 ]);
 
