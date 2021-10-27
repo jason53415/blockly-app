@@ -1,6 +1,7 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow, shell} = require('electron')
+const {app, BrowserWindow, shell, Menu, ipcMain} = require('electron')
 const path = require('path')
+const openAboutWindow = require('about-window').default
 
 function createWindow () {
   // Create the browser window.
@@ -13,6 +14,61 @@ function createWindow () {
       enableRemoteModule: true,
     }
   })
+
+  // The menubar template.
+  const template = [
+    {
+      label: 'File',
+      submenu: [
+        {
+          label: 'Exit',
+          click() {
+              mainWindow.close();
+          }
+        }
+      ]
+    },
+    {
+      label: 'View',
+      submenu: [
+        {
+          label: 'Reload',
+          accelerator: 'CmdOrCtrl+R',
+          click() {
+            mainWindow.webContents.reload();
+          }
+        },
+        {
+          label: 'Toggle Developer Tools',
+          accelerator: 'F12',
+          click() {
+            mainWindow.webContents.openDevTools();
+          }
+        }
+      ]
+    },
+    {
+      label: 'Help',
+      submenu: [
+        {
+          label: 'About',
+          click() {
+            openAboutWindow({
+              icon_path: path.join(__dirname, 'media', 'paia-logo.png'),
+              package_json_dir: __dirname,
+              win_options: {
+                parent: mainWindow,
+                modal: true
+              },
+              bug_report_url: 'https://github.com/jason53415/blockly-app/issues'
+            });
+          }
+        }
+      ]
+    }
+  ];
+  
+  Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
