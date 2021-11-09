@@ -425,6 +425,15 @@ Code.init = function() {
        move:
           {wheel: true}
       });
+  
+  // Overide prompt function because prompt is not implemented in Electron.
+  Blockly.prompt = function(message, defaultValue, callback) {
+    vex.dialog.prompt({
+      message: message,
+      placeholder: defaultValue,
+      callback: callback
+    });
+  };
 
   // Add to reserved word list: Local variables in execution environment (runJS)
   // and the infinite loop detection function.
