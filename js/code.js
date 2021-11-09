@@ -799,11 +799,11 @@ Code.openPath = function() {
   window.openPath(path.join(__dirname, 'MLGame', 'games', Code.GAME, 'ml'))
 };
 
-// Load game messages.
-document.write('<script src="js/game_msg/' + Code.GAME.toLowerCase() + '.js"></script>\n');
 // Load the Code demo's language strings.
 document.write('<script src="js/ui_msg/' + Code.LANG + '.js"></script>\n');
 // Load Blockly's language strings.
-document.write('<script src="js/block_msg/' + Code.LANG + '.js"></script>\n');
+document.write('<script src="node_modules/@paia-arena/blockly/msg/' + Code.LANG + '.js"></script>\n');
+// Load game messages.
+document.write('<script src="node_modules/@paia-arena/blockly/msg/mlgame/' + Code.GAME.toLowerCase() + '.js"></script>\n');
 
 window.addEventListener('load', Code.init);
