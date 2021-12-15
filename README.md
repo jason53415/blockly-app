@@ -1,3 +1,7 @@
+| :warning: WARNING |
+| :---------------- |
+| Blockly-App is deprecated after version 1.2.6. The latest version will continue to be released under the name [PAIA-Desktop](https://github.com/PAIA-Playful-AI-Arena/Paia-Desktop). |
+
 # Blockly-App
 
 Blockly-App is a visual programming editor based on Blockly, and built on Electron. We designed it to make everyone can easily build AI to play games.
